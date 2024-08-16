@@ -31,12 +31,11 @@ __meta__ = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 30, 30 )
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Area2D/CollisionShape2D"]
-position = Vector2( 20, 20 )
 texture = ExtResource( 2 )
-centered = false
