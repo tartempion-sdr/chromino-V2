@@ -1,5 +1,6 @@
 extends Node2D 
-var time = 0
+var ecart = 20
+var taille = 1
 var scene = preload("res://Area2D.tscn")
 var x = 40
 var y = 40
@@ -47,6 +48,9 @@ func souris_pos_plateau():
 			var child = get_child(num)
 			
 			if child is Area2D:
+
+				child.scale.x = taille
+				child.scale.y = taille
 				child.position = Vector2(x, y)
 				num += 1
 			x = mouse_position.x
@@ -73,15 +77,13 @@ func _input(event):
 		if event.button_index == BUTTON_WHEEL_UP:
 			# Action pour le défilement vers le haut
 			print("Défilement vers le haut")
-			for child in get_children():
-				if child is Area2D:
-			# Modifier la position de l'enfant
-					print("up")
+			taille -= 0.1
+			souris_pos_plateau()
+			
 		elif event.button_index == BUTTON_WHEEL_DOWN:
 			# Action pour le défilement vers le bas
 			print("Défilement vers le bas")
-		elif event.button_index == BUTTON_LEFT and event.pressed:
-		# Action pour le clic gauche
-			print("Clic gauche")
+			taille += 0.1
+			souris_pos_plateau()
 			
 			
