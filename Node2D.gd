@@ -1,6 +1,5 @@
-extends Node2D
-
-
+extends Node2D 
+var time = 0
 var scene = preload("res://Area2D.tscn")
 var x = 40
 var y = 40
@@ -14,7 +13,6 @@ func _ready():
 	
 func pos_plateau():
 	
-
 	var a = 0
 	var retour = 0
 	
@@ -62,10 +60,12 @@ func plateau(pos):
 	instance_plateau.visible = true
 	add_child(instance_plateau)
 
+
+
 func _process(delta):
-# Called every fr
-	pass
-	
+	if Input.is_mouse_button_pressed(BUTTON_LEFT):
+		print("Le clic gauche de la souris est enfoncé")
+		souris_pos_plateau()
 
 func _input(event):
 	var instance_plateau = scene.instance()
@@ -84,4 +84,4 @@ func _input(event):
 		# Action pour le clic gauche
 			print("Clic gauche")
 			
-			souris_pos_plateau()	
+			
