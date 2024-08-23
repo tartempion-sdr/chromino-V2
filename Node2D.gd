@@ -38,11 +38,11 @@ func souris_pos_plateau():
 	var y = mouse_position.y
 	
 	for n in range(9):
-		y = y + (n * 20)
+		y = y + (n * (20 * taille))
 		
 		for i in range(9):
 			
-			x = x + (i * 20)
+			x = x + (i * (20 * taille))
 			
 			# Utiliser un index pour accéder à chaque enfant individuellement
 			var child = get_child(num)
