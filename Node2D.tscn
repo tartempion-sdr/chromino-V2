@@ -29,5 +29,6 @@ __meta__ = {
 }
 
 [node name="Area2D" parent="." instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 40, 40 )
 script = null

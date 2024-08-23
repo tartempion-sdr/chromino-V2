@@ -5,7 +5,7 @@ var scene = preload("res://Area2D.tscn")
 var x = 40
 var y = 40
 
-
+var num = 2
 
 
 func _ready():
@@ -13,27 +13,53 @@ func _ready():
 	pos_plateau()
 	
 func pos_plateau():
-	var mouse_position = get_viewport().get_mouse_position()
-	var a = int()
-	var retour =int()
+	
+
+	var a = 0
+	var retour = 0
+	
 	for i in range(0, 9):
 		for n in range(0, 9):
-
 			
 			plateau(Vector2(x, y))
+			
 			a = 20
 			x += 20 
 			retour = retour + a
 			
-			
 		x -= retour
-		retour =0
+		retour = 0
 		y += 20
+	x = 40
+	y = 40   
 	
+func souris_pos_plateau():
+	var mouse_position = get_viewport().get_mouse_position()
+	var x = mouse_position.x
+	var y = mouse_position.y
+	
+	for n in range(9):
+		y = y + (n * 20)
+		
+		for i in range(9):
+			
+			x = x + (i * 20)
+			
+			# Utiliser un index pour accéder à chaque enfant individuellement
+			var child = get_child(num)
+			
+			if child is Area2D:
+				child.position = Vector2(x, y)
+				num += 1
+			x = mouse_position.x
+		y = mouse_position.y
+	num = 2
 
+				
 func plateau(pos):
 	var instance_plateau = scene.instance()
 	instance_plateau.position = pos
+	instance_plateau.visible = true
 	add_child(instance_plateau)
 
 func _process(delta):
@@ -57,9 +83,5 @@ func _input(event):
 		elif event.button_index == BUTTON_LEFT and event.pressed:
 		# Action pour le clic gauche
 			print("Clic gauche")
-			var mouse_position = get_viewport().get_mouse_position()
-			print(mouse_position)
-			x = mouse_position[0]
-			y = mouse_position[1]
-			pos_plateau()
 			
+			souris_pos_plateau()	
