@@ -37,28 +37,29 @@ func pos_plateau():
 	
 func souris_pos_plateau():
 	var mouse_position = get_viewport().get_mouse_position()
-	var child_x = get_child(2).position.x
-	var child_y = get_child(2).position.y
-	var plateau_x = int()
-	var plateau_y = int()
-	plateau_x = mouse_position.x - (mouse_position.x - child_x ) 
-	x = mouse_position.x - plateau_x
+	var child_2 = get_child(2)
+	var x1
+	var y1
+	var plateau_x
+	var plateau_y
+	plateau_x = mouse_position.x - (mouse_position.x - child_2.position.x ) 
+	x1 = mouse_position.x - plateau_x
 	
-	plateau_y =   mouse_position.y - (mouse_position.y - child_y )
-	y = mouse_position.y - plateau_y
-	print("child x = " + str(child_x))
-	print("x = " + str(x))
-	print("plateau_x = " + str(plateau_x))
-	print("y = " + str(y))
-	print("plateau_y = " + str(plateau_y))
+	plateau_y =   mouse_position.y - (mouse_position.y - child_2.position.y )
+	y1 = mouse_position.y - plateau_y
+	#print("child x = " + str(child_2.position.x))
+	#print("x = " + str(x))
+	#print("plateau_x = " + str(plateau_x))
+	#print("y = " + str(y))
+	#print("plateau_y = " + str(plateau_y))
 	
 	for n in range(9):
 
-		x = x  + (20 * taille) 
+		
 
 		for i in range(9):
 			
-			y = y  + (20 * taille) 
+			
 
 			
 			# Utiliser un index pour accéder à chaque enfant individuellement
@@ -68,10 +69,13 @@ func souris_pos_plateau():
 				
 				child.scale.x = taille
 				child.scale.y = taille
-				child.position = Vector2(x, y)
+				child.position = Vector2(x1, y1)
+				y1 = y1  + (20 * taille) 
 				num += 1
-		y = mouse_position.y - plateau_y
-	
+				
+		x1 = x1  + (20 * taille) 
+		y1 = mouse_position.y - plateau_y
+	x1 = mouse_position.x - plateau_x
 	num = 2
 	
 	
@@ -84,8 +88,9 @@ func plateau(pos):
 
 
 func _process(delta):
+	
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
-		print("Le clic gauche de la souris est enfoncé")
+		#print("Le clic gauche de la souris est enfoncé")
 		souris_pos_plateau()
 
 func _input(event):
@@ -105,3 +110,4 @@ func _input(event):
 			
 		elif event.button_index ==  BUTTON_LEFT:
 			pass
+			
