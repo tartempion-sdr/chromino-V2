@@ -1,20 +1,24 @@
 extends Node2D 
+
 var ecart = 20
 var taille = 1
 var scene = preload("res://Area2D.tscn")
-
-
+var x1 = 0
+var y1 = 0
+var plateau_x
+var plateau_y
+var child_2 
 
 var x = 0
 var y = 0
-
 var num = 2
 
 
 func _ready():
-	
+
 	pos_plateau()
 	
+
 func pos_plateau():
 	
 	var a = 0
@@ -35,32 +39,17 @@ func pos_plateau():
 	x = 0
 	y = 0   
 	
-func souris_pos_plateau():
-	var mouse_position = get_viewport().get_mouse_position()
-	var child_2 = get_child(2)
-	var x1
-	var y1
-	var plateau_x
-	var plateau_y
-	plateau_x = mouse_position.x - (mouse_position.x - child_2.position.x ) 
-	x1 = mouse_position.x - plateau_x
+func souris_pos_plateau(mouse_position):
 	
-	plateau_y =   mouse_position.y - (mouse_position.y - child_2.position.y )
-	y1 = mouse_position.y - plateau_y
-	#print("child x = " + str(child_2.position.x))
-	#print("x = " + str(x))
-	#print("plateau_x = " + str(plateau_x))
-	#print("y = " + str(y))
-	#print("plateau_y = " + str(plateau_y))
+	var retourx = 0
+	var retoury = 0
+	num = 2
+	var child_2 = get_child(2)
+	
 	
 	for n in range(9):
 
-		
-
 		for i in range(9):
-			
-			
-
 			
 			# Utiliser un index pour accéder à chaque enfant individuellement
 			var child = get_child(num)
@@ -70,15 +59,19 @@ func souris_pos_plateau():
 				child.scale.x = taille
 				child.scale.y = taille
 				child.position = Vector2(x1, y1)
-				y1 = y1  + (20 * taille) 
+				x1 = x1  + (20 * taille) 
 				num += 1
-				
-		x1 = x1  + (20 * taille) 
-		y1 = mouse_position.y - plateau_y
-	x1 = mouse_position.x - plateau_x
-	num = 2
+				retourx = retourx + (20*taille)
+		x1 -= retourx
+		retourx = 0
+		y1 = y1  + (20 * taille) 
+		retoury = retoury  + (20*taille)
+		
+	y1 -= retoury
 	
-	
+	print(x1)
+	print(child_2.position.x )
+
 func plateau(pos):
 	var instance_plateau = scene.instance()
 	instance_plateau.position = pos
@@ -86,28 +79,40 @@ func plateau(pos):
 	add_child(instance_plateau)
 
 
-
-func _process(delta):
-	
-	if Input.is_mouse_button_pressed(BUTTON_LEFT):
-		#print("Le clic gauche de la souris est enfoncé")
-		souris_pos_plateau()
-
+		
+		
 func _input(event):
 	var instance_plateau = scene.instance()
+	var mouse_position = get_viewport().get_mouse_position()
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_WHEEL_UP:
 			# Action pour le défilement vers le haut
 			print("Défilement vers le haut")
 			taille -= 0.1
-			souris_pos_plateau()
+			souris_pos_plateau(mouse_position)
 			
 		elif event.button_index == BUTTON_WHEEL_DOWN:
 			# Action pour le défilement vers le bas
 			print("Défilement vers le bas")
 			taille += 0.1
-			souris_pos_plateau()
+			souris_pos_plateau(mouse_position)
 			
-		elif event.button_index ==  BUTTON_LEFT:
-			pass
-			
+	if Input.is_key_pressed(KEY_LEFT):
+		
+		x1 -= 10
+		souris_pos_plateau(mouse_position)
+
+	if Input.is_key_pressed(KEY_RIGHT):
+		
+		x1 += 10
+		souris_pos_plateau(mouse_position)
+
+	if Input.is_key_pressed(KEY_UP):
+		
+		y1 -= 10
+		souris_pos_plateau(mouse_position)
+
+	if Input.is_key_pressed(KEY_DOWN):
+		
+		y1 += 10
+		souris_pos_plateau(mouse_position)
