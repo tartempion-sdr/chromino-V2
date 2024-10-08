@@ -1,5 +1,6 @@
 extends Node2D 
 
+var list_jetons = []
 var ecart = 20
 var taille = 1
 var scene = preload("res://Area2D.tscn")
@@ -39,12 +40,12 @@ func pos_plateau():
 	x = 0
 	y = 0   
 	
-func souris_pos_plateau(mouse_position):
+func souris_pos_plateau():
 	
 	var retourx = 0
 	var retoury = 0
 	num = 2
-	var child_2 = get_child(2)
+	
 	
 	
 	for n in range(9):
@@ -68,9 +69,8 @@ func souris_pos_plateau(mouse_position):
 		retoury = retoury  + (20*taille)
 		
 	y1 -= retoury
-	
-	print(x1)
-	print(child_2.position.x )
+	print(taille)
+
 
 func plateau(pos):
 	var instance_plateau = scene.instance()
@@ -82,37 +82,36 @@ func plateau(pos):
 		
 		
 func _input(event):
-	var instance_plateau = scene.instance()
-	var mouse_position = get_viewport().get_mouse_position()
+
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_WHEEL_UP:
 			# Action pour le défilement vers le haut
 			print("Défilement vers le haut")
 			taille -= 0.1
-			souris_pos_plateau(mouse_position)
+			souris_pos_plateau()
 			
 		elif event.button_index == BUTTON_WHEEL_DOWN:
 			# Action pour le défilement vers le bas
 			print("Défilement vers le bas")
 			taille += 0.1
-			souris_pos_plateau(mouse_position)
+			souris_pos_plateau()
 			
 	if Input.is_key_pressed(KEY_LEFT):
 		
 		x1 -= 10
-		souris_pos_plateau(mouse_position)
+		souris_pos_plateau()
 
 	if Input.is_key_pressed(KEY_RIGHT):
 		
 		x1 += 10
-		souris_pos_plateau(mouse_position)
+		souris_pos_plateau()
 
 	if Input.is_key_pressed(KEY_UP):
 		
 		y1 -= 10
-		souris_pos_plateau(mouse_position)
+		souris_pos_plateau()
 
 	if Input.is_key_pressed(KEY_DOWN):
 		
 		y1 += 10
-		souris_pos_plateau(mouse_position)
+		souris_pos_plateau()
