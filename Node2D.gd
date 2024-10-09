@@ -3,7 +3,7 @@ extends Node2D
 
 var ecart = 20
 var taille = 1
-var scene = preload("res://Area2D.tscn")
+var scene = preload("res://Plateau.tscn")
 var x1 = 0
 var y1 = 0
 var plateau_x
@@ -22,16 +22,26 @@ var bleu = preload("res://assets/colors/bleu.jpg")
 var violet = preload("res://assets/colors/violet.jpg")
 var rouge = preload("res://assets/colors/rouge.jpg")
 
+var scene_jeton = preload("res://jetons.tscn")
+var nb_jetons_pioche = 7
 
 var list_couleurs_jetons = []
 
-var list_position_pioche_jetons = []
+var list_position_pioche_jetons = [(Vector2(400, 400)),
+(Vector2(450, 400)),
+(Vector2(500, 400)),
+(Vector2(550, 400)),
+(Vector2(600, 400)),
+(Vector2(650, 400)),
+(Vector2(700, 400))]
+
 var list_affihe_position_porte_jetons = []
 
 func _ready():
-
+	
+	print(list_position_pioche_jetons)
 	pos_plateau()
-	cree_jetons()
+	child_pioche_jetons()
 	
 func plateau(pos):
 	var instance_plateau = scene.instance()
@@ -88,8 +98,15 @@ func souris_pos_plateau():
 	y1 -= retoury
 	print(taille)
 
-func cree_jetons():
-	pass
+func pioche_jetons(d):
+	var instance_jeton = scene_jeton.instance()
+	instance_jeton.position = list_position_pioche_jetons[d]
+	instance_jeton.visible = true
+	add_child(instance_jeton)
+
+func child_pioche_jetons():
+	for d in nb_jetons_pioche:
+		pioche_jetons(d)
 
 func pioche_jeton_random():
 	print("random jetons")

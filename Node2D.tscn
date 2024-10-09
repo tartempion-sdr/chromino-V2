@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/colors/black.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/colors/beige.png" type="Texture" id=2]
 [ext_resource path="res://Node2D.gd" type="Script" id=3]
-[ext_resource path="res://Area2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Plateau.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/pioche.png" type="Texture" id=5]
 [ext_resource path="res://assets/arrow.png" type="Texture" id=6]
 [ext_resource path="res://assets/arrow-2.png" type="Texture" id=7]
@@ -11,6 +11,20 @@
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1026.0
+margin_bottom = 515.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Plateau" parent="TextureRect" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 40, 40 )
+gravity_vec = Vector2( 0, 0 )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 margin_left = -1.0
@@ -68,21 +82,7 @@ __meta__ = {
 }
 
 [node name="jetons" parent="TextureRect2/TextureRect3" instance=ExtResource( 8 )]
-
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 1026.0
-margin_bottom = 515.0
-texture = ExtResource( 1 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Area2D" parent="TextureRect" instance=ExtResource( 4 )]
 visible = false
-position = Vector2( 40, 40 )
-gravity_vec = Vector2( 0, 0 )
-script = null
 [connection signal="button_down" from="TextureRect2/Button_pioche" to="." method="_on_Button_pioche_button_down"]
 [connection signal="button_down" from="TextureRect2/Button_droite" to="." method="_on_Button_droite_button_down"]
 [connection signal="button_down" from="TextureRect2/Button_gauche" to="." method="_on_Button_gauche_button_down"]
