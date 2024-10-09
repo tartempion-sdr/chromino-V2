@@ -9,13 +9,31 @@
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite-2-milieu" type="Sprite" parent="CollisionShape2D"]
+[node name="Spritemilieu" type="TextureRect" parent="CollisionShape2D"]
+margin_right = 19.0
+margin_bottom = 19.0
 texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Sprite-1" type="Sprite" parent="CollisionShape2D/Sprite-2-milieu"]
+[node name="Spritehaut" type="TextureRect" parent="CollisionShape2D/Spritemilieu"]
+margin_top = -20.0
+margin_right = 19.0
+margin_bottom = -1.0
 texture = ExtResource( 1 )
-offset = Vector2( 0, -20 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Sprite-3" type="Sprite" parent="CollisionShape2D/Sprite-2-milieu"]
+[node name="Spritebas" type="TextureRect" parent="CollisionShape2D/Spritemilieu"]
+margin_top = 20.0
+margin_right = 19.0
+margin_bottom = 39.0
 texture = ExtResource( 1 )
-offset = Vector2( 0, 20 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

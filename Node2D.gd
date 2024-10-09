@@ -23,17 +23,23 @@ var violet = preload("res://assets/colors/violet.jpg")
 var rouge = preload("res://assets/colors/rouge.jpg")
 
 var scene_jeton = preload("res://jetons.tscn")
-var nb_jetons_pioche = 7
+var nb_jetons_pioche = 5
 
-var list_couleurs_jetons = []
+var list_couleurs_jetons = [[jaune, jaune, jaune],
+[vert, vert, vert],
+[bleu, bleu, bleu],
+[violet, violet, violet],
+[rouge, rouge, rouge]]
 
-var list_position_pioche_jetons = [(Vector2(400, 400)),
-(Vector2(450, 400)),
-(Vector2(500, 400)),
-(Vector2(550, 400)),
-(Vector2(600, 400)),
-(Vector2(650, 400)),
-(Vector2(700, 400))]
+
+
+var list_position_pioche_jetons = [(Vector2(400, 560)),
+(Vector2(450, 560)),
+(Vector2(500, 560)),
+(Vector2(550, 560)),
+(Vector2(600, 560)),
+(Vector2(650, 560)),
+(Vector2(700, 560))]
 
 var list_affihe_position_porte_jetons = []
 
@@ -41,7 +47,7 @@ func _ready():
 	
 	print(list_position_pioche_jetons)
 	pos_plateau()
-	child_pioche_jetons()
+	
 	
 func plateau(pos):
 	var instance_plateau = scene.instance()
@@ -102,13 +108,20 @@ func pioche_jetons(d):
 	var instance_jeton = scene_jeton.instance()
 	instance_jeton.position = list_position_pioche_jetons[d]
 	instance_jeton.visible = true
+	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritehaut").texture = list_couleurs_jetons[d][0]
+	instance_jeton.get_node("CollisionShape2D/Spritemilieu").texture = list_couleurs_jetons[d][1]
+	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritebas").texture = list_couleurs_jetons[d][2]
 	add_child(instance_jeton)
 
+
+	
 func child_pioche_jetons():
 	for d in nb_jetons_pioche:
 		pioche_jetons(d)
-
+	
+					
 func pioche_jeton_random():
+	
 	print("random jetons")
 
 func _input(event):
@@ -148,7 +161,7 @@ func _input(event):
 
 func _on_Button_pioche_button_down():
 	pioche_jeton_random()
-
+	child_pioche_jetons()
 
 func _on_Button_droite_button_down():
 	pass # Replace with function body.
