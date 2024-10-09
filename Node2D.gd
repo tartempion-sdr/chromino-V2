@@ -31,8 +31,6 @@ var list_couleurs_jetons = [[jaune, jaune, jaune],
 [violet, violet, violet],
 [rouge, rouge, rouge]]
 
-
-
 var list_position_pioche_jetons = [(Vector2(400, 560)),
 (Vector2(450, 560)),
 (Vector2(500, 560)),
@@ -42,10 +40,14 @@ var list_position_pioche_jetons = [(Vector2(400, 560)),
 (Vector2(700, 560))]
 
 var list_affihe_position_porte_jetons = []
-
+var random = RandomNumberGenerator.new()
+var hazard
 func _ready():
 	
-	print(list_position_pioche_jetons)
+	
+	random.randomize()
+
+	
 	pos_plateau()
 	
 	
@@ -105,12 +107,16 @@ func souris_pos_plateau():
 	print(taille)
 
 func pioche_jetons(d):
+	
+	hazard = random.randi_range(0, 4)
+	print("random" + str(hazard))
+	
 	var instance_jeton = scene_jeton.instance()
 	instance_jeton.position = list_position_pioche_jetons[d]
 	instance_jeton.visible = true
-	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritehaut").texture = list_couleurs_jetons[d][0]
-	instance_jeton.get_node("CollisionShape2D/Spritemilieu").texture = list_couleurs_jetons[d][1]
-	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritebas").texture = list_couleurs_jetons[d][2]
+	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritehaut").texture = list_couleurs_jetons[hazard][0]
+	instance_jeton.get_node("CollisionShape2D/Spritemilieu").texture = list_couleurs_jetons[hazard][1]
+	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritebas").texture = list_couleurs_jetons[hazard][2]
 	add_child(instance_jeton)
 
 
