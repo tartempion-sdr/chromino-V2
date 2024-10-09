@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/colors/black.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/colors/beige.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/pioche.png" type="Texture" id=5]
 [ext_resource path="res://assets/arrow.png" type="Texture" id=6]
 [ext_resource path="res://assets/arrow-2.png" type="Texture" id=7]
+[ext_resource path="res://jetons.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -22,7 +23,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="TextureRect2"]
+[node name="Button_pioche" type="TextureButton" parent="TextureRect2"]
 margin_left = 28.8183
 margin_top = 23.0155
 margin_right = 68.8183
@@ -34,7 +35,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton2" type="TextureButton" parent="TextureRect2"]
+[node name="Button_droite" type="TextureButton" parent="TextureRect2"]
 margin_left = 202.32
 margin_top = 21.5325
 margin_right = 242.32
@@ -45,18 +46,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton3" type="TextureButton" parent="TextureRect2"]
+[node name="Button_gauche" type="TextureButton" parent="TextureRect2"]
 margin_left = 947.136
 margin_top = 26.3829
 margin_right = 987.136
 margin_bottom = 66.3829
 mouse_default_cursor_shape = 2
-keep_pressed_outside = true
 texture_normal = ExtResource( 6 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureRect3" type="TextureRect" parent="TextureRect2"]
+margin_left = 1.0
+margin_top = -516.0
+margin_right = 41.0
+margin_bottom = -476.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="jetons" parent="TextureRect2/TextureRect3" instance=ExtResource( 8 )]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 1026.0
@@ -72,3 +83,6 @@ visible = false
 position = Vector2( 40, 40 )
 gravity_vec = Vector2( 0, 0 )
 script = null
+[connection signal="button_down" from="TextureRect2/Button_pioche" to="." method="_on_Button_pioche_button_down"]
+[connection signal="button_down" from="TextureRect2/Button_droite" to="." method="_on_Button_droite_button_down"]
+[connection signal="button_down" from="TextureRect2/Button_gauche" to="." method="_on_Button_gauche_button_down"]
