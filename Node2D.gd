@@ -334,9 +334,7 @@ func _on_Button_tourne_button_down():
 	
 	if len(list_affihe_position_porte_jetons) == 0:
 		print("pioche dabore")
-	elif len(list_affihe_position_porte_jetons) >= 0:
-		print()
-		
+	
 	elif len(list_affihe_position_porte_jetons) >= 0:
 		var child_jeton = get_child(list_affihe_position_porte_jetons[0][5])
 			
