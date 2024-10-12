@@ -12,7 +12,9 @@ var child_2
 var x = 0
 var y = 0
 var num = 2
-
+var jeton_child = 83
+var verticale = "verticale"
+var horizontale = "horizontale"
 #75 chrominos classiques, 
 #5 chrominos caméléon combinant 2 couleurs différentes à chaque extrémité
 var joker = preload("res://assets/colors/joker.jpg")
@@ -25,112 +27,112 @@ var rouge = preload("res://assets/colors/rouge.jpg")
 var scene_jeton = preload("res://jetons.tscn")
 var nb_jetons_pioche = 7
 
-var list_couleurs_jetons = [[jaune, jaune, jaune, true],
-[jaune, jaune, vert, true],
-[jaune, jaune, bleu, true],
-[jaune, jaune, violet, true],
-[jaune, jaune, rouge, true],
+var list_couleurs_jetons = [[jaune, jaune, jaune, true, verticale],
+[jaune, jaune, vert, true, verticale],
+[jaune, jaune, bleu, true, verticale],
+[jaune, jaune, violet, true, verticale],
+[jaune, jaune, rouge, true, verticale],
 
-[jaune, vert, jaune, true],
-[jaune, bleu, jaune, true],
-[jaune, violet, jaune, true],
-[jaune, rouge, jaune, true],
+[jaune, vert, jaune, true, verticale],
+[jaune, bleu, jaune, true, verticale],
+[jaune, violet, jaune, true, verticale],
+[jaune, rouge, jaune, true, verticale],
 
-[jaune, vert, bleu, true],
-[jaune, vert, violet, true],
-[jaune, vert, rouge, true],
+[jaune, vert, bleu, true, verticale],
+[jaune, vert, violet, true, verticale],
+[jaune, vert, rouge, true, verticale],
 
-[jaune, bleu, vert, true],
-[jaune, bleu, violet, true],
-[jaune, bleu, rouge, true],
+[jaune, bleu, vert, true, verticale],
+[jaune, bleu, violet, true, verticale],
+[jaune, bleu, rouge, true, verticale],
 
-[jaune, violet, vert, true],
-[jaune, violet, bleu, true],
-[jaune, violet, rouge, true],
+[jaune, violet, vert, true, verticale],
+[jaune, violet, bleu, true, verticale],
+[jaune, violet, rouge, true, verticale],
 
-[jaune, rouge, vert, true],
-[jaune, rouge, bleu, true],
-[jaune, rouge, violet, true],
+[jaune, rouge, vert, true, verticale],
+[jaune, rouge, bleu, true, verticale],
+[jaune, rouge, violet, true, verticale],
 
-[vert, vert, vert, true],
-[vert, vert, jaune, true],
-[vert, vert, bleu, true],
-[vert, vert, violet, true],
-[vert, vert, rouge, true],
+[vert, vert, vert, true, verticale],
+[vert, vert, jaune, true, verticale],
+[vert, vert, bleu, true, verticale],
+[vert, vert, violet, true, verticale],
+[vert, vert, rouge, true, verticale],
 
-[vert, jaune, vert, true],
-[vert, bleu, vert, true],
-[vert, violet, vert, true],
-[vert, rouge, vert, true],
+[vert, jaune, vert, true, verticale],
+[vert, bleu, vert, true, verticale],
+[vert, violet, vert, true, verticale],
+[vert, rouge, vert, true, verticale],
 
-[vert, jaune, bleu, true],
-[vert, jaune, violet, true],
-[vert, jaune, rouge, true],
-
-
-[vert, bleu, violet, true],
-[vert, bleu, rouge, true],
-
-[vert, violet, bleu,true],
-[vert, violet, rouge, true],
-
-[vert, rouge, bleu, true],
-[vert, rouge, violet, true],
-
-[bleu, bleu, bleu, true],
-[bleu, bleu, jaune, true],
-[bleu, bleu, vert, true],
-[bleu, bleu, violet, true],
-[bleu, bleu, rouge, true],
-
-[bleu, jaune, bleu, true],
-[bleu, vert, bleu, true],
-[bleu, violet, bleu, true],
-[bleu, rouge, bleu, true],
+[vert, jaune, bleu, true, verticale],
+[vert, jaune, violet, true, verticale],
+[vert, jaune, rouge, true, verticale],
 
 
-[bleu, jaune, violet, true],
-[bleu, jaune, rouge, true],
+[vert, bleu, violet, true, verticale],
+[vert, bleu, rouge, true, verticale],
 
-[bleu, vert, violet, true],
-[bleu, vert, rouge, true],
+[vert, violet, bleu,true, verticale],
+[vert, violet, rouge, true, verticale],
 
-[bleu, violet, rouge, true],
-[bleu, rouge, violet, true],
+[vert, rouge, bleu, true, verticale],
+[vert, rouge, violet, true, verticale],
 
+[bleu, bleu, bleu, true, verticale],
+[bleu, bleu, jaune, true, verticale],
+[bleu, bleu, vert, true, verticale],
+[bleu, bleu, violet, true, verticale],
+[bleu, bleu, rouge, true, verticale],
 
-[violet, violet, violet, true],
-[violet, violet, jaune, true],
-[violet, violet, vert, true],
-[violet, violet, bleu, true],
-[violet, violet, rouge, true],
-
-[violet, jaune, violet, true],
-[violet, vert, violet, true],
-[violet, bleu, violet, true],
-[violet, rouge, violet, true],
-
-[violet, jaune, rouge, true],
-[violet, vert, rouge, true],
-[violet, bleu, rouge, true],
+[bleu, jaune, bleu, true, verticale],
+[bleu, vert, bleu, true, verticale],
+[bleu, violet, bleu, true, verticale],
+[bleu, rouge, bleu, true, verticale],
 
 
-[rouge, rouge, rouge, true],
-[rouge, rouge, jaune, true],
-[rouge, rouge, vert, true],
-[rouge, rouge, bleu, true],
-[rouge, rouge, violet, true],
+[bleu, jaune, violet, true, verticale],
+[bleu, jaune, rouge, true, verticale],
 
-[rouge, jaune, rouge, true],
-[rouge, vert, rouge, true],
-[rouge, bleu, rouge, true],
-[rouge, violet, rouge, true],
+[bleu, vert, violet, true, verticale],
+[bleu, vert, rouge, true, verticale],
 
-[jaune, joker, jaune, true],
-[vert, joker, vert, true],
-[bleu, joker, bleu, true],
-[violet, joker, violet, true],
-[rouge, joker, rouge, true]]
+[bleu, violet, rouge, true, verticale],
+[bleu, rouge, violet, true, verticale],
+
+
+[violet, violet, violet, true, verticale],
+[violet, violet, jaune, true, verticale],
+[violet, violet, vert, true, verticale],
+[violet, violet, bleu, true, verticale],
+[violet, violet, rouge, true, verticale],
+
+[violet, jaune, violet, true, verticale],
+[violet, vert, violet, true, verticale],
+[violet, bleu, violet, true, verticale],
+[violet, rouge, violet, true, verticale],
+
+[violet, jaune, rouge, true, verticale],
+[violet, vert, rouge, true, verticale],
+[violet, bleu, rouge, true, verticale],
+
+
+[rouge, rouge, rouge, true, verticale],
+[rouge, rouge, jaune, true, verticale],
+[rouge, rouge, vert, true, verticale],
+[rouge, rouge, bleu, true, verticale],
+[rouge, rouge, violet, true, verticale],
+
+[rouge, jaune, rouge, true, verticale],
+[rouge, vert, rouge, true, verticale],
+[rouge, bleu, rouge, true, verticale],
+[rouge, violet, rouge, true, verticale],
+
+[jaune, joker, jaune, true, verticale],
+[vert, joker, vert, true, verticale],
+[bleu, joker, bleu, true, verticale],
+[violet, joker, violet, true, verticale],
+[rouge, joker, rouge, true, verticale]]
 
 
 var list_position_pioche_jetons = [(Vector2(400, 560)),
@@ -217,7 +219,6 @@ func pioche_jetons(d):
 		hazard = random.randi_range(0, 79)
 	
 	print("random" + str(hazard))
-	print("random" + str(hazard))
 	var instance_jeton = scene_jeton.instance()
 	instance_jeton.position = list_position_pioche_jetons[d]
 	instance_jeton.visible = true
@@ -225,15 +226,14 @@ func pioche_jetons(d):
 	instance_jeton.get_node("CollisionShape2D/Spritemilieu").texture = list_couleurs_jetons[hazard][1]
 	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritebas").texture = list_couleurs_jetons[hazard][2]
 	list_couleurs_jetons[hazard][3] = false
+	list_affihe_position_porte_jetons.append(list_couleurs_jetons[hazard])
 	add_child(instance_jeton)
-
+	list_affihe_position_porte_jetons[-1].append(jeton_child)
+	jeton_child += 1
+	print(list_affihe_position_porte_jetons[-1])
 		
 
 func affiche_nb_jetons_restant():
-	
-	
-	#list_couleurs_jetons[0][3]
-	
 	
 	var count = 0
 	for sublist in list_couleurs_jetons:
@@ -296,8 +296,27 @@ func _on_Button_pioche_button_down():
 	child_pioche_jetons()
 
 func _on_Button_droite_button_down():
-	pass # Replace with function body.
+	
+	if len(list_affihe_position_porte_jetons) == 0:
+		print("pioche dabore")
+
 
 
 func _on_Button_gauche_button_down():
-	pass # Replace with function body.
+	
+
+	if len(list_affihe_position_porte_jetons) == 0:
+		print("pioche dabore")
+		
+	
+func _on_Button_tourne_button_down():
+	
+	if len(list_affihe_position_porte_jetons) == 0:
+		print("pioche dabore")
+		
+		
+	elif len(list_affihe_position_porte_jetons) >= 0:
+		var child_jeton = get_child(list_affihe_position_porte_jetons[0][5])
+			
+		if child_jeton is Area2D:
+			child_jeton.get_node("CollisionShape2D").rotation_degrees += 90

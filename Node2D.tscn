@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/colors/black.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/colors/beige.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/arrow.png" type="Texture" id=6]
 [ext_resource path="res://assets/arrow-2.png" type="Texture" id=7]
 [ext_resource path="res://jetons.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/fleche_rotation.jpg" type="Texture" id=9]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -27,10 +28,10 @@ position = Vector2( 40, 40 )
 gravity_vec = Vector2( 0, 0 )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = -1.0
-margin_top = 516.0
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_left = -0.759094
+margin_top = 513.544
+margin_right = 1024.24
+margin_bottom = 597.544
 texture = ExtResource( 2 )
 expand = true
 __meta__ = {
@@ -50,9 +51,9 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TextureRect2/Button_pioche"]
-margin_top = 40.0
+margin_top = 45.0
 margin_right = 180.0
-margin_bottom = 130.0
+margin_bottom = 135.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 tab_size = 24
 text = "JETONS DISPONIBLE ="
@@ -81,6 +82,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button_tourne" type="TextureButton" parent="TextureRect2"]
+margin_left = 83.5636
+margin_top = 23.9638
+margin_right = 123.564
+margin_bottom = 63.9638
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureRect3" type="TextureRect" parent="TextureRect2"]
 margin_left = 1.0
 margin_top = -516.0
@@ -95,3 +107,4 @@ visible = false
 [connection signal="button_down" from="TextureRect2/Button_pioche" to="." method="_on_Button_pioche_button_down"]
 [connection signal="button_down" from="TextureRect2/Button_droite" to="." method="_on_Button_droite_button_down"]
 [connection signal="button_down" from="TextureRect2/Button_gauche" to="." method="_on_Button_gauche_button_down"]
+[connection signal="button_down" from="TextureRect2/Button_tourne" to="." method="_on_Button_tourne_button_down"]
