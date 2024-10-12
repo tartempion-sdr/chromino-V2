@@ -6,16 +6,19 @@
 extents = Vector2( 8.5, 26.7559 )
 
 [node name="jetons" type="Area2D"]
+gravity_vec = Vector2( 0, 0 )
+gravity = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1, 1.5 )
 shape = SubResource( 1 )
 
 [node name="Spritemilieu" type="TextureRect" parent="CollisionShape2D"]
-margin_left = -11.0
-margin_top = -6.5
-margin_right = 8.0
-margin_bottom = 12.5
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 9.0
+margin_bottom = 9.0
 texture = ExtResource( 1 )
 expand = true
 __meta__ = {

@@ -59,7 +59,7 @@ tab_size = 24
 text = "JETONS DISPONIBLE ="
 fit_content_height = true
 
-[node name="Button_droite" type="TextureButton" parent="TextureRect2"]
+[node name="Button_gauche2" type="TextureButton" parent="TextureRect2"]
 margin_left = 202.32
 margin_top = 21.5325
 margin_right = 242.32
@@ -70,7 +70,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button_gauche" type="TextureButton" parent="TextureRect2"]
+[node name="Button_droite" type="TextureButton" parent="TextureRect2"]
 margin_left = 947.136
 margin_top = 26.3829
 margin_right = 987.136
@@ -105,6 +105,6 @@ __meta__ = {
 [node name="jetons" parent="TextureRect2/TextureRect3" instance=ExtResource( 8 )]
 visible = false
 [connection signal="button_down" from="TextureRect2/Button_pioche" to="." method="_on_Button_pioche_button_down"]
+[connection signal="button_down" from="TextureRect2/Button_gauche2" to="." method="_on_Button_gauche_button_down"]
 [connection signal="button_down" from="TextureRect2/Button_droite" to="." method="_on_Button_droite_button_down"]
-[connection signal="button_down" from="TextureRect2/Button_gauche" to="." method="_on_Button_gauche_button_down"]
 [connection signal="button_down" from="TextureRect2/Button_tourne" to="." method="_on_Button_tourne_button_down"]

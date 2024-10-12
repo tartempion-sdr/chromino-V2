@@ -299,7 +299,18 @@ func _on_Button_droite_button_down():
 	
 	if len(list_affihe_position_porte_jetons) == 0:
 		print("pioche dabore")
-
+	elif len(list_affihe_position_porte_jetons) >= 0:
+			
+		var prem_element = list_position_pioche_jetons.pop_front()
+		list_position_pioche_jetons.append(prem_element)
+			
+		for f in len(list_affihe_position_porte_jetons):
+			var child_jeton = get_child(list_affihe_position_porte_jetons[f][5])
+			
+			if child_jeton is Area2D:
+				
+				child_jeton.position = list_position_pioche_jetons[f]
+				print(list_position_pioche_jetons)
 
 
 func _on_Button_gauche_button_down():
@@ -307,13 +318,24 @@ func _on_Button_gauche_button_down():
 
 	if len(list_affihe_position_porte_jetons) == 0:
 		print("pioche dabore")
+	elif len(list_affihe_position_porte_jetons) >= 0:
 		
-	
+		var last_element = list_position_pioche_jetons.pop_back()
+		list_position_pioche_jetons.insert(0, last_element)
+			
+		for f in len(list_affihe_position_porte_jetons):
+		
+			var child_jeton = get_child(list_affihe_position_porte_jetons[f][5])
+			
+			if child_jeton is Area2D:
+				child_jeton.position = list_position_pioche_jetons[f]
+
 func _on_Button_tourne_button_down():
 	
 	if len(list_affihe_position_porte_jetons) == 0:
 		print("pioche dabore")
-		
+	elif len(list_affihe_position_porte_jetons) >= 0:
+		print()
 		
 	elif len(list_affihe_position_porte_jetons) >= 0:
 		var child_jeton = get_child(list_affihe_position_porte_jetons[0][5])
