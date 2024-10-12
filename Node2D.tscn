@@ -49,6 +49,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect2/Button_pioche"]
+margin_top = 40.0
+margin_right = 180.0
+margin_bottom = 130.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+tab_size = 24
+text = "JETONS DISPONIBLE ="
+fit_content_height = true
+
 [node name="Button_droite" type="TextureButton" parent="TextureRect2"]
 margin_left = 202.32
 margin_top = 21.5325

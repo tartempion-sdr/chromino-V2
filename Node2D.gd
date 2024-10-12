@@ -210,24 +210,49 @@ func souris_pos_plateau():
 
 func pioche_jetons(d):
 	
+	
 	print("nombre de pieces" + str(len(list_couleurs_jetons)))
 	hazard = random.randi_range(0, 79)
-	print("random" + str(hazard))
+	while list_couleurs_jetons[hazard][3] == false:
+		hazard = random.randi_range(0, 79)
 	
+	print("random" + str(hazard))
+	print("random" + str(hazard))
 	var instance_jeton = scene_jeton.instance()
 	instance_jeton.position = list_position_pioche_jetons[d]
 	instance_jeton.visible = true
 	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritehaut").texture = list_couleurs_jetons[hazard][0]
 	instance_jeton.get_node("CollisionShape2D/Spritemilieu").texture = list_couleurs_jetons[hazard][1]
 	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritebas").texture = list_couleurs_jetons[hazard][2]
+	list_couleurs_jetons[hazard][3] = false
 	add_child(instance_jeton)
+
+		
+
+func affiche_nb_jetons_restant():
+	
+	
+	#list_couleurs_jetons[0][3]
+	
+	
+	var count = 0
+	for sublist in list_couleurs_jetons:
+		if sublist.size() >= 4 and sublist[3] == true:
+			count += 1
+	print("Nombre d'éléments True à la quatrième position : %d" % count)
+	$TextureRect2/Button_pioche/RichTextLabel.text = "JETONS DISPONIBLE = %d" % count
 
 
 	
+				#print(e)
+			#print("restant " + str(list_couleurs_jetons[0][3].count(true)))
+
+			
+				
 func child_pioche_jetons():
 	for d in nb_jetons_pioche:
 		pioche_jetons(d)
-	
+		affiche_nb_jetons_restant()
 					
 
 
