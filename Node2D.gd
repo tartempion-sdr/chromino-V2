@@ -25,11 +25,113 @@ var rouge = preload("res://assets/colors/rouge.jpg")
 var scene_jeton = preload("res://jetons.tscn")
 var nb_jetons_pioche = 5
 
-var list_couleurs_jetons = [[jaune, jaune, jaune],
-[vert, vert, vert],
-[bleu, bleu, bleu],
-[violet, violet, violet],
-[rouge, rouge, rouge]]
+var list_couleurs_jetons = [[jaune, jaune, jaune, true],
+[jaune, jaune, vert, true],
+[jaune, jaune, bleu, true],
+[jaune, jaune, violet, true],
+[jaune, jaune, rouge, true],
+
+[jaune, vert, jaune, true],
+[jaune, bleu, jaune, true],
+[jaune, violet, jaune, true],
+[jaune, rouge, jaune, true],
+
+[jaune, vert, bleu, true],
+[jaune, vert, violet, true],
+[jaune, vert, rouge, true],
+
+[jaune, bleu, vert, true],
+[jaune, bleu, violet, true],
+[jaune, bleu, rouge, true],
+
+[jaune, violet, vert, true],
+[jaune, violet, bleu, true],
+[jaune, violet, rouge, true],
+
+[jaune, rouge, vert, true],
+[jaune, rouge, bleu, true],
+[jaune, rouge, violet, true],
+
+[vert, vert, vert, true],
+[vert, vert, jaune, true],
+[vert, vert, bleu, true],
+[vert, vert, violet, true],
+[vert, vert, rouge, true],
+
+[vert, jaune, vert, true],
+[vert, bleu, vert, true],
+[vert, violet, vert, true],
+[vert, rouge, vert, true],
+
+[vert, jaune, bleu, true],
+[vert, jaune, violet, true],
+[vert, jaune, rouge, true],
+
+
+[vert, bleu, violet, true],
+[vert, bleu, rouge, true],
+
+[vert, violet, bleu,true],
+[vert, violet, rouge, true],
+
+[vert, rouge, bleu, true],
+[vert, rouge, violet, true],
+
+[bleu, bleu, bleu, true],
+[bleu, bleu, jaune, true],
+[bleu, bleu, vert, true],
+[bleu, bleu, violet, true],
+[bleu, bleu, rouge, true],
+
+[bleu, jaune, bleu, true],
+[bleu, vert, bleu, true],
+[bleu, violet, bleu, true],
+[bleu, rouge, bleu, true],
+
+
+[bleu, jaune, violet, true],
+[bleu, jaune, rouge, true],
+
+[bleu, vert, violet, true],
+[bleu, vert, rouge, true],
+
+[bleu, violet, rouge, true],
+[bleu, rouge, violet, true],
+
+
+[violet, violet, violet, true],
+[violet, violet, jaune, true],
+[violet, violet, vert, true],
+[violet, violet, bleu, true],
+[violet, violet, rouge, true],
+
+[violet, jaune, violet, true],
+[violet, vert, violet, true],
+[violet, bleu, violet, true],
+[violet, rouge, violet, true],
+
+[violet, jaune, rouge, true],
+[violet, vert, rouge, true],
+[violet, bleu, rouge, true],
+
+
+[rouge, rouge, rouge, true],
+[rouge, rouge, jaune, true],
+[rouge, rouge, vert, true],
+[rouge, rouge, bleu, true],
+[rouge, rouge, violet, true],
+
+[rouge, jaune, rouge, true],
+[rouge, vert, rouge, true],
+[rouge, bleu, rouge, true],
+[rouge, violet, rouge, true],
+
+[jaune, joker, jaune, true],
+[vert, joker, vert, true],
+[bleu, joker, bleu, true],
+[violet, joker, violet, true],
+[rouge, joker, rouge, true]]
+
 
 var list_position_pioche_jetons = [(Vector2(400, 560)),
 (Vector2(450, 560)),
@@ -108,6 +210,7 @@ func souris_pos_plateau():
 
 func pioche_jetons(d):
 	
+	print("nombre de pieces" + str(len(list_couleurs_jetons)))
 	hazard = random.randi_range(0, 4)
 	print("random" + str(hazard))
 	
@@ -126,9 +229,7 @@ func child_pioche_jetons():
 		pioche_jetons(d)
 	
 					
-func pioche_jeton_random():
-	
-	print("random jetons")
+
 
 func _input(event):
 
@@ -166,7 +267,7 @@ func _input(event):
 		souris_pos_plateau()
 
 func _on_Button_pioche_button_down():
-	pioche_jeton_random()
+	
 	child_pioche_jetons()
 
 func _on_Button_droite_button_down():
