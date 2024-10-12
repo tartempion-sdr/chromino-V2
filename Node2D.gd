@@ -23,7 +23,7 @@ var violet = preload("res://assets/colors/violet.jpg")
 var rouge = preload("res://assets/colors/rouge.jpg")
 
 var scene_jeton = preload("res://jetons.tscn")
-var nb_jetons_pioche = 5
+var nb_jetons_pioche = 7
 
 var list_couleurs_jetons = [[jaune, jaune, jaune, true],
 [jaune, jaune, vert, true],
@@ -211,7 +211,7 @@ func souris_pos_plateau():
 func pioche_jetons(d):
 	
 	print("nombre de pieces" + str(len(list_couleurs_jetons)))
-	hazard = random.randi_range(0, 4)
+	hazard = random.randi_range(0, 79)
 	print("random" + str(hazard))
 	
 	var instance_jeton = scene_jeton.instance()
