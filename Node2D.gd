@@ -141,7 +141,8 @@ var list_position_pioche_jetons = [(Vector2(150, 543)),
 (Vector2(540, 543)),
 (Vector2(670, 543)),
 (Vector2(800, 543)),
-(Vector2(930, 543))]
+(Vector2(930, 543)),
+(Vector2(1060, 543))]
 
 var list_affiche_position_porte_jetons = []
 var random = RandomNumberGenerator.new()
@@ -213,7 +214,7 @@ func souris_pos_plateau():
 func pioche_jetons(d):
 	
 	
-	print("nombre de pieces" + str(len(list_couleurs_jetons)))
+	
 	hazard = random.randi_range(0, 79)
 	while list_couleurs_jetons[hazard][3] == false:
 		hazard = random.randi_range(0, 79)
@@ -221,7 +222,7 @@ func pioche_jetons(d):
 	print("random" + str(hazard))
 	var instance_jeton = scene_jeton.instance()
 
-	instance_jeton.visible = true
+	
 	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritehaut").texture = list_couleurs_jetons[hazard][0]
 
 	instance_jeton.get_node("CollisionShape2D/Spritemilieu").texture = list_couleurs_jetons[hazard][1]
@@ -233,18 +234,26 @@ func pioche_jetons(d):
 
 	jeton_child += 1
 	
-	instance_jeton.position = list_position_pioche_jetons[0]
-	print(list_affiche_position_porte_jetons[0])
-	print(list_affiche_position_porte_jetons)
+	affiche_jetons_piocher()
+	
 	
 		
 func affiche_jetons_piocher():
+	
+	
 	for f in len(list_affiche_position_porte_jetons):
 		var child_jeton = get_child(list_affiche_position_porte_jetons[f][5])
 			
 		if child_jeton is Area2D:
+
+
+			if f < 8:
+				child_jeton.visible = true
+				child_jeton.position = list_position_pioche_jetons[f]
+			else:
+				child_jeton.visible = false
+				child_jeton.position = list_position_pioche_jetons[7]
 				
-			child_jeton.position = list_position_pioche_jetons[f]
 			child_jeton.scale.x = taille
 			child_jeton.scale.y = taille
 
