@@ -143,7 +143,7 @@ var list_position_pioche_jetons = [(Vector2(400, 560)),
 (Vector2(650, 560)),
 (Vector2(700, 560))]
 
-var list_affihe_position_porte_jetons = []
+var list_affiche_position_porte_jetons = []
 var random = RandomNumberGenerator.new()
 var hazard
 func _ready():
@@ -220,17 +220,31 @@ func pioche_jetons(d):
 	
 	print("random" + str(hazard))
 	var instance_jeton = scene_jeton.instance()
-	instance_jeton.position = list_position_pioche_jetons[d]
+
 	instance_jeton.visible = true
 	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritehaut").texture = list_couleurs_jetons[hazard][0]
 	instance_jeton.get_node("CollisionShape2D/Spritemilieu").texture = list_couleurs_jetons[hazard][1]
 	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritebas").texture = list_couleurs_jetons[hazard][2]
 	list_couleurs_jetons[hazard][3] = false
-	list_affihe_position_porte_jetons.append(list_couleurs_jetons[hazard])
+	list_couleurs_jetons[hazard].append(jeton_child)
+	list_affiche_position_porte_jetons.insert(0, list_couleurs_jetons[hazard])
 	add_child(instance_jeton)
-	list_affihe_position_porte_jetons[-1].append(jeton_child)
+
+	
 	jeton_child += 1
-	print(list_affihe_position_porte_jetons[-1])
+	
+	instance_jeton.position = list_position_pioche_jetons[0]
+	print(list_affiche_position_porte_jetons[0])
+	print(list_affiche_position_porte_jetons)
+	
+		
+func affiche_jetons_piocher():
+	for f in len(list_affiche_position_porte_jetons):
+		var child_jeton = get_child(list_affiche_position_porte_jetons[f][5])
+			
+		if child_jeton is Area2D:
+				
+			child_jeton.position = list_position_pioche_jetons[f]
 		
 
 func affiche_nb_jetons_restant():
@@ -243,15 +257,13 @@ func affiche_nb_jetons_restant():
 	$TextureRect2/Button_pioche/RichTextLabel.text = "JETONS DISPONIBLE = %d" % count
 
 
-	
-				#print(e)
-			#print("restant " + str(list_couleurs_jetons[0][3].count(true)))
 
 			
 				
 func child_pioche_jetons():
 	for d in nb_jetons_pioche:
 		pioche_jetons(d)
+		affiche_jetons_piocher()
 		affiche_nb_jetons_restant()
 					
 
@@ -297,46 +309,37 @@ func _on_Button_pioche_button_down():
 
 func _on_Button_droite_button_down():
 	
-	if len(list_affihe_position_porte_jetons) == 0:
+	if len(list_affiche_position_porte_jetons) == 0:
 		print("pioche dabore")
-	elif len(list_affihe_position_porte_jetons) >= 0:
+	elif len(list_affiche_position_porte_jetons) >= 0:
+		print("droite")
+		
+		var last_element = list_affiche_position_porte_jetons.pop_back()
+		list_affiche_position_porte_jetons.insert(0, last_element)
 			
-		var prem_element = list_position_pioche_jetons.pop_front()
-		list_position_pioche_jetons.append(prem_element)
-			
-		for f in len(list_affihe_position_porte_jetons):
-			var child_jeton = get_child(list_affihe_position_porte_jetons[f][5])
-			
-			if child_jeton is Area2D:
-				
-				child_jeton.position = list_position_pioche_jetons[f]
-				print(list_position_pioche_jetons)
+		affiche_jetons_piocher()
 
 
 func _on_Button_gauche_button_down():
 	
 
-	if len(list_affihe_position_porte_jetons) == 0:
+	if len(list_affiche_position_porte_jetons) == 0:
 		print("pioche dabore")
-	elif len(list_affihe_position_porte_jetons) >= 0:
-		
-		var last_element = list_position_pioche_jetons.pop_back()
-		list_position_pioche_jetons.insert(0, last_element)
+	elif len(list_affiche_position_porte_jetons) >= 0:
+	
+		var prem_element = list_affiche_position_porte_jetons.pop_front()
+		list_affiche_position_porte_jetons.append(prem_element)
 			
-		for f in len(list_affihe_position_porte_jetons):
 		
-			var child_jeton = get_child(list_affihe_position_porte_jetons[f][5])
-			
-			if child_jeton is Area2D:
-				child_jeton.position = list_position_pioche_jetons[f]
-
+		affiche_jetons_piocher()
+		
 func _on_Button_tourne_button_down():
 	
-	if len(list_affihe_position_porte_jetons) == 0:
+	if len(list_affiche_position_porte_jetons) == 0:
 		print("pioche dabore")
 	
-	elif len(list_affihe_position_porte_jetons) >= 0:
-		var child_jeton = get_child(list_affihe_position_porte_jetons[0][5])
+	elif len(list_affiche_position_porte_jetons) >= 0:
+		var child_jeton = get_child(list_affiche_position_porte_jetons[0][5])
 			
 		if child_jeton is Area2D:
 			child_jeton.get_node("CollisionShape2D").rotation_degrees += 90
