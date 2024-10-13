@@ -135,13 +135,13 @@ var list_couleurs_jetons = [[jaune, jaune, jaune, true, verticale],
 [rouge, joker, rouge, true, verticale]]
 
 
-var list_position_pioche_jetons = [(Vector2(400, 560)),
-(Vector2(450, 560)),
-(Vector2(500, 560)),
-(Vector2(550, 560)),
-(Vector2(600, 560)),
-(Vector2(650, 560)),
-(Vector2(700, 560))]
+var list_position_pioche_jetons = [(Vector2(150, 543)),
+(Vector2(280, 543)),
+(Vector2(410, 543)),
+(Vector2(540, 543)),
+(Vector2(670, 543)),
+(Vector2(800, 543)),
+(Vector2(930, 543))]
 
 var list_affiche_position_porte_jetons = []
 var random = RandomNumberGenerator.new()
@@ -223,6 +223,7 @@ func pioche_jetons(d):
 
 	instance_jeton.visible = true
 	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritehaut").texture = list_couleurs_jetons[hazard][0]
+
 	instance_jeton.get_node("CollisionShape2D/Spritemilieu").texture = list_couleurs_jetons[hazard][1]
 	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritebas").texture = list_couleurs_jetons[hazard][2]
 	list_couleurs_jetons[hazard][3] = false
@@ -230,7 +231,6 @@ func pioche_jetons(d):
 	list_affiche_position_porte_jetons.insert(0, list_couleurs_jetons[hazard])
 	add_child(instance_jeton)
 
-	
 	jeton_child += 1
 	
 	instance_jeton.position = list_position_pioche_jetons[0]
@@ -245,7 +245,8 @@ func affiche_jetons_piocher():
 		if child_jeton is Area2D:
 				
 			child_jeton.position = list_position_pioche_jetons[f]
-		
+			child_jeton.scale.x = taille
+			child_jeton.scale.y = taille
 
 func affiche_nb_jetons_restant():
 	
@@ -254,7 +255,7 @@ func affiche_nb_jetons_restant():
 		if sublist.size() >= 4 and sublist[3] == true:
 			count += 1
 	print("Nombre d'éléments True à la quatrième position : %d" % count)
-	$TextureRect2/Button_pioche/RichTextLabel.text = "JETONS DISPONIBLE = %d" % count
+	$TextureRect2/Button_pioche/RichTextLabel.text = "JETONS = %d" % count
 
 
 
@@ -272,17 +273,21 @@ func _input(event):
 
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_WHEEL_UP:
-			# Action pour le défilement vers le haut
-			print("Défilement vers le haut")
-			taille -= 0.1
-			souris_pos_plateau()
+			if taille > 0.7 :
+				# Action pour le défilement vers le haut
+				print("Défilement vers le haut")
+				taille -= 0.1
+				souris_pos_plateau()
+				affiche_jetons_piocher()
 			
 		elif event.button_index == BUTTON_WHEEL_DOWN:
-			# Action pour le défilement vers le bas
-			print("Défilement vers le bas")
-			taille += 0.1
-			souris_pos_plateau()
-			
+			if taille < 1.8 :
+				# Action pour le défilement vers le bas
+				print("Défilement vers le bas")
+				taille += 0.1
+				souris_pos_plateau()
+				affiche_jetons_piocher()
+				
 	if Input.is_key_pressed(KEY_LEFT):
 		
 		x1 -= 10

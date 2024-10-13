@@ -28,10 +28,10 @@ position = Vector2( 40, 40 )
 gravity_vec = Vector2( 0, 0 )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = -0.759094
-margin_top = 513.544
-margin_right = 1024.24
-margin_bottom = 597.544
+margin_left = -1.0
+margin_top = 483.0
+margin_right = 1024.0
+margin_bottom = 599.0
 texture = ExtResource( 2 )
 expand = true
 __meta__ = {
@@ -39,10 +39,10 @@ __meta__ = {
 }
 
 [node name="Button_pioche" type="TextureButton" parent="TextureRect2"]
-margin_left = 28.8183
-margin_top = 23.0155
-margin_right = 68.8183
-margin_bottom = 63.0155
+margin_left = 5.2466
+margin_top = 6.17859
+margin_right = 45.2466
+margin_bottom = 46.1786
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 5 )
 expand = true
@@ -56,14 +56,14 @@ margin_right = 180.0
 margin_bottom = 135.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 tab_size = 24
-text = "JETONS DISPONIBLE ="
+text = "JETONS  ="
 fit_content_height = true
 
 [node name="Button_gauche2" type="TextureButton" parent="TextureRect2"]
-margin_left = 202.32
-margin_top = 21.5325
-margin_right = 242.32
-margin_bottom = 61.5325
+margin_left = 55.2775
+margin_top = 69.7985
+margin_right = 95.2775
+margin_bottom = 109.798
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 7 )
 __meta__ = {
@@ -71,10 +71,10 @@ __meta__ = {
 }
 
 [node name="Button_droite" type="TextureButton" parent="TextureRect2"]
-margin_left = 947.136
-margin_top = 26.3829
-margin_right = 987.136
-margin_bottom = 66.3829
+margin_left = 978.565
+margin_top = 71.2814
+margin_right = 1018.56
+margin_bottom = 111.281
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 6 )
 expand = true
@@ -83,10 +83,10 @@ __meta__ = {
 }
 
 [node name="Button_tourne" type="TextureButton" parent="TextureRect2"]
-margin_left = 83.5636
-margin_top = 23.9638
-margin_right = 123.564
-margin_bottom = 63.9638
+margin_left = 53.2571
+margin_top = 6.00439
+margin_right = 93.2575
+margin_bottom = 46.0044
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 9 )
 __meta__ = {
