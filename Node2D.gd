@@ -147,15 +147,19 @@ var list_position_pioche_jetons = [(Vector2(150, 543)),
 var list_affiche_position_porte_jetons = []
 var random = RandomNumberGenerator.new()
 var hazard
+
+
+
+
+
 func _ready():
 	
-	
 	random.randomize()
-
-	
 	pos_plateau()
-	
-	
+
+
+
+
 func plateau(pos):
 	var instance_plateau = scene.instance()
 	instance_plateau.position = pos
@@ -222,34 +226,37 @@ func pioche_jetons(d):
 	print("random" + str(hazard))
 	var instance_jeton = scene_jeton.instance()
 
+	instance_jeton.get_node("jetons/Spritemilieu/Spritehaut").texture = list_couleurs_jetons[hazard][0]
+	instance_jeton.get_node("jetons/Spritemilieu").texture = list_couleurs_jetons[hazard][1]
+	instance_jeton.get_node("jetons/Spritemilieu/Spritebas").texture = list_couleurs_jetons[hazard][2]
+	#instance_jeton.get_node("jetons").connect("mouse_entered", self, "_input")
 	
-	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritehaut").texture = list_couleurs_jetons[hazard][0]
-
-	instance_jeton.get_node("CollisionShape2D/Spritemilieu").texture = list_couleurs_jetons[hazard][1]
-	instance_jeton.get_node("CollisionShape2D/Spritemilieu/Spritebas").texture = list_couleurs_jetons[hazard][2]
 	list_couleurs_jetons[hazard][3] = false
 	list_couleurs_jetons[hazard].append(jeton_child)
 	list_affiche_position_porte_jetons.insert(0, list_couleurs_jetons[hazard])
 	add_child(instance_jeton)
 
+
+
 	jeton_child += 1
 	
 	affiche_jetons_piocher()
 	
+
 	
-		
+
 func affiche_jetons_piocher():
-	
 	
 	for f in len(list_affiche_position_porte_jetons):
 		var child_jeton = get_child(list_affiche_position_porte_jetons[f][5])
 			
-		if child_jeton is Area2D:
+		if child_jeton is Node2D:
 
-
+			#print($TextureRect2/TextureRect3/jetons/CollisionShape2D.position())
 			if f < 8:
 				child_jeton.visible = true
 				child_jeton.position = list_position_pioche_jetons[f]
+				
 			else:
 				child_jeton.visible = false
 				child_jeton.position = list_position_pioche_jetons[7]
@@ -266,17 +273,11 @@ func affiche_nb_jetons_restant():
 	print("Nombre d'éléments True à la quatrième position : %d" % count)
 	$TextureRect2/Button_pioche/RichTextLabel.text = "JETONS = %d" % count
 
-
-
-			
-				
 func child_pioche_jetons():
 	for d in nb_jetons_pioche:
 		pioche_jetons(d)
 		affiche_jetons_piocher()
 		affiche_nb_jetons_restant()
-					
-
 
 func _input(event):
 
@@ -316,7 +317,9 @@ func _input(event):
 		
 		y1 += 10
 		souris_pos_plateau()
-
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed :
+		pass
+		
 func _on_Button_pioche_button_down():
 	
 	child_pioche_jetons()
@@ -355,5 +358,8 @@ func _on_Button_tourne_button_down():
 	elif len(list_affiche_position_porte_jetons) >= 0:
 		var child_jeton = get_child(list_affiche_position_porte_jetons[0][5])
 			
-		if child_jeton is Area2D:
-			child_jeton.get_node("CollisionShape2D").rotation_degrees += 90
+		if child_jeton is Node2D:
+			child_jeton.get_node("jetons/Spritemilieu/Spritehaut").rotation_degrees += 90
+			child_jeton.get_node("jetons/Spritemilieu/Spritebas").rotation_degrees += 90
+
+

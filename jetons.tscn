@@ -1,46 +1,49 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/colors/carre-blanc.png" type="Texture" id=1]
+[ext_resource path="res://jetons.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8.5, 26.7559 )
+extents = Vector2( 10.13, 30.7778 )
 
-[node name="jetons" type="Area2D"]
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="jetons" type="Area2D" parent="."]
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
 linear_damp = 0.0
 angular_damp = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Spritemilieu" type="Sprite" parent="jetons"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 19, 19 )
+
+[node name="Spritehaut" type="Sprite" parent="jetons/Spritemilieu"]
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -9.5, -30 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 19, 19 )
+
+[node name="Spritebas" type="Sprite" parent="jetons/Spritemilieu"]
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -9.5, 11 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 19, 19 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jetons"]
+z_as_relative = false
 shape = SubResource( 1 )
 
-[node name="Spritemilieu" type="TextureRect" parent="CollisionShape2D"]
-margin_left = -10.0
-margin_top = -10.0
-margin_right = 9.0
-margin_bottom = 9.0
-texture = ExtResource( 1 )
-expand = true
+[node name="TextureButton" type="TextureButton" parent="jetons"]
+margin_left = -9.0
+margin_top = -30.0
+margin_right = 10.0
+margin_bottom = 30.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Spritehaut" type="TextureRect" parent="CollisionShape2D/Spritemilieu"]
-margin_top = -20.0
-margin_right = 19.0
-margin_bottom = -1.0
-texture = ExtResource( 1 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Spritebas" type="TextureRect" parent="CollisionShape2D/Spritemilieu"]
-margin_top = 20.0
-margin_right = 19.0
-margin_bottom = 39.0
-texture = ExtResource( 1 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[connection signal="pressed" from="jetons/TextureButton" to="." method="_on_TextureButton_pressed"]
