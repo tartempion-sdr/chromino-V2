@@ -156,10 +156,26 @@ func _ready():
 	
 	random.randomize()
 	pos_plateau()
-
-
-
-
+	pioche_jetons(1)
+	test(33, list_couleurs_jetons[hazard][0])
+	test(42, list_couleurs_jetons[hazard][1])
+	test(51, list_couleurs_jetons[hazard][2])
+		
+func test(numero, couleur):
+	var child = get_child(numero)
+			
+	if child is Area2D:
+		
+		print("Child: ", child.name, "Type: ", child)
+		
+		
+		var childt = child.get_child(0)
+		
+		if childt is Sprite:
+			print("Child: ", childt.name, "Type: ", childt)
+			childt.texture = couleur
+			
+				
 func plateau(pos):
 	var instance_plateau = scene.instance()
 	instance_plateau.position = pos
@@ -276,6 +292,7 @@ func affiche_nb_jetons_restant():
 func child_pioche_jetons():
 	for d in nb_jetons_pioche:
 		pioche_jetons(d)
+
 		affiche_jetons_piocher()
 		affiche_nb_jetons_restant()
 
@@ -323,7 +340,8 @@ func _input(event):
 func _on_Button_pioche_button_down():
 	
 	child_pioche_jetons()
-
+	
+	
 func _on_Button_droite_button_down():
 	
 	if len(list_affiche_position_porte_jetons) == 0:
