@@ -1,4 +1,4 @@
-![alt tag](https://github.com/tartempion-sdr/chromino-V2/assets/fichier1.png)
+![alt tag](https://github.com/tartempion-sdr/chromino-V2/blob/main/assets/fichier1.png)
 
 readme
 
