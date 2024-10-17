@@ -157,11 +157,20 @@ func _ready():
 	random.randomize()
 	pos_plateau()
 	pioche_jetons(1)
-	test(33, list_couleurs_jetons[hazard][0])
-	test(42, list_couleurs_jetons[hazard][1])
-	test(51, list_couleurs_jetons[hazard][2])
+	modifie_plateau(33, list_couleurs_jetons[hazard][0])
+	modifie_plateau(42, list_couleurs_jetons[hazard][1])
+	modifie_plateau(51, list_couleurs_jetons[hazard][2])
+	print(list_affiche_position_porte_jetons)
+	print(len(list_affiche_position_porte_jetons))
+	var child_jeton = get_child(list_affiche_position_porte_jetons[0][5])
+	child_jeton.visible = false
+	list_affiche_position_porte_jetons.remove(0)
+	print(list_affiche_position_porte_jetons)
+	
+	affiche_nb_jetons_restant()
+
 		
-func test(numero, couleur):
+func modifie_plateau(numero, couleur):
 	var child = get_child(numero)
 			
 	if child is Area2D:
@@ -379,5 +388,9 @@ func _on_Button_tourne_button_down():
 		if child_jeton is Node2D:
 			child_jeton.get_node("jetons/Spritemilieu/Spritehaut").rotation_degrees += 90
 			child_jeton.get_node("jetons/Spritemilieu/Spritebas").rotation_degrees += 90
-
+			if list_affiche_position_porte_jetons[0][4] == "horizontale":
+				list_affiche_position_porte_jetons[0][4] = "verticale"
+			elif list_affiche_position_porte_jetons[0][4] == "verticale":
+				list_affiche_position_porte_jetons[0][4] = "horizontale"
+			print(list_affiche_position_porte_jetons[0][4])
 
