@@ -3,13 +3,15 @@
 [ext_resource path="res://assets/colors/carre-blanc.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6.73122, 7.00884 )
 
-[node name="Plateau" type="Area2D"]
+[node name="Plateau" type="Area2D" groups=[
+"plateau",
+]]
 position = Vector2( 30, 30 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 19, 19 )
 

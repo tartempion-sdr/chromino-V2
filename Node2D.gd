@@ -23,6 +23,7 @@ var vert = preload("res://assets/colors/vert.jpg")
 var bleu = preload("res://assets/colors/bleu.jpg")
 var violet = preload("res://assets/colors/violet.jpg")
 var rouge = preload("res://assets/colors/rouge.jpg")
+var blanc = preload("res://assets/colors/carre-blanc.png")
 
 var scene_jeton = preload("res://jetons.tscn")
 var nb_jetons_pioche = 7
@@ -386,8 +387,12 @@ func _on_Button_tourne_button_down():
 		var child_jeton = get_child(list_affiche_position_porte_jetons[0][5])
 			
 		if child_jeton is Node2D:
-			child_jeton.get_node("jetons/Spritemilieu/Spritehaut").rotation_degrees += 90
-			child_jeton.get_node("jetons/Spritemilieu/Spritebas").rotation_degrees += 90
+			child_jeton.get_node("jetons").rotation_degrees += 90
+			#child_jeton.get_node("jetons/Spritemilieu/Spritehaut").rotation_degrees += 90
+			#child_jeton.get_node("jetons/Spritemilieu/Spritebas").rotation_degrees += 90
+			#child_jeton.get_node("jetons/CollisionShape2Dhaut").rotation_degrees += 90
+			#child_jeton.get_node("jetons/CollisionShape2Dbas").rotation_degrees += 90
+			
 			if list_affiche_position_porte_jetons[0][4] == "horizontale":
 				list_affiche_position_porte_jetons[0][4] = "verticale"
 			elif list_affiche_position_porte_jetons[0][4] == "verticale":
