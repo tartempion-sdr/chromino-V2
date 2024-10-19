@@ -55,17 +55,18 @@ func _on_jetons_area_entered(area):
 		var node2d_jeton = self  # Le `Node2D` du jeton
 		var node2d_plateau = area  # Le `Node2D` du plateau
 		print("Collision entre : ", node2d_jeton, " et ", node2d_plateau)
-		
 		print(node2d_plateau.get_child(0))
+
 		if  node2d_plateau.get_child(0).texture == blanc :
-			
 			collision_count += 1
 			print("collision blanc " + str(collision_count))
+			
 			if collision_count == 3:
 				print("collision blanc " + str(collision_count))
-			
+				verifie_autour()
 	
-
+func verifie_autour():
+	pass
 
 
 

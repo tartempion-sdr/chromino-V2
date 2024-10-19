@@ -252,9 +252,9 @@ func pioche_jetons(d):
 	print("random" + str(hazard))
 	var instance_jeton = scene_jeton.instance()
 
-	instance_jeton.get_node("jetons/Spritemilieu/Spritehaut").texture = list_couleurs_jetons[hazard][0]
-	instance_jeton.get_node("jetons/Spritemilieu").texture = list_couleurs_jetons[hazard][1]
-	instance_jeton.get_node("jetons/Spritemilieu/Spritebas").texture = list_couleurs_jetons[hazard][2]
+	instance_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture = list_couleurs_jetons[hazard][0]
+	instance_jeton.get_node("Area2D/jetons/Spritemilieu").texture = list_couleurs_jetons[hazard][1]
+	instance_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture = list_couleurs_jetons[hazard][2]
 	#instance_jeton.get_node("jetons").connect("mouse_entered", self, "_input")
 	
 	list_couleurs_jetons[hazard][3] = false
@@ -387,7 +387,8 @@ func _on_Button_tourne_button_down():
 		var child_jeton = get_child(list_affiche_position_porte_jetons[0][5])
 			
 		if child_jeton is Node2D:
-			child_jeton.get_node("jetons").rotation_degrees += 90
+			
+			child_jeton.get_node("Area2D").rotation_degrees += 90
 			#child_jeton.get_node("jetons/Spritemilieu/Spritehaut").rotation_degrees += 90
 			#child_jeton.get_node("jetons/Spritemilieu/Spritebas").rotation_degrees += 90
 			#child_jeton.get_node("jetons/CollisionShape2Dhaut").rotation_degrees += 90
