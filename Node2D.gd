@@ -9,8 +9,8 @@ var y1 = 0
 var plateau_x
 var plateau_y
 var child_2 
-var x = 0
-var y = 0
+var x = 10
+var y = 10
 var num = 2
 var jeton_child = 83
 var verticale = "verticale"

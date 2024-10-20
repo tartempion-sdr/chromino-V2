@@ -109,3 +109,5 @@ shape = SubResource( 3 )
 [connection signal="area_exited" from="Area2D/jetons" to="." method="_on_jetons_area_exited"]
 [connection signal="button_down" from="Area2D/jetons/TextureButton" to="." method="_on_TextureButton_button_down"]
 [connection signal="button_up" from="Area2D/jetons/TextureButton" to="." method="_on_TextureButton_button_up"]
+[connection signal="area_entered" from="Area2D/verifieautour" to="." method="_on_verifieautour_area_entered"]
+[connection signal="area_exited" from="Area2D/verifieautour" to="." method="_on_verifieautour_area_exited"]

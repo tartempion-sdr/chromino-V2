@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/colors/carre-blanc.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6.73122, 7.00884 )
+extents = Vector2( 2.63647, 3.22907 )
 
 [node name="Plateau" type="Area2D" groups=[
 "plateau",
