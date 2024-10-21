@@ -13,8 +13,8 @@ var x = 10
 var y = 10
 var num = 2
 var jeton_child = 83
-var verticale = "verticale"
-var horizontale = "horizontale"
+var sens = "verticale-h"
+
 #75 chrominos classiques, 
 #5 chrominos caméléon combinant 2 couleurs différentes à chaque extrémité
 var joker = preload("res://assets/colors/joker.jpg")
@@ -28,112 +28,112 @@ var blanc = preload("res://assets/colors/carre-blanc.png")
 var scene_jeton = preload("res://jetons.tscn")
 var nb_jetons_pioche = 7
 
-var list_couleurs_jetons = [[jaune, jaune, jaune, true, verticale],
-[jaune, jaune, vert, true, verticale],
-[jaune, jaune, bleu, true, verticale],
-[jaune, jaune, violet, true, verticale],
-[jaune, jaune, rouge, true, verticale],
+var list_couleurs_jetons = [[jaune, jaune, jaune, true, sens],
+[jaune, jaune, vert, true, sens],
+[jaune, jaune, bleu, true, sens],
+[jaune, jaune, violet, true, sens],
+[jaune, jaune, rouge, true, sens],
 
-[jaune, vert, jaune, true, verticale],
-[jaune, bleu, jaune, true, verticale],
-[jaune, violet, jaune, true, verticale],
-[jaune, rouge, jaune, true, verticale],
+[jaune, vert, jaune, true, sens],
+[jaune, bleu, jaune, true, sens],
+[jaune, violet, jaune, true, sens],
+[jaune, rouge, jaune, true, sens],
 
-[jaune, vert, bleu, true, verticale],
-[jaune, vert, violet, true, verticale],
-[jaune, vert, rouge, true, verticale],
+[jaune, vert, bleu, true, sens],
+[jaune, vert, violet, true, sens],
+[jaune, vert, rouge, true, sens],
 
-[jaune, bleu, vert, true, verticale],
-[jaune, bleu, violet, true, verticale],
-[jaune, bleu, rouge, true, verticale],
+[jaune, bleu, vert, true, sens],
+[jaune, bleu, violet, true, sens],
+[jaune, bleu, rouge, true, sens],
 
-[jaune, violet, vert, true, verticale],
-[jaune, violet, bleu, true, verticale],
-[jaune, violet, rouge, true, verticale],
+[jaune, violet, vert, true, sens],
+[jaune, violet, bleu, true, sens],
+[jaune, violet, rouge, true, sens],
 
-[jaune, rouge, vert, true, verticale],
-[jaune, rouge, bleu, true, verticale],
-[jaune, rouge, violet, true, verticale],
+[jaune, rouge, vert, true, sens],
+[jaune, rouge, bleu, true, sens],
+[jaune, rouge, violet, true, sens],
 
-[vert, vert, vert, true, verticale],
-[vert, vert, jaune, true, verticale],
-[vert, vert, bleu, true, verticale],
-[vert, vert, violet, true, verticale],
-[vert, vert, rouge, true, verticale],
+[vert, vert, vert, true, sens],
+[vert, vert, jaune, true, sens],
+[vert, vert, bleu, true, sens],
+[vert, vert, violet, true, sens],
+[vert, vert, rouge, true, sens],
 
-[vert, jaune, vert, true, verticale],
-[vert, bleu, vert, true, verticale],
-[vert, violet, vert, true, verticale],
-[vert, rouge, vert, true, verticale],
+[vert, jaune, vert, true, sens],
+[vert, bleu, vert, true, sens],
+[vert, violet, vert, true, sens],
+[vert, rouge, vert, true, sens],
 
-[vert, jaune, bleu, true, verticale],
-[vert, jaune, violet, true, verticale],
-[vert, jaune, rouge, true, verticale],
-
-
-[vert, bleu, violet, true, verticale],
-[vert, bleu, rouge, true, verticale],
-
-[vert, violet, bleu,true, verticale],
-[vert, violet, rouge, true, verticale],
-
-[vert, rouge, bleu, true, verticale],
-[vert, rouge, violet, true, verticale],
-
-[bleu, bleu, bleu, true, verticale],
-[bleu, bleu, jaune, true, verticale],
-[bleu, bleu, vert, true, verticale],
-[bleu, bleu, violet, true, verticale],
-[bleu, bleu, rouge, true, verticale],
-
-[bleu, jaune, bleu, true, verticale],
-[bleu, vert, bleu, true, verticale],
-[bleu, violet, bleu, true, verticale],
-[bleu, rouge, bleu, true, verticale],
+[vert, jaune, bleu, true, sens],
+[vert, jaune, violet, true, sens],
+[vert, jaune, rouge, true, sens],
 
 
-[bleu, jaune, violet, true, verticale],
-[bleu, jaune, rouge, true, verticale],
+[vert, bleu, violet, true, sens],
+[vert, bleu, rouge, true, sens],
 
-[bleu, vert, violet, true, verticale],
-[bleu, vert, rouge, true, verticale],
+[vert, violet, bleu,true, sens],
+[vert, violet, rouge, true, sens],
 
-[bleu, violet, rouge, true, verticale],
-[bleu, rouge, violet, true, verticale],
+[vert, rouge, bleu, true, sens],
+[vert, rouge, violet, true, sens],
 
+[bleu, bleu, bleu, true, sens],
+[bleu, bleu, jaune, true, sens],
+[bleu, bleu, vert, true, sens],
+[bleu, bleu, violet, true, sens],
+[bleu, bleu, rouge, true, sens],
 
-[violet, violet, violet, true, verticale],
-[violet, violet, jaune, true, verticale],
-[violet, violet, vert, true, verticale],
-[violet, violet, bleu, true, verticale],
-[violet, violet, rouge, true, verticale],
-
-[violet, jaune, violet, true, verticale],
-[violet, vert, violet, true, verticale],
-[violet, bleu, violet, true, verticale],
-[violet, rouge, violet, true, verticale],
-
-[violet, jaune, rouge, true, verticale],
-[violet, vert, rouge, true, verticale],
-[violet, bleu, rouge, true, verticale],
+[bleu, jaune, bleu, true, sens],
+[bleu, vert, bleu, true, sens],
+[bleu, violet, bleu, true, sens],
+[bleu, rouge, bleu, true, sens],
 
 
-[rouge, rouge, rouge, true, verticale],
-[rouge, rouge, jaune, true, verticale],
-[rouge, rouge, vert, true, verticale],
-[rouge, rouge, bleu, true, verticale],
-[rouge, rouge, violet, true, verticale],
+[bleu, jaune, violet, true, sens],
+[bleu, jaune, rouge, true, sens],
 
-[rouge, jaune, rouge, true, verticale],
-[rouge, vert, rouge, true, verticale],
-[rouge, bleu, rouge, true, verticale],
-[rouge, violet, rouge, true, verticale],
+[bleu, vert, violet, true, sens],
+[bleu, vert, rouge, true, sens],
 
-[jaune, joker, jaune, true, verticale],
-[vert, joker, vert, true, verticale],
-[bleu, joker, bleu, true, verticale],
-[violet, joker, violet, true, verticale],
-[rouge, joker, rouge, true, verticale]]
+[bleu, violet, rouge, true, sens],
+[bleu, rouge, violet, true, sens],
+
+
+[violet, violet, violet, true, sens],
+[violet, violet, jaune, true, sens],
+[violet, violet, vert, true, sens],
+[violet, violet, bleu, true, sens],
+[violet, violet, rouge, true, sens],
+
+[violet, jaune, violet, true, sens],
+[violet, vert, violet, true, sens],
+[violet, bleu, violet, true, sens],
+[violet, rouge, violet, true, sens],
+
+[violet, jaune, rouge, true, sens],
+[violet, vert, rouge, true, sens],
+[violet, bleu, rouge, true, sens],
+
+
+[rouge, rouge, rouge, true, sens],
+[rouge, rouge, jaune, true, sens],
+[rouge, rouge, vert, true, sens],
+[rouge, rouge, bleu, true, sens],
+[rouge, rouge, violet, true, sens],
+
+[rouge, jaune, rouge, true, sens],
+[rouge, vert, rouge, true, sens],
+[rouge, bleu, rouge, true, sens],
+[rouge, violet, rouge, true, sens],
+
+[jaune, joker, jaune, true, sens],
+[vert, joker, vert, true, sens],
+[bleu, joker, bleu, true, sens],
+[violet, joker, violet, true, sens],
+[rouge, joker, rouge, true, sens]]
 
 
 var list_position_pioche_jetons = [(Vector2(150, 543)),
@@ -145,7 +145,7 @@ var list_position_pioche_jetons = [(Vector2(150, 543)),
 (Vector2(930, 543)),
 (Vector2(1060, 543))]
 
-var list_affiche_position_porte_jetons = []
+
 var random = RandomNumberGenerator.new()
 var hazard
 
@@ -161,12 +161,12 @@ func _ready():
 	modifie_plateau(33, list_couleurs_jetons[hazard][0])
 	modifie_plateau(42, list_couleurs_jetons[hazard][1])
 	modifie_plateau(51, list_couleurs_jetons[hazard][2])
-	print(list_affiche_position_porte_jetons)
-	print(len(list_affiche_position_porte_jetons))
-	var child_jeton = get_child(list_affiche_position_porte_jetons[0][5])
+	print(Globals.list_affiche_position_porte_jetons)
+	print(len(Globals.list_affiche_position_porte_jetons))
+	var child_jeton = get_child(Globals.list_affiche_position_porte_jetons[0][5])
 	child_jeton.visible = false
-	list_affiche_position_porte_jetons.remove(0)
-	print(list_affiche_position_porte_jetons)
+	Globals.list_affiche_position_porte_jetons.remove(0)
+	print(Globals.list_affiche_position_porte_jetons)
 	
 	affiche_nb_jetons_restant()
 
@@ -259,7 +259,8 @@ func pioche_jetons(d):
 	
 	list_couleurs_jetons[hazard][3] = false
 	list_couleurs_jetons[hazard].append(jeton_child)
-	list_affiche_position_porte_jetons.insert(0, list_couleurs_jetons[hazard])
+	
+	Globals.list_affiche_position_porte_jetons.insert(0, list_couleurs_jetons[hazard])
 	add_child(instance_jeton)
 
 
@@ -273,8 +274,8 @@ func pioche_jetons(d):
 
 func affiche_jetons_piocher():
 	
-	for f in len(list_affiche_position_porte_jetons):
-		var child_jeton = get_child(list_affiche_position_porte_jetons[f][5])
+	for f in len(Globals.list_affiche_position_porte_jetons):
+		var child_jeton = get_child(Globals.list_affiche_position_porte_jetons[f][5])
 			
 		if child_jeton is Node2D:
 
@@ -354,13 +355,13 @@ func _on_Button_pioche_button_down():
 	
 func _on_Button_droite_button_down():
 	
-	if len(list_affiche_position_porte_jetons) == 0:
+	if len(Globals.list_affiche_position_porte_jetons) == 0:
 		print("pioche dabore")
-	elif len(list_affiche_position_porte_jetons) >= 0:
+	elif len(Globals.list_affiche_position_porte_jetons) >= 0:
 		print("droite")
 		
-		var last_element = list_affiche_position_porte_jetons.pop_back()
-		list_affiche_position_porte_jetons.insert(0, last_element)
+		var last_element = Globals.list_affiche_position_porte_jetons.pop_back()
+		Globals.list_affiche_position_porte_jetons.insert(0, last_element)
 			
 		affiche_jetons_piocher()
 
@@ -368,23 +369,23 @@ func _on_Button_droite_button_down():
 func _on_Button_gauche_button_down():
 	
 
-	if len(list_affiche_position_porte_jetons) == 0:
+	if len(Globals.list_affiche_position_porte_jetons) == 0:
 		print("pioche dabore")
-	elif len(list_affiche_position_porte_jetons) >= 0:
+	elif len(Globals.list_affiche_position_porte_jetons) >= 0:
 	
-		var prem_element = list_affiche_position_porte_jetons.pop_front()
-		list_affiche_position_porte_jetons.append(prem_element)
+		var prem_element = Globals.list_affiche_position_porte_jetons.pop_front()
+		Globals.list_affiche_position_porte_jetons.append(prem_element)
 			
 		
 		affiche_jetons_piocher()
 		
 func _on_Button_tourne_button_down():
 	
-	if len(list_affiche_position_porte_jetons) == 0:
+	if len(Globals.list_affiche_position_porte_jetons) == 0:
 		print("pioche dabore")
 	
-	elif len(list_affiche_position_porte_jetons) >= 0:
-		var child_jeton = get_child(list_affiche_position_porte_jetons[0][5])
+	elif len(Globals.list_affiche_position_porte_jetons) >= 0:
+		var child_jeton = get_child(Globals.list_affiche_position_porte_jetons[0][5])
 			
 		if child_jeton is Node2D:
 			
@@ -394,9 +395,14 @@ func _on_Button_tourne_button_down():
 			#child_jeton.get_node("jetons/CollisionShape2Dhaut").rotation_degrees += 90
 			#child_jeton.get_node("jetons/CollisionShape2Dbas").rotation_degrees += 90
 			
-			if list_affiche_position_porte_jetons[0][4] == "horizontale":
-				list_affiche_position_porte_jetons[0][4] = "verticale"
-			elif list_affiche_position_porte_jetons[0][4] == "verticale":
-				list_affiche_position_porte_jetons[0][4] = "horizontale"
-			print(list_affiche_position_porte_jetons[0][4])
+			if Globals.list_affiche_position_porte_jetons[0][4] == "verticale-h":
+				Globals.list_affiche_position_porte_jetons[0][4] = "horizontale-d"
+			elif Globals.list_affiche_position_porte_jetons[0][4] == "horizontale-d":
+				Globals.list_affiche_position_porte_jetons[0][4] = "verticale-b"
+			elif Globals.list_affiche_position_porte_jetons[0][4] == "verticale-b":
+				Globals.list_affiche_position_porte_jetons[0][4] = "horizontale-g"
+			elif Globals.list_affiche_position_porte_jetons[0][4] == "horizontale-g":
+				Globals.list_affiche_position_porte_jetons[0][4] = "verticale-h"
+				
+			print(Globals.list_affiche_position_porte_jetons[0][4])
 
