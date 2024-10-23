@@ -6,17 +6,13 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[  ]
-_global_script_class_icons={
-
-}
+config_version=5
 
 [application]
 
 config/name="chromino-V2"
 run/main_scene="res://Node2D.tscn"
+config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
 
 [autoload]
@@ -25,5 +21,5 @@ Globals="*res://globals.gd"
 
 [rendering]
 
+environment/defaults/default_environment="res://default_env.tres"
 quality/driver/driver_name="GLES2"
-environment/default_environment="res://default_env.tres"

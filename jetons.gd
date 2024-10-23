@@ -1,16 +1,16 @@
 extends Node2D
 
-var screen_limits = Rect2(Vector2(0, 0), Vector2(1280, 720))  # Ajuste ces valeurs selon la taille de ta scène
-var move_child = false
-var jeton_blanc_3 = false
-var list_pos_plateau_remplace_blanc = []
-var liste_colision_autour = []
-var path_similaire = 0
-var collision_count = 0
-var collision_autour_count = 0
+var screen_limits: Rect2            = Rect2(Vector2(0, 0), Vector2(1280, 720))  # Ajuste ces valeurs selon la taille de ta scène
+
+var jeton_blanc_3: bool                             = false
+var list_pos_plateau_remplace_blanc: Array[Variant] = []
+var liste_colision_autour: Array[Variant] = []
+var path_similaire: int         = 0
+var collision_count: int        = 0
+var collision_autour_count: int = 0
 var area_autour
-var suite = false
-var similaire = false
+var suite: bool     = false
+var similaire: bool = false
 
 var joker = preload("res://assets/colors/joker.jpg")
 var jaune = preload("res://assets/colors/jaune.jpg")
@@ -22,10 +22,10 @@ var blanc = preload("res://assets/colors/carre-blanc.png")
 
 func _ready():
 	
-	connect("area_entered", self, "_on_jetons_area_entered")
-	connect("area_exited", self, "_on_jetons_area_exited")
-	connect("area_entered", self, "_on_verifieautour_area_entered")
-	connect("area_exited", self, "_on_verifieautour_area_exited")
+	connect("area_entered", Callable(self, "_on_jetons_area_entered"))
+	connect("area_exited", Callable(self, "_on_jetons_area_exited"))
+	connect("area_entered", Callable(self, "_on_verifieautour_area_entered"))
+	connect("area_exited", Callable(self, "_on_verifieautour_area_exited"))
 	
 func _physics_process(delta):
 	if move_child:
@@ -40,10 +40,10 @@ func bouge_pion():
 		child_node.global_position = mouse_pos
 
 func _on_TextureButton_button_down():
-	move_child = true 
+	super.move_child = true
 	
 func _on_TextureButton_button_up():
-	move_child = false
+	super.move_child = false
 
 func _on_jetons_area_entered(area):
 
@@ -247,15 +247,15 @@ func remplace_couleurs():
 	print(list_pos_plateau_remplace_blanc)
 	for a in range(0, 2):
 		var found_node = find_node_by_number(get_tree().root, list_pos_plateau_remplace_blanc[a])
-		if found_node and found_node.has_node("Sprite"):
-			var sprite_node = found_node.get_node("Sprite")
-			if sprite_node is Sprite:
-				sprite_node.texture = Globals.list_couleur_bouge_jeton[a]# Change la couleur du Sprite 
-				print("Couleur du Sprite modifiée à rouge.")
+		if found_node and found_node.has_node("Sprite2D"):
+			var sprite_node = found_node.get_node("Sprite2D")
+			if sprite_node is Sprite2D:
+				sprite_node.texture = Globals.list_couleur_bouge_jeton[a]# Change la couleur du Sprite2D 
+				print("Couleur du Sprite2D modifiée à rouge.")
 			else:
-				print("Le nœud 'Sprite' n'est pas un Sprite.")
+				print("Le nœud 'Sprite2D' n'est pas un Sprite2D.")
 		else:
-			print("Nœud 'Sprite' non trouvé ou nœud avec le numéro 43 non trouvé.")
+			print("Nœud 'Sprite2D' non trouvé ou nœud avec le numéro 43 non trouvé.")
 
 func find_node_by_number(node, target_number):
 	# Vérifie si le nom du nœud contient le numéro cible

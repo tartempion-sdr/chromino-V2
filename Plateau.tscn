@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/colors/carre-blanc.png" type="Texture" id=2]
+[ext_resource path="res://assets/colors/carre-blanc.png" type="Texture2D" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.75866, 5.27008 )
@@ -10,7 +10,7 @@ extents = Vector2( 4.75866, 5.27008 )
 ]]
 position = Vector2( 30, 30 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 19, 19 )
