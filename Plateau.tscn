@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/colors/carre-blanc.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 2.63647, 3.22907 )
+extents = Vector2( 4.75866, 5.27008 )
 
 [node name="Plateau" type="Area2D" groups=[
 "plateau",
@@ -16,4 +16,5 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 19, 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.198425, 0 )
 shape = SubResource( 1 )
