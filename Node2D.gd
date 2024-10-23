@@ -130,7 +130,7 @@ var hazard
 
 func _ready():
 
-	#random.randomize()
+	random.randomize()
 	pos_plateau()
 	pioche_jetons()
 	modifie_plateau(33, list_couleurs_jetons[hazard][0])

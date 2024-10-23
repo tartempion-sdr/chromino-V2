@@ -250,7 +250,7 @@ func remplace_couleurs():
 		if found_node and found_node.has_node("Sprite"):
 			var sprite_node = found_node.get_node("Sprite")
 			if sprite_node is Sprite:
-				sprite_node.texture = str(Globals.list_couleur_bouge_jeton[a]) # Change la couleur du Sprite 
+				sprite_node.texture = Globals.list_couleur_bouge_jeton[a]# Change la couleur du Sprite 
 				print("Couleur du Sprite modifiée à rouge.")
 			else:
 				print("Le nœud 'Sprite' n'est pas un Sprite.")
