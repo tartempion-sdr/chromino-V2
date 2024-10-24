@@ -5,6 +5,7 @@ var move_child = false
 var jeton_blanc_3 = false
 var list_pos_plateau_remplace_blanc = []
 var liste_colision_autour = []
+var stream_list_couleur_bouge_jeton = []
 var path_similaire = 0
 var collision_count = 0
 var collision_autour_count = 0
@@ -76,15 +77,23 @@ func _on_jetons_area_entered(area):
 						print("jeton " + str(add_jeton))
 						if str(a[4]) == "verticale-h" or str(a[4]) ==  "horizontale-g":
 							Globals.list_couleur_bouge_jeton.clear()
+							stream_list_couleur_bouge_jeton.clear()
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path())
+							stream_list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture)
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu").texture.get_path())
+							stream_list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu").texture)
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path())
+							stream_list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture)
 							
 						if str(a[4]) == "verticale-b" or str(a[4]) ==  "horizontale-d":
 							Globals.list_couleur_bouge_jeton.clear()
+							stream_list_couleur_bouge_jeton.clear()
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path())
+							stream_list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture)
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu").texture.get_path())
+							stream_list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu").texture)
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path())
+							stream_list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture)
 							
 				print(Globals.list_couleur_bouge_jeton)
 				#print(Globals.list_affiche_position_porte_jetons)
@@ -245,12 +254,18 @@ func remplace_couleurs():
 	var childc
 	print("hurra !")
 	print(list_pos_plateau_remplace_blanc)
-	for a in range(0, 2):
+	
+	
+	for a in range(0, 3):
+		print(a)
 		var found_node = find_node_by_number(get_tree().root, list_pos_plateau_remplace_blanc[a])
 		if found_node and found_node.has_node("Sprite"):
 			var sprite_node = found_node.get_node("Sprite")
 			if sprite_node is Sprite:
-				sprite_node.texture = Globals.list_couleur_bouge_jeton[a]# Change la couleur du Sprite 
+				
+				sprite_node.texture = load(Globals.list_couleur_bouge_jeton[a])
+				#print(Globals.list_couleur_bouge_jeton[a])
+				#Globals.list_couleur_bouge_jeton[a]# Change la couleur du Sprite 
 				print("Couleur du Sprite modifiée à rouge.")
 			else:
 				print("Le nœud 'Sprite' n'est pas un Sprite.")
