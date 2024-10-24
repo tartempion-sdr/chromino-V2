@@ -53,10 +53,14 @@ func _on_jetons_area_entered(area):
 		var node2d_jeton = self  # Le `Node2D` du jeton
 		var node2d_plateau = area  # Le `Node2D` du plateau
 		print(node2d_plateau.name)
-		var node_part = node2d_plateau.name
-		var node_part2 = node_part.split("@")[-1]
+		
+		var node_jeton_part = node2d_jeton.name
+		var node_plateau_part = node2d_plateau.name
 
-		list_pos_plateau_remplace_blanc.insert(0,node_part2)
+		var node_plateau_part2 = node_plateau_part.split("@")[-1]
+		Globals.node_jeton_part2 = node_jeton_part.split("@")[-1]
+
+		list_pos_plateau_remplace_blanc.insert(0,node_plateau_part2)
 		list_pos_plateau_remplace_blanc.sort()
 		if  node2d_plateau.get_child(0).texture == blanc :
 			
@@ -250,9 +254,11 @@ func compare_autour():
 		remplace_couleurs()
 		path_similaire = 0
 		
+		
+		
 func remplace_couleurs():
 	var childc
-	print("hurra !")
+	print("hurra joueur1 !")
 	print(list_pos_plateau_remplace_blanc)
 	
 	
@@ -264,14 +270,18 @@ func remplace_couleurs():
 			if sprite_node is Sprite:
 				
 				sprite_node.texture = load(Globals.list_couleur_bouge_jeton[a])
-				#print(Globals.list_couleur_bouge_jeton[a])
-				#Globals.list_couleur_bouge_jeton[a]# Change la couleur du Sprite 
-				print("Couleur du Sprite modifiée à rouge.")
+				
+				print("Couleur du Sprite modifiée ")
 			else:
 				print("Le nœud 'Sprite' n'est pas un Sprite.")
 		else:
 			print("Nœud 'Sprite' non trouvé ou nœud avec le numéro 43 non trouvé.")
-
+	Globals.au_joueur1_de_jouer = false
+	supprime_jeton_porte_jeton()
+	#affiche_jeton_pioche()
+	#rend_jeton_invisible()
+	Globals.au_joueur1_de_jouer = false
+	
 func find_node_by_number(node, target_number):
 	# Vérifie si le nom du nœud contient le numéro cible
 	var name_parts = node.name.split("@")
@@ -284,3 +294,15 @@ func find_node_by_number(node, target_number):
 			return result
 	
 	return null  # Retourne null si aucun nœud avec ce numéro n'est trouvé
+
+func supprime_jeton_porte_jeton():
+	print("jeton selectioner " + str(Globals.node_jeton_part2))
+	print("longeur list " + str(len(Globals.list_affiche_position_porte_jetons)))
+	#print(Globals.list_affiche_position_porte_jetons)
+
+	
+	for a in Globals.list_affiche_position_porte_jetons:
+		if int(Globals.node_jeton_part2) == a[5]:
+			Globals.list_affiche_position_porte_jetons.erase(a)
+			print("longeur list apres suppr " + str(len(Globals.list_affiche_position_porte_jetons)))
+			#print(Globals.list_affiche_position_porte_jetons)
