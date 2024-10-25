@@ -23,11 +23,11 @@ var blanc = "res://assets/colors/carre-blanc.png"
 var carre_blanc = preload("res://assets/colors/carre-blanc.png")
 
 func _ready():
-	
-	connect("area_entered", self, "_on_jetons_area_entered")
-	connect("area_exited", self, "_on_jetons_area_exited")
-	connect("area_entered", self, "_on_verifieautour_area_entered")
-	connect("area_exited", self, "_on_verifieautour_area_exited")
+	pass
+	#connect("area_entered", self, "_on_jetons_area_entered")
+	#connect("area_exited", self, "_on_jetons_area_exited")
+	#connect("area_entered", self, "_on_verifieautour_area_entered")
+	#connect("area_exited", self, "_on_verifieautour_area_exited")
 	
 func _physics_process(delta):
 	if move_child:
@@ -245,9 +245,9 @@ func compare_autour():
 					print("interdit")
 				
 				if path_similaire > 1 :
-				
-					remplace_couleurs()
-					path_similaire = 0
+					if similaire:
+						remplace_couleurs()
+						path_similaire = 0
 					
 			if str(a[4]) == "horizontale-d" or str(a[4]) == "horizontale-g":
 				var similaire = true
@@ -372,9 +372,9 @@ func compare_autour():
 					print("interdit")
 				
 				if path_similaire > 1 :
-				
-					remplace_couleurs()
-					path_similaire = 0
+					if similaire:
+						remplace_couleurs()
+						path_similaire = 0
 				
 func remplace_couleurs():
 	var childc
