@@ -74,7 +74,7 @@ func _on_jetons_area_entered(area):
 				for a in Globals.list_affiche_position_porte_jetons:
 			
 					var jeton_number = node2d_jeton.name.split("@")[-1]
-					var add_jeton = int(jeton_number) + 1
+					var add_jeton = int(jeton_number) 
 					if int(add_jeton) == a[5]:
 						print("signal " + str(a[4]))
 						print("n_child_list " + str(a[5]))
@@ -99,7 +99,7 @@ func _on_jetons_area_entered(area):
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path())
 							stream_list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture)
 							
-				print(Globals.list_couleur_bouge_jeton)
+				#print(Globals.list_couleur_bouge_jeton)
 				#print(Globals.list_affiche_position_porte_jetons)
 				collision_count = 0
 				jeton_blanc_3 = true
@@ -130,7 +130,7 @@ func _on_verifieautour_area_exited(area_autour):
 func compare_autour():
 	var similaire = true
 	path_similaire = 0
-	print(Globals.list_couleur_bouge_jeton)
+	#print(Globals.list_couleur_bouge_jeton)
 	if liste_colision_autour[0] == Globals.list_couleur_bouge_jeton[0]:
 		path_similaire += 1
 		print(str(liste_colision_autour[0]) + " < 1* > " +  str(Globals.list_couleur_bouge_jeton[0]))
@@ -259,7 +259,7 @@ func compare_autour():
 func remplace_couleurs():
 	var childc
 	print("hurra joueur1 !")
-	print(list_pos_plateau_remplace_blanc)
+	#print(list_pos_plateau_remplace_blanc)
 	
 	
 	for a in range(0, 3):
@@ -278,9 +278,10 @@ func remplace_couleurs():
 			print("Nœud 'Sprite' non trouvé ou nœud avec le numéro 43 non trouvé.")
 	Globals.au_joueur1_de_jouer = false
 	supprime_jeton_porte_jeton()
-	#affiche_jeton_pioche()
-	#rend_jeton_invisible()
-	Globals.au_joueur1_de_jouer = false
+
+	Globals.affiche_jetons_piocher()
+	Globals.rend_jeton_invisible()
+	
 	
 func find_node_by_number(node, target_number):
 	# Vérifie si le nom du nœud contient le numéro cible
@@ -303,6 +304,8 @@ func supprime_jeton_porte_jeton():
 	
 	for a in Globals.list_affiche_position_porte_jetons:
 		if int(Globals.node_jeton_part2) == a[5]:
+			
 			Globals.list_affiche_position_porte_jetons.erase(a)
 			print("longeur list apres suppr " + str(len(Globals.list_affiche_position_porte_jetons)))
 			#print(Globals.list_affiche_position_porte_jetons)
+

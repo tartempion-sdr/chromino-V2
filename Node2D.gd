@@ -2,7 +2,7 @@ extends Node2D
 
 
 var ecart = 20
-var taille = 1
+
 var scene = preload("res://Plateau.tscn")
 var x1 = 0
 var y1 = 0
@@ -115,14 +115,6 @@ var list_couleurs_jetons = [[jaune, jaune, jaune, true, sens[0]],
 [violet, joker, violet, true, sens[0]],
 [rouge, joker, rouge, true, sens[0]]]
 
-var list_position_pioche_jetons = [(Vector2(150, 543)),
-(Vector2(280, 543)),
-(Vector2(410, 543)),
-(Vector2(540, 543)),
-(Vector2(670, 543)),
-(Vector2(800, 543)),
-(Vector2(930, 543)),
-(Vector2(1060, 543))]
 
 
 var random = RandomNumberGenerator.new()
@@ -136,14 +128,12 @@ func _ready():
 	modifie_plateau(33, list_couleurs_jetons[hazard][0])
 	modifie_plateau(42, list_couleurs_jetons[hazard][1])
 	modifie_plateau(51, list_couleurs_jetons[hazard][2])
-	print(Globals.list_affiche_position_porte_jetons)
-	print(len(Globals.list_affiche_position_porte_jetons))
-	var child_jeton = get_child(Globals.list_affiche_position_porte_jetons[0][5])
-	print(child_jeton.name)
-	print(list_couleurs_jetons[hazard])
+	
+	var child_jeton = get_child(83)
+	print("Enfant à l'index ", " : ", child_jeton.name)
 	child_jeton.visible = false
-	Globals.list_affiche_position_porte_jetons.remove(0)
-	print(Globals.list_affiche_position_porte_jetons)
+	
+	Globals.list_affiche_position_porte_jetons.clear()
 	affiche_nb_jetons_restant()
 		
 func modifie_plateau(numero, couleur):
@@ -193,18 +183,18 @@ func souris_pos_plateau():
 			var child = get_child(num)
 			if child is Area2D:
 				
-				child.scale.x = taille
-				child.scale.y = taille
+				child.scale.x = Globals.taille
+				child.scale.y = Globals.taille
 				child.position = Vector2(x1, y1)
-				x1 = x1  + (20 * taille) 
+				x1 = x1  + (20 * Globals.taille) 
 				num += 1
-				retourx = retourx + (20*taille)
+				retourx = retourx + (20*Globals.taille)
 		x1 -= retourx
 		retourx = 0
-		y1 = y1  + (20 * taille) 
-		retoury = retoury  + (20*taille)
+		y1 = y1  + (20 * Globals.taille) 
+		retoury = retoury  + (20*Globals.taille)
 	y1 -= retoury
-	print(taille)
+	
 
 func pioche_jetons():
 	
@@ -218,35 +208,16 @@ func pioche_jetons():
 	instance_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture = list_couleurs_jetons[hazard][0]
 	instance_jeton.get_node("Area2D/jetons/Spritemilieu").texture = list_couleurs_jetons[hazard][1]
 	instance_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture = list_couleurs_jetons[hazard][2]
-	print(list_couleurs_jetons[hazard][0].get_path())
 	
-	list_couleurs_jetons[hazard].append(jeton_child)
-	Globals.list_affiche_position_porte_jetons.insert(0, list_couleurs_jetons[hazard])
+	
+	jeton_child = instance_jeton.get_instance_id()
 	add_child(instance_jeton)
-	
-	print("jeton_child "+ str(jeton_child))
-	jeton_child += 1
 	
 	
 	print(instance_jeton.name)
-	affiche_jetons_piocher()
+	Globals.affiche_jetons_piocher()
 
 	
-func affiche_jetons_piocher():
-	
-	for f in len(Globals.list_affiche_position_porte_jetons):
-		var child_jeton = get_child(Globals.list_affiche_position_porte_jetons[f][5])
-		if child_jeton is Node2D:
-
-			if f < 8:
-				child_jeton.visible = true
-				child_jeton.position = list_position_pioche_jetons[f]
-				
-			else:
-				child_jeton.visible = false
-				child_jeton.position = list_position_pioche_jetons[7]
-			child_jeton.scale.x = taille
-			child_jeton.scale.y = taille
 
 func affiche_nb_jetons_restant():
 	
@@ -260,28 +231,30 @@ func child_pioche_jetons():
 	for d in nb_jetons_pioche:
 		pioche_jetons()
 		
-	
-		affiche_jetons_piocher()
+		list_couleurs_jetons[hazard].append(jeton_child)
+		
+		Globals.list_affiche_position_porte_jetons.insert(0, list_couleurs_jetons[hazard])
+		Globals.affiche_jetons_piocher()
 		affiche_nb_jetons_restant()
 
 func _input(event):
 
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_WHEEL_UP:
-			if taille > 0.7 :
+			if Globals.taille > 0.7 :
 				# Action pour le défilement vers le haut
 				print("ZOOM -")
-				taille -= 0.1
+				Globals.taille -= 0.1
 				souris_pos_plateau()
-				affiche_jetons_piocher()
+				Globals.affiche_jetons_piocher()
 			
 		elif event.button_index == BUTTON_WHEEL_DOWN:
-			if taille < 1.8 :
+			if Globals.taille < 1.8 :
 				# Action pour le défilement vers le bas
 				print("ZOOM +")
-				taille += 0.1
+				Globals.taille += 0.1
 				souris_pos_plateau()
-				affiche_jetons_piocher()
+				Globals.affiche_jetons_piocher()
 				
 	if Input.is_key_pressed(KEY_LEFT):
 		
@@ -309,17 +282,17 @@ func _input(event):
 func _on_Button_pioche_button_down():
 	
 	child_pioche_jetons()
-
+	print(Globals.list_affiche_position_porte_jetons)
 	
 func _on_Button_droite_button_down():
 	
 	if len(Globals.list_affiche_position_porte_jetons) == 0:
-		print("pioche dabore")
+		print("pioche d'abord")
 	elif len(Globals.list_affiche_position_porte_jetons) >= 0:
 		print("droite")
 		var last_element = Globals.list_affiche_position_porte_jetons.pop_back()
 		Globals.list_affiche_position_porte_jetons.insert(0, last_element)
-		affiche_jetons_piocher()
+		Globals.affiche_jetons_piocher()
 
 func _on_Button_gauche_button_down():
 
@@ -330,12 +303,12 @@ func _on_Button_gauche_button_down():
 	
 		var prem_element = Globals.list_affiche_position_porte_jetons.pop_front()
 		Globals.list_affiche_position_porte_jetons.append(prem_element)
-		affiche_jetons_piocher()
+		Globals.affiche_jetons_piocher()
 		
 func _on_Button_tourne_button_down():
 	
 	if len(Globals.list_affiche_position_porte_jetons) == 0:
-		print("pioche dabore")
+		print("pioche d'abord")
 	
 	elif len(Globals.list_affiche_position_porte_jetons) >= 0:
 		var child_jeton = get_child(Globals.list_affiche_position_porte_jetons[0][5])
@@ -350,6 +323,6 @@ func _on_Button_tourne_button_down():
 			else:
 				nouveau = 0
 			Globals.list_affiche_position_porte_jetons[0][4] = sens[nouveau]
-			print(Globals.list_affiche_position_porte_jetons[0][4])
-			print("tourn_n_child" + str(Globals.list_affiche_position_porte_jetons[0][5]))
-			print("list " + str(Globals.list_affiche_position_porte_jetons))
+			#print(Globals.list_affiche_position_porte_jetons[0][4])
+			#print("tourn_n_child" + str(Globals.list_affiche_position_porte_jetons[0][5]))
+			#print("list " + str(Globals.list_affiche_position_porte_jetons))
