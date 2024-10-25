@@ -17,14 +17,14 @@ var list_position_pioche_jetons = [(Vector2(150, 543)),
 (Vector2(1060, 543))]
 
 func affiche_jetons_piocher():
-	print("list_affiche " + str(len(list_affiche_position_porte_jetons)))
+
 	
 	for element in list_affiche_position_porte_jetons:
 		var target_id = element[5]  # Remplace par ton ID de nœud
 		var node = find_node_by_instance_id(get_tree().root, target_id)
 		
 		if node:
-			print("Nœud assigné à la variable : ", node.name)
+
 			var index = list_affiche_position_porte_jetons.find(element)
 			if index != -1 and index < 8:
 				node.visible = true

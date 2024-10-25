@@ -209,9 +209,10 @@ func pioche_jetons():
 	instance_jeton.get_node("Area2D/jetons/Spritemilieu").texture = list_couleurs_jetons[hazard][1]
 	instance_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture = list_couleurs_jetons[hazard][2]
 	
-	
-	jeton_child = instance_jeton.get_instance_id()
+	var rech = instance_jeton.get_child(0)
+	jeton_child = rech.get_instance_id()
 	add_child(instance_jeton)
+	print("id jeton " + str(jeton_child))
 	
 	
 	print(instance_jeton.name)
@@ -311,10 +312,14 @@ func _on_Button_tourne_button_down():
 		print("pioche d'abord")
 	
 	elif len(Globals.list_affiche_position_porte_jetons) >= 0:
-		var child_jeton = get_child(Globals.list_affiche_position_porte_jetons[0][5])
-		if child_jeton is Node2D:
+		
+		var target_id = Globals.list_affiche_position_porte_jetons[0][5]  # Remplace par ton ID de nœud
+		var node = find_node_by_instance_id(get_tree().root, target_id)
+		print("target" + str(target_id))
+		if node:
 			
-			child_jeton.get_node("Area2D").rotation_degrees += 90
+			node.rotation_degrees += 90
+			#child_jeton.get_node("Area2D").rotation_degrees += 90
 			
 			var actuel =  sens.find(Globals.list_affiche_position_porte_jetons[0][4])
 			
@@ -323,6 +328,15 @@ func _on_Button_tourne_button_down():
 			else:
 				nouveau = 0
 			Globals.list_affiche_position_porte_jetons[0][4] = sens[nouveau]
-			#print(Globals.list_affiche_position_porte_jetons[0][4])
+			print(Globals.list_affiche_position_porte_jetons[0][4])
 			#print("tourn_n_child" + str(Globals.list_affiche_position_porte_jetons[0][5]))
 			#print("list " + str(Globals.list_affiche_position_porte_jetons))
+
+func find_node_by_instance_id(node, target_id):
+	if node.get_instance_id() == target_id:
+		return node
+		
+	for child in node.get_children():
+		var result = find_node_by_instance_id(child, target_id)
+		if result:
+			return result

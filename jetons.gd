@@ -52,7 +52,10 @@ func _on_jetons_area_entered(area):
 
 		var node2d_jeton = self  # Le `Node2D` du jeton
 		var node2d_plateau = area  # Le `Node2D` du plateau
-		print(node2d_plateau.name)
+		#print(node2d_jeton.get_child(1))
+		var id_node2d_jeton = node2d_jeton.get_child(0)
+		#print(id_node2d_jeton.name)
+		#print(id_node2d_jeton.get_instance_id())
 		
 		var node_jeton_part = node2d_jeton.name
 		var node_plateau_part = node2d_plateau.name
