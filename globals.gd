@@ -4,7 +4,7 @@ var taille = 1
 var list_affiche_position_porte_jetons = []
 var list_couleur_bouge_jeton = []
 var au_joueur1_de_jouer:bool = true
-var node_jeton_part2
+var id_child_node2d_jeton
 
 
 var list_position_pioche_jetons = [(Vector2(150, 543)),
@@ -47,13 +47,12 @@ func find_node_by_instance_id(node, target_id):
 			return result
 	
 	return null  # Retourne null si aucun nœud avec cet ID n'est trouvé
+
 func rend_jeton_invisible():
-	var root = get_tree().root
-	var main_scene = root.get_child(1)  # Assurez-vous que c'est bien l'index de votre scène principale
-	#print(main_scene.name)
-	var child_jeton = main_scene.get_child(int(node_jeton_part2))
-	if child_jeton is Node2D:
+	var node = find_node_by_instance_id(get_tree().root, id_child_node2d_jeton)
+	#var child_jeton = main_scene.get_child(int(node_jeton_part2))
+	#if child_jeton is Node2D:
 		#print(child_jeton.name)
-		child_jeton.visible = false
+	node.visible = false
 		#print(child_jeton.visible)
 	

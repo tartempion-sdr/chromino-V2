@@ -52,57 +52,41 @@ func _on_jetons_area_entered(area):
 
 		var node2d_jeton = self  # Le `Node2D` du jeton
 		var node2d_plateau = area  # Le `Node2D` du plateau
-		#print(node2d_jeton.get_child(1))
-		var id_node2d_jeton = node2d_jeton.get_child(0)
-		#print(id_node2d_jeton.name)
-		#print(id_node2d_jeton.get_instance_id())
 		
-		var node_jeton_part = node2d_jeton.name
-		var node_plateau_part = node2d_plateau.name
-
-		var node_plateau_part2 = node_plateau_part.split("@")[-1]
-		Globals.node_jeton_part2 = node_jeton_part.split("@")[-1]
-
-		list_pos_plateau_remplace_blanc.insert(0,node_plateau_part2)
+		var child_node2d_jeton = node2d_jeton.get_child(0)
+		Globals.id_child_node2d_jeton =  child_node2d_jeton .get_instance_id()
+		
+		var child_node2d_plateau = node2d_plateau.get_child(0)
+		
+		list_pos_plateau_remplace_blanc.insert(0,child_node2d_plateau)
 		list_pos_plateau_remplace_blanc.sort()
-		if  node2d_plateau.get_child(0).texture == blanc :
+		if  child_node2d_plateau.texture == blanc :
 			
 			collision_count += 1
 			if collision_count == 3:
-				
-				
-				print(list_pos_plateau_remplace_blanc)
-				
-				print("collision blanc " + str(collision_count))
+					
+					
+				print("dessousjeton " + str(list_pos_plateau_remplace_blanc))
+					
+					#print("collision blanc " + str(collision_count))
 				for a in Globals.list_affiche_position_porte_jetons:
-			
-					var jeton_number = node2d_jeton.name.split("@")[-1]
-					var add_jeton = int(jeton_number) 
-					if int(add_jeton) == a[5]:
-						print("signal " + str(a[4]))
-						print("n_child_list " + str(a[5]))
-						print("jeton " + str(add_jeton))
+					
+					if Globals.id_child_node2d_jeton == a[5]:
+						
 						if str(a[4]) == "verticale-h" or str(a[4]) ==  "horizontale-g":
 							Globals.list_couleur_bouge_jeton.clear()
-							stream_list_couleur_bouge_jeton.clear()
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path())
-							stream_list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture)
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu").texture.get_path())
-							stream_list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu").texture)
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path())
-							stream_list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture)
 							
 						if str(a[4]) == "verticale-b" or str(a[4]) ==  "horizontale-d":
 							Globals.list_couleur_bouge_jeton.clear()
-							stream_list_couleur_bouge_jeton.clear()
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path())
-							stream_list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture)
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu").texture.get_path())
-							stream_list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu").texture)
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path())
-							stream_list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture)
+
 							
-				#print(Globals.list_couleur_bouge_jeton)
+				print(Globals.list_couleur_bouge_jeton)
 				#print(Globals.list_affiche_position_porte_jetons)
 				collision_count = 0
 				jeton_blanc_3 = true
@@ -118,6 +102,8 @@ func _on_verifieautour_area_entered(area_autour):
 	if area_autour.is_in_group("plateau"):
 		var node2d_jeton_autour = self  # Le `Node2D` du jeton
 		var node2d_plateau = area_autour  # Le `Node2D` du plateau
+		
+		#print(node2d_plateau.get_child(0).texture.get_path())
 		liste_colision_autour.append(node2d_plateau.get_child(0).texture.get_path())
 		if len(liste_colision_autour) == 8:
 			if jeton_blanc_3 :
@@ -267,46 +253,24 @@ func remplace_couleurs():
 	
 	for a in range(0, 3):
 		print(a)
-		var found_node = find_node_by_number(get_tree().root, list_pos_plateau_remplace_blanc[a])
-		if found_node and found_node.has_node("Sprite"):
-			var sprite_node = found_node.get_node("Sprite")
-			if sprite_node is Sprite:
+		print(list_pos_plateau_remplace_blanc[a].texture)
+		list_pos_plateau_remplace_blanc[a].texture = load(Globals.list_couleur_bouge_jeton[a])
 				
-				sprite_node.texture = load(Globals.list_couleur_bouge_jeton[a])
-				
-				print("Couleur du Sprite modifiée ")
-			else:
-				print("Le nœud 'Sprite' n'est pas un Sprite.")
-		else:
-			print("Nœud 'Sprite' non trouvé ou nœud avec le numéro 43 non trouvé.")
 	Globals.au_joueur1_de_jouer = false
-	supprime_jeton_porte_jeton()
 
-	Globals.affiche_jetons_piocher()
 	Globals.rend_jeton_invisible()
+	supprime_jeton_porte_jeton()
+	Globals.affiche_jetons_piocher()
 	
 	
-func find_node_by_number(node, target_number):
-	# Vérifie si le nom du nœud contient le numéro cible
-	var name_parts = node.name.split("@")
-	if name_parts.size() > 1 and name_parts[-1] == target_number:
-		return node
-	
-	for child in node.get_children():
-		var result = find_node_by_number(child, target_number)
-		if result != null:
-			return result
-	
-	return null  # Retourne null si aucun nœud avec ce numéro n'est trouvé
-
 func supprime_jeton_porte_jeton():
-	print("jeton selectioner " + str(Globals.node_jeton_part2))
+	print("jeton selectioner " + str(Globals.id_child_node2d_jeton))
 	print("longeur list " + str(len(Globals.list_affiche_position_porte_jetons)))
 	#print(Globals.list_affiche_position_porte_jetons)
 
 	
 	for a in Globals.list_affiche_position_porte_jetons:
-		if int(Globals.node_jeton_part2) == a[5]:
+		if int(Globals.id_child_node2d_jeton) == a[5]:
 			
 			Globals.list_affiche_position_porte_jetons.erase(a)
 			print("longeur list apres suppr " + str(len(Globals.list_affiche_position_porte_jetons)))
