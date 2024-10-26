@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://acceuil.gd" type="Script" id=1]
+[ext_resource path="res://assets/colors/carre-blanc.png" type="Texture" id=2]
+[ext_resource path="res://assets/fleche_rotation.jpg" type="Texture" id=3]
+
+[node name="acceuil" type="TextureRect"]
+margin_right = 1026.0
+margin_bottom = 596.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+expand = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 427.011
+margin_top = 219.061
+margin_right = 570.011
+margin_bottom = 346.061
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

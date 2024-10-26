@@ -26,6 +26,7 @@ var rouge = preload("res://assets/colors/rouge.jpg")
 var blanc = preload("res://assets/colors/carre-blanc.png")
 
 var scene_jeton = preload("res://jetons.tscn")
+var scene_acceuil = preload("res://acceuil.tscn")
 var nb_jetons_pioche = 7
 
 var list_couleurs_jetons = [[jaune, jaune, jaune, true, sens[0]],
@@ -135,7 +136,9 @@ func _ready():
 	
 	Globals.list_affiche_position_porte_jetons.clear()
 	affiche_nb_jetons_restant()
-		
+	var test_acceuil = scene_acceuil.instance()
+	add_child(test_acceuil)
+	
 func modifie_plateau(numero, couleur):
 	
 	var child = get_child(numero)
