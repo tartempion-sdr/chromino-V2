@@ -35,10 +35,10 @@ __meta__ = {
 }
 
 [node name="Button_pioche" type="TextureButton" parent="TextureRect2"]
-margin_left = 157.619
-margin_top = 51.6641
-margin_right = 197.619
-margin_bottom = 91.6641
+margin_left = 158.563
+margin_top = 49.7764
+margin_right = 198.563
+margin_bottom = 89.7764
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 5 )
 expand = true
@@ -80,9 +80,9 @@ scroll_active = false
 
 [node name="Button_gauche2" type="TextureButton" parent="TextureRect2"]
 margin_left = 200.916
-margin_top = 68.2934
+margin_top = 53.1914
 margin_right = 240.916
-margin_bottom = 108.293
+margin_bottom = 93.1914
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 7 )
 __meta__ = {
@@ -90,10 +90,10 @@ __meta__ = {
 }
 
 [node name="Button_droite" type="TextureButton" parent="TextureRect2"]
-margin_left = 978.565
-margin_top = 71.2814
-margin_right = 1018.56
-margin_bottom = 111.281
+margin_left = 975.733
+margin_top = 60.8988
+margin_right = 1015.73
+margin_bottom = 100.898
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 6 )
 expand = true

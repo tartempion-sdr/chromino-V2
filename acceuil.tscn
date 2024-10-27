@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://acceuil.gd" type="Script" id=1]
 [ext_resource path="res://assets/colors/carre-blanc.png" type="Texture" id=2]
@@ -12,10 +12,28 @@
 [ext_resource path="res://icon.png" type="Texture" id=10]
 [ext_resource path="res://assets/interogation.png" type="Texture" id=11]
 [ext_resource path="res://247071528-44df4f33-883e-4c1d-baac-06f87b0656f4.png" type="Texture" id=12]
+[ext_resource path="res://assets/animesprite/violetanim.jpg" type="Texture" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="acceuil" type="TextureRect"]
+margin_top = -2.0
 margin_right = 1026.0
-margin_bottom = 596.0
+margin_bottom = 594.0
 mouse_filter = 2
 texture = ExtResource( 2 )
 expand = true
@@ -25,10 +43,10 @@ __meta__ = {
 }
 
 [node name="jouez" type="TextureButton" parent="."]
-margin_left = 470.951
-margin_top = 225.596
-margin_right = 613.951
-margin_bottom = 352.596
+margin_left = 623.599
+margin_top = 101.193
+margin_right = 766.599
+margin_bottom = 228.193
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 10 )
 texture_hover = ExtResource( 12 )
@@ -38,14 +56,17 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="jouez"]
-margin_left = -21.0
-margin_top = 141.0
-margin_right = 163.0
-margin_bottom = 169.0
+margin_left = -19.6652
+margin_top = 134.993
+margin_right = 164.335
+margin_bottom = 162.993
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 tab_size = 8
-text = "______--- - JOUEZ - ---______"
+text = "***____---- JOUEZ ----____***"
 scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="pioche" type="TextureRect" parent="."]
 margin_left = 35.8148
@@ -66,6 +87,9 @@ margin_bottom = 49.247
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "pour piocher des jetons
 "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="flechegauche" type="TextureRect" parent="."]
 margin_left = 10.1144
@@ -177,4 +201,468 @@ margin_right = 151.589
 margin_bottom = 61.7676
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Help ?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="chromino" type="Area2D" parent="."]
+position = Vector2( 4, 6 )
+
+[node name="C" type="Area2D" parent="chromino"]
+position = Vector2( 737.656, 76.776 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="chromino/C"]
+position = Vector2( -327.096, 200.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="chromino/C"]
+position = Vector2( -308.096, 273.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="chromino/C"]
+position = Vector2( -290.096, 273.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="chromino/C"]
+position = Vector2( -291.096, 200.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/C"]
+position = Vector2( -309.096, 200.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="chromino/C"]
+position = Vector2( -327.331, 219.485 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/C"]
+position = Vector2( -327.096, 237.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/C"]
+position = Vector2( -327.096, 255.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="chromino/C"]
+position = Vector2( -327.138, 273.29 )
+frames = SubResource( 2 )
+
+[node name="H" type="Area2D" parent="chromino"]
+position = Vector2( 823.656, 76.776 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="chromino/H"]
+position = Vector2( -327.096, 200.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite11" type="AnimatedSprite" parent="chromino/H"]
+position = Vector2( -290.096, 200.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="chromino/H"]
+position = Vector2( -289.247, 256.779 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="chromino/H"]
+position = Vector2( -290.096, 273.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="chromino/H"]
+position = Vector2( -290.389, 237.933 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/H"]
+position = Vector2( -290.297, 219.063 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="chromino/H"]
+position = Vector2( -327.331, 219.485 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/H"]
+position = Vector2( -327.096, 237.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite10" type="AnimatedSprite" parent="chromino/H"]
+position = Vector2( -309.096, 237.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/H"]
+position = Vector2( -327.096, 255.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="chromino/H"]
+position = Vector2( -327.138, 273.29 )
+frames = SubResource( 2 )
+
+[node name="R" type="Area2D" parent="chromino"]
+position = Vector2( 899.656, 76.776 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="chromino/R"]
+position = Vector2( -327.096, 200.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite12" type="AnimatedSprite" parent="chromino/R"]
+position = Vector2( -310.096, 200.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite11" type="AnimatedSprite" parent="chromino/R"]
+position = Vector2( -293.842, 205.245 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="chromino/R"]
+position = Vector2( -289.247, 256.779 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="chromino/R"]
+position = Vector2( -289.096, 273.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="chromino/R"]
+position = Vector2( -295.953, 245.201 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/R"]
+position = Vector2( -294.04, 223.307 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="chromino/R"]
+position = Vector2( -327.331, 219.485 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/R"]
+position = Vector2( -327.096, 237.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite10" type="AnimatedSprite" parent="chromino/R"]
+position = Vector2( -309.096, 237.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/R"]
+position = Vector2( -327.096, 255.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="chromino/R"]
+position = Vector2( -327.138, 273.29 )
+frames = SubResource( 2 )
+
+[node name="O" type="Area2D" parent="chromino"]
+position = Vector2( 976.294, 76.776 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="chromino/O"]
+position = Vector2( -324.096, 207.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite12" type="AnimatedSprite" parent="chromino/O"]
+position = Vector2( -310.096, 203.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite11" type="AnimatedSprite" parent="chromino/O"]
+position = Vector2( -296.842, 208.245 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="chromino/O"]
+position = Vector2( -292.247, 256.779 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="chromino/O"]
+position = Vector2( -295.096, 269.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="chromino/O"]
+position = Vector2( -293.953, 240.201 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/O"]
+position = Vector2( -294.04, 223.307 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="chromino/O"]
+position = Vector2( -327.331, 219.485 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/O"]
+position = Vector2( -327.096, 237.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/O"]
+position = Vector2( -327.096, 255.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="chromino/O"]
+position = Vector2( -324.138, 269.29 )
+frames = SubResource( 2 )
+
+[node name="AnimatedSprite10" type="AnimatedSprite" parent="chromino/O"]
+position = Vector2( -309.138, 273.29 )
+frames = SubResource( 2 )
+
+[node name="M" type="Area2D" parent="chromino"]
+position = Vector2( 1042.62, 77.6681 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="chromino/M"]
+position = Vector2( -327.096, 203.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite12" type="AnimatedSprite" parent="chromino/M"]
+position = Vector2( -320.096, 211.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite13" type="AnimatedSprite" parent="chromino/M"]
+position = Vector2( -297.096, 211.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite11" type="AnimatedSprite" parent="chromino/M"]
+position = Vector2( -293.842, 204.245 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="chromino/M"]
+position = Vector2( -292.247, 255.779 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="chromino/M"]
+position = Vector2( -292.096, 272.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="chromino/M"]
+position = Vector2( -293.953, 239.201 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/M"]
+position = Vector2( -294.04, 222.307 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="chromino/M"]
+position = Vector2( -327.331, 219.485 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/M"]
+position = Vector2( -327.096, 237.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/M"]
+position = Vector2( -327.096, 255.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="chromino/M"]
+position = Vector2( -327.138, 272.29 )
+frames = SubResource( 2 )
+
+[node name="AnimatedSprite10" type="AnimatedSprite" parent="chromino/M"]
+position = Vector2( -309.138, 221.29 )
+frames = SubResource( 2 )
+
+[node name="I" type="Area2D" parent="chromino"]
+position = Vector2( 1106.59, 74.4249 )
+
+[node name="AnimatedSprite12" type="AnimatedSprite" parent="chromino/I"]
+position = Vector2( -311.096, 203.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/I"]
+position = Vector2( -311.789, 225.937 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/I"]
+position = Vector2( -311.717, 241.659 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/I"]
+position = Vector2( -310.977, 257.769 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite10" type="AnimatedSprite" parent="chromino/I"]
+position = Vector2( -311.138, 273.29 )
+frames = SubResource( 2 )
+
+[node name="N" type="Area2D" parent="chromino"]
+position = Vector2( 1171.59, 75.4249 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="chromino/N"]
+position = Vector2( -327.096, 202.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite12" type="AnimatedSprite" parent="chromino/N"]
+position = Vector2( -309.506, 237.248 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite13" type="AnimatedSprite" parent="chromino/N"]
+position = Vector2( -319.506, 219.248 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite11" type="AnimatedSprite" parent="chromino/N"]
+position = Vector2( -293.842, 204.245 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="chromino/N"]
+position = Vector2( -292.247, 256.779 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="chromino/N"]
+position = Vector2( -292.096, 273.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="chromino/N"]
+position = Vector2( -292.953, 238.201 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/N"]
+position = Vector2( -293.04, 221.307 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="chromino/N"]
+position = Vector2( -327.331, 219.485 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/N"]
+position = Vector2( -327.096, 237.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/N"]
+position = Vector2( -327.096, 255.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="chromino/N"]
+position = Vector2( -326.138, 272.29 )
+frames = SubResource( 2 )
+
+[node name="AnimatedSprite10" type="AnimatedSprite" parent="chromino/N"]
+position = Vector2( -300.319, 256.321 )
+frames = SubResource( 2 )
+
+[node name="O2" type="Area2D" parent="chromino"]
+position = Vector2( 1239.59, 75.4249 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="chromino/O2"]
+position = Vector2( -324.096, 207.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite12" type="AnimatedSprite" parent="chromino/O2"]
+position = Vector2( -310.096, 203.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite11" type="AnimatedSprite" parent="chromino/O2"]
+position = Vector2( -296.842, 208.245 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="chromino/O2"]
+position = Vector2( -292.247, 256.779 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="chromino/O2"]
+position = Vector2( -295.096, 269.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="chromino/O2"]
+position = Vector2( -293.953, 240.201 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/O2"]
+position = Vector2( -294.04, 223.307 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="chromino/O2"]
+position = Vector2( -327.331, 219.485 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/O2"]
+position = Vector2( -327.096, 237.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/O2"]
+position = Vector2( -327.096, 255.25 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="chromino/O2"]
+position = Vector2( -324.138, 269.29 )
+frames = SubResource( 2 )
+
+[node name="AnimatedSprite10" type="AnimatedSprite" parent="chromino/O2"]
+position = Vector2( -309.138, 273.29 )
+frames = SubResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 409.0
+margin_top = 376.0
+margin_right = 971.0
+margin_bottom = 409.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = " ___________________________________________________________________________________________"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="jouez" to="." method="_on_TextureButton_pressed"]
