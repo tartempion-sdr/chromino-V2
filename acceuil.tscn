@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://acceuil.gd" type="Script" id=1]
 [ext_resource path="res://assets/colors/carre-blanc.png" type="Texture" id=2]
 [ext_resource path="res://assets/fleche_rotation.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/pioche.png" type="Texture" id=4]
+[ext_resource path="res://assets/arrow-2.png" type="Texture" id=5]
+[ext_resource path="res://assets/arrow.png" type="Texture" id=6]
+[ext_resource path="res://assets/souris.jpg" type="Texture" id=7]
+[ext_resource path="res://assets/flecheclavier.jpg" type="Texture" id=8]
+[ext_resource path="res://assets/sourisgauche.jpg" type="Texture" id=9]
+[ext_resource path="res://icon.png" type="Texture" id=10]
+[ext_resource path="res://247071528-44df4f33-883e-4c1d-baac-06f87b0656f4.png" type="Texture" id=12]
 
 [node name="acceuil" type="TextureRect"]
 margin_right = 1026.0
@@ -15,15 +23,81 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="jouez" type="TextureButton" parent="."]
 margin_left = 427.011
 margin_top = 219.061
 margin_right = 570.011
 margin_bottom = 346.061
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 10 )
+texture_hover = ExtResource( 12 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="jouez"]
+margin_left = -3.06299
+margin_top = 155.811
+margin_right = 180.937
+margin_bottom = 195.811
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+tab_size = 8
+text = "^^^ - JOUEZ - ^^^"
+
+[node name="pioche" type="TextureRect" parent="."]
+margin_left = 35.8148
+margin_top = 135.901
+margin_right = 75.8147
+margin_bottom = 175.901
+texture = ExtResource( 4 )
+expand = true
+
+[node name="flechegauche" type="TextureRect" parent="."]
+margin_left = 10.1144
+margin_top = 373.101
+margin_right = 50.1144
+margin_bottom = 413.101
+texture = ExtResource( 5 )
+
+[node name="flechedroite" type="TextureRect" parent="flechegauche"]
+anchor_right = 1.472
+anchor_bottom = 0.5
+margin_left = 57.9301
+margin_top = -0.932636
+margin_right = 39.0501
+margin_bottom = 19.0674
+texture = ExtResource( 6 )
+
+[node name="tournejeton" type="TextureRect" parent="."]
+margin_left = 35.5907
+margin_top = 307.403
+margin_right = 75.5907
+margin_bottom = 347.403
+texture = ExtResource( 3 )
+expand = true
+
+[node name="scroll" type="TextureRect" parent="."]
+margin_left = 27.9098
+margin_top = 430.116
+margin_right = 83.9098
+margin_bottom = 522.116
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="clicgauche" type="TextureRect" parent="."]
+margin_left = 25.6616
+margin_top = 195.716
+margin_right = 83.6616
+margin_bottom = 285.716
+texture = ExtResource( 9 )
+
+[node name="flecheclavier" type="TextureRect" parent="."]
+margin_left = 20.2043
+margin_top = 536.537
+margin_right = 90.2043
+margin_bottom = 578.537
+texture = ExtResource( 8 )
+[connection signal="pressed" from="jouez" to="." method="_on_TextureButton_pressed"]
