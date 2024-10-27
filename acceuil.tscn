@@ -24,10 +24,10 @@ __meta__ = {
 }
 
 [node name="jouez" type="TextureButton" parent="."]
-margin_left = 427.011
-margin_top = 219.061
-margin_right = 570.011
-margin_bottom = 346.061
+margin_left = 470.951
+margin_top = 225.596
+margin_right = 613.951
+margin_bottom = 352.596
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 10 )
 texture_hover = ExtResource( 12 )
@@ -37,10 +37,10 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="jouez"]
-margin_left = -3.06299
-margin_top = 155.811
-margin_right = 180.937
-margin_bottom = 195.811
+margin_left = 19.2095
+margin_top = 145.12
+margin_right = 203.209
+margin_bottom = 185.12
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 tab_size = 8
 text = "^^^ - JOUEZ - ^^^"
@@ -52,6 +52,18 @@ margin_right = 75.8147
 margin_bottom = 175.901
 texture = ExtResource( 4 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pioche"]
+margin_left = 82.1616
+margin_top = 9.24701
+margin_right = 271.162
+margin_bottom = 49.247
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "pour piocher des jetons
+"
 
 [node name="flechegauche" type="TextureRect" parent="."]
 margin_left = 10.1144
@@ -69,6 +81,16 @@ margin_right = 39.0501
 margin_bottom = 19.0674
 texture = ExtResource( 6 )
 
+[node name="RichTextLabel" type="RichTextLabel" parent="flechegauche/flechedroite"]
+margin_left = 51.0
+margin_top = 8.0
+margin_right = 222.0
+margin_bottom = 51.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "pour déplacer les jetons dans le porte jetons
+"
+scroll_active = false
+
 [node name="tournejeton" type="TextureRect" parent="."]
 margin_left = 35.5907
 margin_top = 307.403
@@ -76,6 +98,14 @@ margin_right = 75.5907
 margin_bottom = 347.403
 texture = ExtResource( 3 )
 expand = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="tournejeton"]
+margin_left = 85.0
+margin_top = -1.0
+margin_right = 390.0
+margin_bottom = 39.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "pour changer de sens le jeton le plus a gauche du porte jetons"
 
 [node name="scroll" type="TextureRect" parent="."]
 margin_left = 27.9098
@@ -87,6 +117,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RichTextLabel" type="RichTextLabel" parent="scroll"]
+margin_left = 88.6735
+margin_top = 32.7755
+margin_right = 277.674
+margin_bottom = 72.7755
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "pour zoomer sur le plateau scroll de la souris"
+
 [node name="clicgauche" type="TextureRect" parent="."]
 margin_left = 25.6616
 margin_top = 195.716
@@ -94,10 +132,29 @@ margin_right = 83.6616
 margin_bottom = 285.716
 texture = ExtResource( 9 )
 
+[node name="RichTextLabel" type="RichTextLabel" parent="clicgauche"]
+margin_left = 92.0
+margin_top = 27.0
+margin_right = 291.0
+margin_bottom = 73.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "pour déplacer un jeton maintenez la touche gauche de la souris enfoncée"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="flecheclavier" type="TextureRect" parent="."]
-margin_left = 20.2043
-margin_top = 536.537
-margin_right = 90.2043
-margin_bottom = 578.537
+margin_left = 22.7242
+margin_top = 535.277
+margin_right = 92.7242
+margin_bottom = 577.277
 texture = ExtResource( 8 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="flecheclavier"]
+margin_left = 93.3367
+margin_top = 2.94391
+margin_right = 289.337
+margin_bottom = 47.9439
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "pourdeplacer le plateau utilisez les fleches du clavier"
 [connection signal="pressed" from="jouez" to="." method="_on_TextureButton_pressed"]
