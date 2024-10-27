@@ -38,15 +38,13 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="jouez"]
-margin_left = -21.4756
-margin_top = 140.941
-margin_right = 162.524
-margin_bottom = 210.941
+margin_left = -21.0
+margin_top = 141.0
+margin_right = 163.0
+margin_bottom = 169.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 tab_size = 8
-text = "______^^^ - JOUEZ - ^^^______
-_____________ou______________      
----> reprendre la  partie <---"
+text = "______--- - JOUEZ - ---______"
 scroll_active = false
 
 [node name="pioche" type="TextureRect" parent="."]
@@ -106,10 +104,13 @@ expand = true
 [node name="RichTextLabel" type="RichTextLabel" parent="tournejeton"]
 margin_left = 85.0
 margin_top = -1.0
-margin_right = 390.0
+margin_right = 292.0
 margin_bottom = 39.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "pour changer de sens le jeton le plus a gauche du porte jetons"
+text = "pour changer le sens du jeton le plus a gauche du porte jetons"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="scroll" type="TextureRect" parent="."]
 margin_left = 27.9098
@@ -155,12 +156,12 @@ margin_bottom = 577.277
 texture = ExtResource( 8 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="flecheclavier"]
-margin_left = 93.3367
-margin_top = 2.94391
-margin_right = 289.337
-margin_bottom = 47.9439
+margin_left = 93.0
+margin_top = 3.0
+margin_right = 289.0
+margin_bottom = 41.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "pourdeplacer le plateau utilisez les fleches du clavier"
+text = "pour déplacer le plateau utilisez les fleches du clavier"
 
 [node name="helper" type="TextureRect" parent="."]
 margin_left = 30.3622

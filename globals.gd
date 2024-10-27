@@ -7,13 +7,13 @@ var au_joueur1_de_jouer:bool = true
 var id_child_node2d_jeton
 
 
-var list_position_pioche_jetons = [(Vector2(150, 543)),
-(Vector2(280, 543)),
-(Vector2(410, 543)),
-(Vector2(540, 543)),
-(Vector2(670, 543)),
-(Vector2(800, 543)),
-(Vector2(930, 543)),
+var list_position_pioche_jetons = [(Vector2(280, 543)),
+(Vector2(391, 543)),
+(Vector2(502, 543)),
+(Vector2(613, 543)),
+(Vector2(724, 543)),
+(Vector2(835, 543)),
+(Vector2(946, 543)),
 (Vector2(1060, 543))]
 
 func affiche_jetons_piocher():
@@ -26,7 +26,7 @@ func affiche_jetons_piocher():
 		if node:
 
 			var index = list_affiche_position_porte_jetons.find(element)
-			if index != -1 and index < 8:
+			if index != -1 and index < 7:
 				node.visible = true
 				node.position = list_position_pioche_jetons[index]
 			else:

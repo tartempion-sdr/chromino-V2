@@ -24,7 +24,7 @@ __meta__ = {
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 margin_left = -1.0
-margin_top = 483.0
+margin_top = 460.0
 margin_right = 1024.0
 margin_bottom = 599.0
 mouse_filter = 2
@@ -35,10 +35,10 @@ __meta__ = {
 }
 
 [node name="Button_pioche" type="TextureButton" parent="TextureRect2"]
-margin_left = 5.2466
-margin_top = 6.17859
-margin_right = 45.2466
-margin_bottom = 46.1786
+margin_left = 157.619
+margin_top = 51.6641
+margin_right = 197.619
+margin_bottom = 91.6641
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 5 )
 expand = true
@@ -47,19 +47,42 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TextureRect2/Button_pioche"]
-margin_top = 45.0
-margin_right = 180.0
-margin_bottom = 135.0
+margin_left = -151.387
+margin_top = -37.6838
+margin_right = -5.38742
+margin_bottom = -18.6838
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 tab_size = 24
-text = "JETONS  ="
+text = "PIOCHE  ="
 fit_content_height = true
 
+[node name="textejoueur1" type="RichTextLabel" parent="TextureRect2/Button_pioche"]
+margin_left = -150.0
+margin_top = -19.0
+margin_right = -5.0
+margin_bottom = 28.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Joueur 1 
+Jetons = 
+Victoire ="
+scroll_active = false
+
+[node name="textejoueurIA" type="RichTextLabel" parent="TextureRect2/Button_pioche"]
+margin_left = -151.765
+margin_top = 31.8316
+margin_right = -59.7653
+margin_bottom = 71.8316
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Joueur IA 
+Jetons = 
+Victoire ="
+scroll_active = false
+
 [node name="Button_gauche2" type="TextureButton" parent="TextureRect2"]
-margin_left = 55.2775
-margin_top = 69.7985
-margin_right = 95.2775
-margin_bottom = 109.798
+margin_left = 200.916
+margin_top = 68.2934
+margin_right = 240.916
+margin_bottom = 108.293
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 7 )
 __meta__ = {
@@ -79,10 +102,10 @@ __meta__ = {
 }
 
 [node name="Button_tourne" type="TextureButton" parent="TextureRect2"]
-margin_left = 53.2571
-margin_top = 6.00439
-margin_right = 93.2575
-margin_bottom = 46.0044
+margin_left = 159.151
+margin_top = 94.9082
+margin_right = 199.151
+margin_bottom = 134.908
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 9 )
 __meta__ = {
@@ -90,10 +113,10 @@ __meta__ = {
 }
 
 [node name="helperjeu" type="TextureButton" parent="TextureRect2"]
-margin_left = 1.47131
-margin_top = 61.3267
-margin_right = 55.4713
-margin_bottom = 115.327
+margin_left = 154.379
+margin_top = -3.80072
+margin_right = 208.379
+margin_bottom = 50.1993
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 4 )
 __meta__ = {

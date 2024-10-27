@@ -229,8 +229,12 @@ func affiche_nb_jetons_restant():
 	for sublist in list_couleurs_jetons:
 		if sublist.size() >= 4 and sublist[3] == true:
 			count += 1
-	$TextureRect2/Button_pioche/RichTextLabel.text = "JETONS = %d" % count
-
+			
+	$TextureRect2/Button_pioche/RichTextLabel.text = "PIOCHE = %d" % count
+	var countjetonsjoueur1 = int(len(Globals.list_affiche_position_porte_jetons))
+	$TextureRect2/Button_pioche/textejoueur1.text = "Joueur 1 = %d" % countjetonsjoueur1
+	$TextureRect2/Button_pioche/textejoueurIA.text = "Joueur IA = "
+	
 func child_pioche_jetons():
 	for d in nb_jetons_pioche:
 		pioche_jetons()
@@ -253,7 +257,7 @@ func _input(event):
 				Globals.affiche_jetons_piocher()
 			
 		elif event.button_index == BUTTON_WHEEL_DOWN:
-			if Globals.taille < 1.8 :
+			if Globals.taille < 1.7 :
 				# Action pour le défilement vers le bas
 				print("ZOOM +")
 				Globals.taille += 0.1
@@ -297,7 +301,8 @@ func _on_Button_droite_button_down():
 		var last_element = Globals.list_affiche_position_porte_jetons.pop_back()
 		Globals.list_affiche_position_porte_jetons.insert(0, last_element)
 		Globals.affiche_jetons_piocher()
-
+	affiche_nb_jetons_restant()
+	
 func _on_Button_gauche_button_down():
 
 	if len(Globals.list_affiche_position_porte_jetons) == 0:
@@ -308,7 +313,8 @@ func _on_Button_gauche_button_down():
 		var prem_element = Globals.list_affiche_position_porte_jetons.pop_front()
 		Globals.list_affiche_position_porte_jetons.append(prem_element)
 		Globals.affiche_jetons_piocher()
-		
+	affiche_nb_jetons_restant()
+	
 func _on_Button_tourne_button_down():
 	
 	if len(Globals.list_affiche_position_porte_jetons) == 0:
