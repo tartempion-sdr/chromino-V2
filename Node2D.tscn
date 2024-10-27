@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/colors/black.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/colors/beige.png" type="Texture" id=2]
 [ext_resource path="res://Node2D.gd" type="Script" id=3]
+[ext_resource path="res://assets/interogation.png" type="Texture" id=4]
 [ext_resource path="res://assets/pioche.png" type="Texture" id=5]
 [ext_resource path="res://assets/arrow.png" type="Texture" id=6]
 [ext_resource path="res://assets/arrow-2.png" type="Texture" id=7]
@@ -13,7 +14,7 @@ script = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 1026.0
-margin_bottom = 515.0
+margin_bottom = 487.0
 mouse_filter = 2
 texture = ExtResource( 1 )
 expand = true
@@ -87,7 +88,19 @@ texture_normal = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="helperjeu" type="TextureButton" parent="TextureRect2"]
+margin_left = 1.47131
+margin_top = 61.3267
+margin_right = 55.4713
+margin_bottom = 115.327
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="button_down" from="TextureRect2/Button_pioche" to="." method="_on_Button_pioche_button_down"]
 [connection signal="button_down" from="TextureRect2/Button_gauche2" to="." method="_on_Button_gauche_button_down"]
 [connection signal="button_down" from="TextureRect2/Button_droite" to="." method="_on_Button_droite_button_down"]
 [connection signal="button_down" from="TextureRect2/Button_tourne" to="." method="_on_Button_tourne_button_down"]
+[connection signal="pressed" from="TextureRect2/helperjeu" to="." method="_on_helperjeu_pressed"]

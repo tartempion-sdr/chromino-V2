@@ -343,3 +343,29 @@ func find_node_by_instance_id(node, target_id):
 		var result = find_node_by_instance_id(child, target_id)
 		if result:
 			return result
+
+
+func _on_helperjeu_pressed():
+	var acceuil = find_node_recursive(get_tree().root, "acceuil")
+	if acceuil:
+		print("Le nœud 'acceuil' trouvé : ", acceuil.name)
+		if acceuil is TextureRect:
+			acceuil.visible = true
+
+			print("Le TextureRect 'acceuil' est maintenant invisible.")
+		else:
+			print("Le nœud 'acceuil' trouvé n'est pas un TextureRect.")
+	else:
+		print("Le nœud 'acceuil' n'a pas été trouvé.")
+
+func find_node_recursive(parent, name):
+	if parent.name == name:
+		return parent
+
+	for child in parent.get_children():
+		var result = find_node_recursive(child, name)
+		if result != null:
+			return result
+
+	return null
+

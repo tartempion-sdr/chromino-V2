@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://acceuil.gd" type="Script" id=1]
 [ext_resource path="res://assets/colors/carre-blanc.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/flecheclavier.jpg" type="Texture" id=8]
 [ext_resource path="res://assets/sourisgauche.jpg" type="Texture" id=9]
 [ext_resource path="res://icon.png" type="Texture" id=10]
+[ext_resource path="res://assets/interogation.png" type="Texture" id=11]
 [ext_resource path="res://247071528-44df4f33-883e-4c1d-baac-06f87b0656f4.png" type="Texture" id=12]
 
 [node name="acceuil" type="TextureRect"]
@@ -37,13 +38,16 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="jouez"]
-margin_left = 19.2095
-margin_top = 145.12
-margin_right = 203.209
-margin_bottom = 185.12
+margin_left = -21.4756
+margin_top = 140.941
+margin_right = 162.524
+margin_bottom = 210.941
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 tab_size = 8
-text = "^^^ - JOUEZ - ^^^"
+text = "______^^^ - JOUEZ - ^^^______
+_____________ou______________      
+---> reprendre la  partie <---"
+scroll_active = false
 
 [node name="pioche" type="TextureRect" parent="."]
 margin_left = 35.8148
@@ -157,4 +161,19 @@ margin_right = 289.337
 margin_bottom = 47.9439
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "pourdeplacer le plateau utilisez les fleches du clavier"
+
+[node name="helper" type="TextureRect" parent="."]
+margin_left = 30.3622
+margin_top = 61.9568
+margin_right = 84.3622
+margin_bottom = 117.957
+texture = ExtResource( 11 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="helper"]
+margin_left = 90.5892
+margin_top = 21.7676
+margin_right = 151.589
+margin_bottom = 61.7676
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Help ?"
 [connection signal="pressed" from="jouez" to="." method="_on_TextureButton_pressed"]
