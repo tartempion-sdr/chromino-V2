@@ -8,15 +8,38 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "Colors",
+"language": "GDScript",
+"path": "res://assets/colors/Colors.gd"
+}, {
+"base": "Node",
+"class": "Coordinator",
+"language": "GDScript",
+"path": "res://coordinator/Coordinator.gd"
+}, {
+"base": "Node",
+"class": "Ecran",
+"language": "GDScript",
+"path": "res://coordinator/Ecran.gd"
+}, {
+"base": "Node",
+"class": "Jeton",
+"language": "GDScript",
+"path": "res://models/Jeton.gd"
+} ]
 _global_script_class_icons={
-
+"Colors": "",
+"Coordinator": "",
+"Ecran": "",
+"Jeton": ""
 }
 
 [application]
 
 config/name="chromino-V2"
-run/main_scene="res://Node2D.tscn"
+run/main_scene="res://acceuil.tscn"
 config/icon="res://icon.png"
 
 [autoload]

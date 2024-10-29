@@ -1,6 +1,6 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://acceuil.gd" type="Script" id=1]
+[ext_resource path="res://acceuil_jouez.gd" type="Script" id=1]
 [ext_resource path="res://assets/colors/carre-blanc.png" type="Texture" id=2]
 [ext_resource path="res://assets/fleche_rotation.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/pioche.png" type="Texture" id=4]
@@ -9,9 +9,9 @@
 [ext_resource path="res://assets/souris.jpg" type="Texture" id=7]
 [ext_resource path="res://assets/flecheclavier.jpg" type="Texture" id=8]
 [ext_resource path="res://assets/sourisgauche.jpg" type="Texture" id=9]
-[ext_resource path="res://icon.png" type="Texture" id=10]
+[ext_resource path="res://assets/icon/icon.png" type="Texture" id=10]
 [ext_resource path="res://assets/interogation.png" type="Texture" id=11]
-[ext_resource path="res://247071528-44df4f33-883e-4c1d-baac-06f87b0656f4.png" type="Texture" id=12]
+[ext_resource path="res://assets/icon/247071528-44df4f33-883e-4c1d-baac-06f87b0656f4.png" type="Texture" id=12]
 [ext_resource path="res://assets/animesprite/violetanim.jpg" type="Texture" id=13]
 [ext_resource path="res://assets/animesprite/jauneanim.jpg" type="Texture" id=14]
 [ext_resource path="res://assets/animesprite/vertanim.jpg" type="Texture" id=15]
@@ -24,6 +24,7 @@
 [ext_resource path="res://assets/animesprite/artifice5.png" type="Texture" id=22]
 [ext_resource path="res://assets/animesprite/artifice1.png" type="Texture" id=23]
 [ext_resource path="res://assets/animesprite/artifice4.png" type="Texture" id=24]
+[ext_resource path="res://assets/colors/black.jpg" type="Texture" id=25]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -57,7 +58,6 @@ margin_bottom = 596.058
 mouse_filter = 2
 texture = ExtResource( 2 )
 expand = true
-script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -71,6 +71,7 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 10 )
 texture_hover = ExtResource( 12 )
 expand = true
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -117,6 +118,9 @@ margin_top = 373.101
 margin_right = 50.1144
 margin_bottom = 413.101
 texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="flechedroite" type="TextureRect" parent="flechegauche"]
 anchor_right = 1.472
@@ -126,6 +130,9 @@ margin_top = -0.932636
 margin_right = 39.0501
 margin_bottom = 19.0674
 texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="flechegauche/flechedroite"]
 margin_left = 51.0
@@ -144,6 +151,9 @@ margin_right = 75.5907
 margin_bottom = 347.403
 texture = ExtResource( 3 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="tournejeton"]
 margin_left = 85.0
@@ -180,6 +190,9 @@ margin_top = 195.716
 margin_right = 83.6616
 margin_bottom = 285.716
 texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="clicgauche"]
 margin_left = 92.0
@@ -226,7 +239,18 @@ __meta__ = {
 }
 
 [node name="chromino" type="Area2D" parent="."]
-position = Vector2( -28.898, 7.88775 )
+position = Vector2( -28.898, -12.1122 )
+
+[node name="TextureRect" type="TextureRect" parent="chromino"]
+margin_left = 394.0
+margin_top = 257.0
+margin_right = 982.0
+margin_bottom = 373.0
+texture = ExtResource( 25 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="C" type="Area2D" parent="chromino"]
 position = Vector2( 737.656, 76.776 )
@@ -768,12 +792,15 @@ frame = 5
 playing = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 370.0
+margin_left = 368.0
 margin_top = 376.0
-margin_right = 932.0
+margin_right = 953.0
 margin_bottom = 409.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = " ___________________________________________________________________________________________"
+text = " _________________________________________________________________________________________________
+
+"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -798,4 +825,4 @@ position = Vector2( 665.745, 298.437 )
 frames = SubResource( 3 )
 frame = 3
 playing = true
-[connection signal="pressed" from="jouez" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="jouez" to="jouez" method="_on_jouez_pressed"]

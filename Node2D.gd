@@ -17,104 +17,108 @@ var sens = ["verticale-h", "horizontale-d", "verticale-b", "horizontale-g"]
 var nouveau
 #75 chrominos classiques, 
 #5 chrominos caméléon combinant 2 couleurs différentes à chaque extrémité
-var joker = preload("res://assets/colors/joker.jpg")
-var jaune = preload("res://assets/colors/jaune.jpg")
-var vert = preload("res://assets/colors/vert.jpg")
-var bleu = preload("res://assets/colors/bleu.jpg")
-var violet = preload("res://assets/colors/violet.jpg")
-var rouge = preload("res://assets/colors/rouge.jpg")
-var blanc = preload("res://assets/colors/carre-blanc.png")
+var colors = Colors.new()
+
+var joker = colors.joker
+var jaune = colors.jaune
+var vert = colors.vert
+var bleu = colors.bleu
+var violet = colors.violet
+var rouge = colors.rouge
+var blanc = colors.blanc
 
 var scene_jeton = preload("res://jetons.tscn")
-var scene_acceuil = preload("res://acceuil.tscn")
+#var scene_acceuil = preload("res://acceuil.tscn")
 var nb_jetons_pioche = 7
 
-var list_couleurs_jetons = [[jaune, jaune, jaune, true, sens[0]],
-[jaune, jaune, vert, true, sens[0]],
-[jaune, jaune, bleu, true, sens[0]],
-[jaune, jaune, violet, true, sens[0]],
-[jaune, jaune, rouge, true, sens[0]],
-[jaune, vert, jaune, true, sens[0]],
-[jaune, bleu, jaune, true, sens[0]],
-[jaune, violet, jaune, true, sens[0]],
-[jaune, rouge, jaune, true, sens[0]],
-[jaune, vert, bleu, true, sens[0]],
-[jaune, vert, violet, true, sens[0]],
-[jaune, vert, rouge, true, sens[0]],
-[jaune, bleu, vert, true, sens[0]],
-[jaune, bleu, violet, true, sens[0]],
-[jaune, bleu, rouge, true, sens[0]],
-[jaune, violet, vert, true, sens[0]],
-[jaune, violet, bleu, true, sens[0]],
-[jaune, violet, rouge, true, sens[0]],
-[jaune, rouge, vert, true, sens[0]],
-[jaune, rouge, bleu, true, sens[0]],
-[jaune, rouge, violet, true, sens[0]],
+var list_couleurs_jetons: Array = [
+	Jeton.new(jaune, jaune, jaune),
+	Jeton.new(jaune, jaune, vert),
+	Jeton.new(jaune, jaune, bleu),
+	Jeton.new(jaune, jaune, violet),
+	Jeton.new(jaune, jaune, rouge),
+	Jeton.new(jaune, vert, jaune),
+	Jeton.new(jaune, bleu, jaune),
+	Jeton.new(jaune, violet, jaune),
+	Jeton.new(jaune, rouge, jaune),
+	Jeton.new(jaune, vert, bleu),
+	Jeton.new(jaune, vert, violet),
+	Jeton.new(jaune, vert, rouge),
+	Jeton.new(jaune, bleu, vert),
+	Jeton.new(jaune, bleu, violet),
+	Jeton.new(jaune, bleu, rouge),
+	Jeton.new(jaune, violet, vert),
+	Jeton.new(jaune, violet, bleu),
+	Jeton.new(jaune, violet, rouge),
+	Jeton.new(jaune, rouge, vert),
+	Jeton.new(jaune, rouge, bleu),
+	Jeton.new(jaune, rouge, violet),
 
-[vert, vert, vert, true, sens[0]],
-[vert, vert, jaune, true, sens[0]],
-[vert, vert, bleu, true, sens[0]],
-[vert, vert, violet, true, sens[0]],
-[vert, vert, rouge, true, sens[0]],
+	Jeton.new(vert, vert, vert),
+	Jeton.new(vert, vert, jaune),
+	Jeton.new(vert, vert, bleu),
+	Jeton.new(vert, vert, violet),
+	Jeton.new(vert, vert, rouge),
 
-[vert, jaune, vert, true, sens[0]],
-[vert, bleu, vert, true, sens[0]],
-[vert, violet, vert, true, sens[0]],
-[vert, rouge, vert, true, sens[0]],
-[vert, jaune, bleu, true, sens[0]],
-[vert, jaune, violet, true, sens[0]],
-[vert, jaune, rouge, true, sens[0]],
-[vert, bleu, violet, true, sens[0]],
-[vert, bleu, rouge, true, sens[0]],
-[vert, violet, bleu,true, sens[0]],
-[vert, violet, rouge, true, sens[0]],
-[vert, rouge, bleu, true, sens[0]],
-[vert, rouge, violet, true, sens[0]],
+	Jeton.new(vert, jaune, vert),
+	Jeton.new(vert, bleu, vert),
+	Jeton.new(vert, violet, vert),
+	Jeton.new(vert, rouge, vert),
+	Jeton.new(vert, jaune, bleu),
+	Jeton.new(vert, jaune, violet),
+	Jeton.new(vert, jaune, rouge),
+	Jeton.new(vert, bleu, violet),
+	Jeton.new(vert, bleu, rouge),
+	Jeton.new(vert, violet, bleu),
+	Jeton.new(vert, violet, rouge),
+	Jeton.new(vert, rouge, bleu),
+	Jeton.new(vert, rouge, violet),
 
-[bleu, bleu, bleu, true, sens[0]],
-[bleu, bleu, jaune, true, sens[0]],
-[bleu, bleu, vert, true, sens[0]],
-[bleu, bleu, violet, true, sens[0]],
-[bleu, bleu, rouge, true, sens[0]],
-[bleu, jaune, bleu, true, sens[0]],
-[bleu, vert, bleu, true, sens[0]],
-[bleu, violet, bleu, true, sens[0]],
-[bleu, rouge, bleu, true, sens[0]],
-[bleu, jaune, violet, true, sens[0]],
-[bleu, jaune, rouge, true, sens[0]],
-[bleu, vert, violet, true, sens[0]],
-[bleu, vert, rouge, true, sens[0]],
-[bleu, violet, rouge, true, sens[0]],
-[bleu, rouge, violet, true, sens[0]],
+	Jeton.new(bleu, bleu, bleu),
+	Jeton.new(bleu, bleu, jaune),
+	Jeton.new(bleu, bleu, vert),
+	Jeton.new(bleu, bleu, violet),
+	Jeton.new(bleu, bleu, rouge),
+	Jeton.new(bleu, jaune, bleu),
+	Jeton.new(bleu, vert, bleu),
+	Jeton.new(bleu, violet, bleu),
+	Jeton.new(bleu, rouge, bleu),
+	Jeton.new(bleu, jaune, violet),
+	Jeton.new(bleu, jaune, rouge),
+	Jeton.new(bleu, vert, violet),
+	Jeton.new(bleu, vert, rouge),
+	Jeton.new(bleu, violet, rouge),
+	Jeton.new(bleu, rouge, violet),
 
-[violet, violet, violet, true, sens[0]],
-[violet, violet, jaune, true, sens[0]],
-[violet, violet, vert, true, sens[0]],
-[violet, violet, bleu, true, sens[0]],
-[violet, violet, rouge, true, sens[0]],
-[violet, jaune, violet, true, sens[0]],
-[violet, vert, violet, true, sens[0]],
-[violet, bleu, violet, true, sens[0]],
-[violet, rouge, violet, true, sens[0]],
-[violet, jaune, rouge, true, sens[0]],
-[violet, vert, rouge, true, sens[0]],
-[violet, bleu, rouge, true, sens[0]],
+	Jeton.new(violet, violet, violet),
+	Jeton.new(violet, violet, jaune),
+	Jeton.new(violet, violet, vert),
+	Jeton.new(violet, violet, bleu),
+	Jeton.new(violet, violet, rouge),
+	Jeton.new(violet, jaune, violet),
+	Jeton.new(violet, vert, violet),
+	Jeton.new(violet, bleu, violet),
+	Jeton.new(violet, rouge, violet),
+	Jeton.new(violet, jaune, rouge),
+	Jeton.new(violet, vert, rouge),
+	Jeton.new(violet, bleu, rouge),
 
-[rouge, rouge, rouge, true, sens[0]],
-[rouge, rouge, jaune, true, sens[0]],
-[rouge, rouge, vert, true, sens[0]],
-[rouge, rouge, bleu, true, sens[0]],
-[rouge, rouge, violet, true, sens[0]],
-[rouge, jaune, rouge, true, sens[0]],
-[rouge, vert, rouge, true, sens[0]],
-[rouge, bleu, rouge, true, sens[0]],
-[rouge, violet, rouge, true, sens[0]],
+	Jeton.new(rouge, rouge, rouge),
+	Jeton.new(rouge, rouge, jaune),
+	Jeton.new(rouge, rouge, vert),
+	Jeton.new(rouge, rouge, bleu),
+	Jeton.new(rouge, rouge, violet),
+	Jeton.new(rouge, jaune, rouge),
+	Jeton.new(rouge, vert, rouge),
+	Jeton.new(rouge, bleu, rouge),
+	Jeton.new(rouge, violet, rouge),
 
-[jaune, joker, jaune, true, sens[0]],
-[vert, joker, vert, true, sens[0]],
-[bleu, joker, bleu, true, sens[0]],
-[violet, joker, violet, true, sens[0]],
-[rouge, joker, rouge, true, sens[0]]]
+	Jeton.new(jaune, joker, jaune),
+	Jeton.new(vert, joker, vert),
+	Jeton.new(bleu, joker, bleu),
+	Jeton.new(violet, joker, violet),
+	Jeton.new(rouge, joker, rouge)
+]
 
 
 
@@ -126,9 +130,10 @@ func _ready():
 	random.randomize()
 	pos_plateau()
 	pioche_jetons()
-	modifie_plateau(163, list_couleurs_jetons[hazard][0])
-	modifie_plateau(182, list_couleurs_jetons[hazard][1])
-	modifie_plateau(201, list_couleurs_jetons[hazard][2])
+	var jeton_hazard:Jeton = list_couleurs_jetons[hazard]
+	modifie_plateau(163, jeton_hazard.color0)
+	modifie_plateau(182, jeton_hazard.color1)
+	modifie_plateau(201, jeton_hazard.color2)
 	
 	var child_jeton = get_child(363)
 	#print("Enfant à l'index ", " : ", child_jeton.name)
@@ -136,8 +141,8 @@ func _ready():
 	
 	Globals.list_affiche_position_porte_jetons.clear()
 	affiche_nb_jetons_restant()
-	var test_acceuil = scene_acceuil.instance()
-	add_child(test_acceuil)
+	#var test_acceuil = scene_acceuil.instance()
+	#add_child(test_acceuil)
 	
 func modifie_plateau(numero, couleur):
 	
@@ -203,14 +208,15 @@ func pioche_jetons():
 	
 	
 	hazard = random.randi_range(0, 79)
-	while list_couleurs_jetons[hazard][3] == false:
+	var jeton_hazard:Jeton = list_couleurs_jetons[hazard]
+	while jeton_hazard.is_disponible == false:
 		hazard = random.randi_range(0, 79)
-	list_couleurs_jetons[hazard][3] = false
+	jeton_hazard.is_disponible = false
 	var instance_jeton = scene_jeton.instance()
 	
-	instance_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture = list_couleurs_jetons[hazard][0]
-	instance_jeton.get_node("Area2D/jetons/Spritemilieu").texture = list_couleurs_jetons[hazard][1]
-	instance_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture = list_couleurs_jetons[hazard][2]
+	instance_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture = jeton_hazard.color0
+	instance_jeton.get_node("Area2D/jetons/Spritemilieu").texture = jeton_hazard.color1
+	instance_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture = jeton_hazard.color2
 	
 	var rech = instance_jeton.get_child(0)
 	jeton_child = rech.get_instance_id()
@@ -226,8 +232,9 @@ func pioche_jetons():
 func affiche_nb_jetons_restant():
 	
 	var count = 0
-	for sublist in list_couleurs_jetons:
-		if sublist.size() >= 4 and sublist[3] == true:
+	for jeton in list_couleurs_jetons:
+		var jtn:Jeton = jeton
+		if jtn.jeton_id != null and jtn.is_disponible:
 			count += 1
 			
 	$TextureRect2/Button_pioche/RichTextLabel.text = "PIOCHE = %d" % count
@@ -238,8 +245,8 @@ func affiche_nb_jetons_restant():
 func child_pioche_jetons():
 	for d in nb_jetons_pioche:
 		pioche_jetons()
-		
-		list_couleurs_jetons[hazard].append(jeton_child)
+		var jeton_hazard:Jeton = list_couleurs_jetons[hazard]
+		jeton_hazard.jeton_id = jeton_child
 		
 		Globals.list_affiche_position_porte_jetons.insert(0, list_couleurs_jetons[hazard])
 		Globals.affiche_jetons_piocher()
@@ -322,7 +329,7 @@ func _on_Button_tourne_button_down():
 	
 	elif len(Globals.list_affiche_position_porte_jetons) >= 0:
 		
-		var target_id = Globals.list_affiche_position_porte_jetons[0][5]  # Remplace par ton ID de nœud
+		var target_id = Globals.list_affiche_position_porte_jetons[0].jeton_id  # Remplace par ton ID de nœud
 		var node = find_node_by_instance_id(get_tree().root, target_id)
 		#print("target" + str(target_id))
 		if node:
@@ -330,13 +337,13 @@ func _on_Button_tourne_button_down():
 			node.rotation_degrees += 90
 			#child_jeton.get_node("Area2D").rotation_degrees += 90
 			
-			var actuel =  sens.find(Globals.list_affiche_position_porte_jetons[0][4])
+			var actuel =  sens.find(Globals.list_affiche_position_porte_jetons[0].sens)
 			
 			if actuel < 3:
 				nouveau = actuel + 1
 			else:
 				nouveau = 0
-			Globals.list_affiche_position_porte_jetons[0][4] = sens[nouveau]
+			Globals.list_affiche_position_porte_jetons[0].sens = sens[nouveau]
 			#print(Globals.list_affiche_position_porte_jetons[0][4])
 			#print("tourn_n_child" + str(Globals.list_affiche_position_porte_jetons[0][5]))
 			#print("list " + str(Globals.list_affiche_position_porte_jetons))
@@ -351,27 +358,4 @@ func find_node_by_instance_id(node, target_id):
 			return result
 
 
-func _on_helperjeu_pressed():
-	var acceuil = find_node_recursive(get_tree().root, "acceuil")
-	if acceuil:
-		print("Le nœud 'acceuil' trouvé : ", acceuil.name)
-		if acceuil is TextureRect:
-			acceuil.visible = true
-
-			print("Le TextureRect 'acceuil' est maintenant invisible.")
-		else:
-			print("Le nœud 'acceuil' trouvé n'est pas un TextureRect.")
-	else:
-		print("Le nœud 'acceuil' n'a pas été trouvé.")
-
-func find_node_recursive(parent, name):
-	if parent.name == name:
-		return parent
-
-	for child in parent.get_children():
-		var result = find_node_recursive(child, name)
-		if result != null:
-			return result
-
-	return null
 

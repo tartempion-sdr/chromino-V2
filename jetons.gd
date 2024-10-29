@@ -70,17 +70,17 @@ func _on_jetons_area_entered(area):
 				#print("dessousjeton " + str(list_pos_plateau_remplace_blanc))
 					
 					#print("collision blanc " + str(collision_count))
-				for a in Globals.list_affiche_position_porte_jetons:
-					
-					if Globals.id_child_node2d_jeton == a[5]:
+				for jtn in Globals.list_affiche_position_porte_jetons:
+					var jeton:Jeton = jtn
+					if Globals.id_child_node2d_jeton == jeton.jeton_id:
 						
-						if str(a[4]) == "verticale-h" or str(a[4]) ==  "horizontale-g":
+						if jeton.sens == "verticale-h" or jeton.sens ==  "horizontale-g":
 							Globals.list_couleur_bouge_jeton.clear()
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path())
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu").texture.get_path())
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path())
 							
-						if str(a[4]) == "verticale-b" or str(a[4]) ==  "horizontale-d":
+						if jeton.sens == "verticale-b" or jeton.sens ==  "horizontale-d":
 							Globals.list_couleur_bouge_jeton.clear()
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path())
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu").texture.get_path())
@@ -119,10 +119,11 @@ func _on_verifieautour_area_exited(area_autour):
 	
 func compare_autour():
 	print(liste_colision_autour)
-	for a in Globals.list_affiche_position_porte_jetons:
-		if Globals.id_child_node2d_jeton == a[5]:
+	for jtn in Globals.list_affiche_position_porte_jetons:
+		var jeton:Jeton = jtn
+		if Globals.id_child_node2d_jeton == jeton.jeton_id:
 			
-			if str(a[4]) == "verticale-h" or str(a[4]) == "verticale-b":
+			if jeton.sens == "verticale-h" or jeton.sens == "verticale-b":
 				var similaire = true
 				path_similaire = 0
 				#print(Globals.list_couleur_bouge_jeton)
@@ -249,7 +250,7 @@ func compare_autour():
 						remplace_couleurs()
 						path_similaire = 0
 					
-			if str(a[4]) == "horizontale-d" or str(a[4]) == "horizontale-g":
+			if jeton.sens == "horizontale-d" or jeton.sens == "horizontale-g":
 				var similaire = true
 				path_similaire = 0
 				#print(Globals.list_couleur_bouge_jeton)
@@ -400,10 +401,11 @@ func supprime_jeton_porte_jeton():
 	#print(Globals.list_affiche_position_porte_jetons)
 
 	
-	for a in Globals.list_affiche_position_porte_jetons:
-		if int(Globals.id_child_node2d_jeton) == a[5]:
+	for jtn in Globals.list_affiche_position_porte_jetons:
+		var jeton:Jeton = jtn
+		if int(Globals.id_child_node2d_jeton) == jeton.jeton_id:
 			
-			Globals.list_affiche_position_porte_jetons.erase(a)
+			Globals.list_affiche_position_porte_jetons.erase(jeton)
 			#print("longeur list apres suppr " + str(len(Globals.list_affiche_position_porte_jetons)))
 			#print(Globals.list_affiche_position_porte_jetons)
 

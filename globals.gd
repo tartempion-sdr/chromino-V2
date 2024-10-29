@@ -20,7 +20,7 @@ func affiche_jetons_piocher():
 
 	
 	for element in list_affiche_position_porte_jetons:
-		var target_id = element[5]  # Remplace par ton ID de nœud
+		var target_id = element.jeton_id  # Remplace par ton ID de nœud
 		var node = find_node_by_instance_id(get_tree().root, target_id)
 		
 		if node:
