@@ -9,6 +9,7 @@ extents = Vector2( 4.75866, 5.27008 )
 "plateau",
 ]]
 position = Vector2( 30, 30 )
+z_index = 1
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

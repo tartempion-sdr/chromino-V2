@@ -13,6 +13,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=11]
 
 [node name="Node2D" type="Node2D"]
+z_index = 1
 script = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -25,7 +26,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Area2D"]
 margin_left = -1.0
 margin_top = 460.0
 margin_right = 1024.0
@@ -37,7 +41,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button_pioche" type="TextureButton" parent="TextureRect2"]
+[node name="Button_pioche" type="TextureButton" parent="Area2D/TextureRect2"]
 margin_left = 158.563
 margin_top = 49.7764
 margin_right = 198.563
@@ -49,7 +53,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect2/Button_pioche"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Area2D/TextureRect2/Button_pioche"]
 margin_left = -151.387
 margin_top = -37.6838
 margin_right = -5.38742
@@ -59,7 +63,7 @@ tab_size = 24
 text = "PIOCHE  ="
 fit_content_height = true
 
-[node name="textejoueur1" type="RichTextLabel" parent="TextureRect2/Button_pioche"]
+[node name="textejoueur1" type="RichTextLabel" parent="Area2D/TextureRect2/Button_pioche"]
 margin_left = -150.0
 margin_top = -19.0
 margin_right = -5.0
@@ -70,7 +74,7 @@ Jetons =
 Victoire ="
 scroll_active = false
 
-[node name="textejoueurIA" type="RichTextLabel" parent="TextureRect2/Button_pioche"]
+[node name="textejoueurIA" type="RichTextLabel" parent="Area2D/TextureRect2/Button_pioche"]
 margin_left = -151.765
 margin_top = 31.8316
 margin_right = -59.7653
@@ -81,7 +85,7 @@ Jetons =
 Victoire ="
 scroll_active = false
 
-[node name="Button_gauche2" type="TextureButton" parent="TextureRect2"]
+[node name="Button_gauche2" type="TextureButton" parent="Area2D/TextureRect2"]
 margin_left = 200.916
 margin_top = 53.1914
 margin_right = 240.916
@@ -92,7 +96,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button_droite" type="TextureButton" parent="TextureRect2"]
+[node name="Button_droite" type="TextureButton" parent="Area2D/TextureRect2"]
 margin_left = 975.733
 margin_top = 60.8988
 margin_right = 1015.73
@@ -104,7 +108,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button_tourne" type="TextureButton" parent="TextureRect2"]
+[node name="Button_tourne" type="TextureButton" parent="Area2D/TextureRect2"]
 margin_left = 159.151
 margin_top = 94.9082
 margin_right = 199.151
@@ -115,7 +119,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="aide" type="TextureButton" parent="TextureRect2"]
+[node name="aide" type="TextureButton" parent="Area2D/TextureRect2"]
 margin_left = 964.379
 margin_top = 8.19928
 margin_right = 1018.38
@@ -127,7 +131,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="acceuil" type="TextureButton" parent="TextureRect2"]
+[node name="acceuil" type="TextureButton" parent="Area2D/TextureRect2"]
 margin_left = 160.0
 margin_top = 5.0
 margin_right = 200.0
@@ -139,9 +143,9 @@ script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_down" from="TextureRect2/Button_pioche" to="." method="_on_Button_pioche_button_down"]
-[connection signal="button_down" from="TextureRect2/Button_gauche2" to="." method="_on_Button_gauche_button_down"]
-[connection signal="button_down" from="TextureRect2/Button_droite" to="." method="_on_Button_droite_button_down"]
-[connection signal="button_down" from="TextureRect2/Button_tourne" to="." method="_on_Button_tourne_button_down"]
-[connection signal="pressed" from="TextureRect2/aide" to="TextureRect2/aide" method="_on_aide_pressed"]
-[connection signal="pressed" from="TextureRect2/acceuil" to="TextureRect2/acceuil" method="_on_acceuil_pressed"]
+[connection signal="button_down" from="Area2D/TextureRect2/Button_pioche" to="." method="_on_Button_pioche_button_down"]
+[connection signal="button_down" from="Area2D/TextureRect2/Button_gauche2" to="." method="_on_Button_gauche_button_down"]
+[connection signal="button_down" from="Area2D/TextureRect2/Button_droite" to="." method="_on_Button_droite_button_down"]
+[connection signal="button_down" from="Area2D/TextureRect2/Button_tourne" to="." method="_on_Button_tourne_button_down"]
+[connection signal="pressed" from="Area2D/TextureRect2/aide" to="Area2D/TextureRect2/aide" method="_on_aide_pressed"]
+[connection signal="pressed" from="Area2D/TextureRect2/acceuil" to="Area2D/TextureRect2/acceuil" method="_on_acceuil_pressed"]

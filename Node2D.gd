@@ -237,10 +237,10 @@ func affiche_nb_jetons_restant():
 		if jtn.jeton_id != null and jtn.is_disponible:
 			count += 1
 			
-	$TextureRect2/Button_pioche/RichTextLabel.text = "PIOCHE = %d" % count
+	$Area2D/TextureRect2/Button_pioche/RichTextLabel.text = "PIOCHE = %d" % count
 	var countjetonsjoueur1 = int(len(Globals.list_affiche_position_porte_jetons))
-	$TextureRect2/Button_pioche/textejoueur1.text = "Joueur 1 = %d" % countjetonsjoueur1
-	$TextureRect2/Button_pioche/textejoueurIA.text = "Joueur IA = "
+	$Area2D/TextureRect2/Button_pioche/textejoueur1.text = "Joueur 1 = %d" % countjetonsjoueur1
+	$Area2D/TextureRect2/Button_pioche/textejoueurIA.text = "Joueur IA = "
 	
 func child_pioche_jetons():
 	for d in nb_jetons_pioche:
