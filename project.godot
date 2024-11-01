@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "ColisionResult",
+"language": "GDScript",
+"path": "res://models/ColisionResult.gd"
+}, {
+"base": "Node",
 "class": "Colors",
 "language": "GDScript",
 "path": "res://assets/colors/Colors.gd"
@@ -35,6 +40,7 @@ _global_script_classes=[ {
 "path": "res://usecases/PiocheUseCase.gd"
 } ]
 _global_script_class_icons={
+"ColisionResult": "",
 "Colors": "",
 "Coordinator": "",
 "Ecran": "",

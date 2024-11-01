@@ -129,125 +129,49 @@ func compare_autour():
 			if jeton.sens == "horizontale-d" or jeton.sens == "horizontale-g":
 				check_colision_horizontal()
 
+func check_colision_v(autour: int, jeton_index: int) -> bool:
+	var similaire = true
+	var info = str(liste_colision_autour[autour]) + " < " +str(autour + 1) + "* > "
+	#print(Globals.list_couleur_bouge_jeton)
+	if (liste_colision_autour[autour] == Globals.list_couleur_bouge_jeton[jeton_index] or Globals.list_couleur_bouge_jeton[jeton_index] == str(joker)) and liste_colision_autour[autour] != str(blanc):
+		path_similaire += 1
+		print(info +  str(Globals.list_couleur_bouge_jeton[jeton_index]))
+		
+	elif liste_colision_autour[autour] == str(blanc):
+		print(info + str(blanc))
+	
+	elif  liste_colision_autour[autour] == str(joker):
+		path_similaire += 1
+		print(info + str(Globals.list_couleur_bouge_jeton[jeton_index]))
+	
+	else:
+		similaire = false
+	
+	return similaire
+
 func check_colision_vertical():
 	var similaire = true
 	path_similaire = 0
-	#print(Globals.list_couleur_bouge_jeton)
-	if (liste_colision_autour[0] == Globals.list_couleur_bouge_jeton[0] or Globals.list_couleur_bouge_jeton[0] == str(joker)) and liste_colision_autour[0] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[0]) + " < 1* > " +  str(Globals.list_couleur_bouge_jeton[0]))
-		
-	elif liste_colision_autour[0] == str(blanc):
-		print(str(liste_colision_autour[0]) + " < 1* > " + str(blanc))
 	
-	elif  liste_colision_autour[0] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[0]) + " < 1* > " + str(Globals.list_couleur_bouge_jeton[0]))
-	
-	else:
+	if !check_colision_v(0, 0):
 		similaire = false
-		
-	if (liste_colision_autour[1] == Globals.list_couleur_bouge_jeton[0] or Globals.list_couleur_bouge_jeton[0] == str(joker)) and liste_colision_autour[1] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[1]) + " < 2* > " +  str(Globals.list_couleur_bouge_jeton[0]))
-	
-	elif liste_colision_autour[1] == str(blanc):
-		print(str(liste_colision_autour[1]) + " < 2* > " + str(blanc))
-	
-	elif  liste_colision_autour[1] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[1]) + " < 2* > " + str(Globals.list_couleur_bouge_jeton[0]))
-	
-	else:
+	if !check_colision_v(1, 0):
 		similaire = false
-	
-	if (liste_colision_autour[2] == Globals.list_couleur_bouge_jeton[0] or Globals.list_couleur_bouge_jeton[0] == str(joker)) and liste_colision_autour[2] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[2]) + " < 3* > " +  str(Globals.list_couleur_bouge_jeton[0]))
-	
-	elif liste_colision_autour[2] == str(blanc):
-		print(str(liste_colision_autour[2]) + " < 3* > " + str(blanc))
+	if !check_colision_v(2, 0):
+		similaire = false
+	if !check_colision_v(3, 1):
+		similaire = false
+	if !check_colision_v(4, 1):
+		similaire = false
+	if !check_colision_v(5, 2):
+		similaire = false
+	if !check_colision_v(6, 2):
+		similaire = false
+	if !check_colision_v(7, 2):
+		similaire = false
 
-	elif  liste_colision_autour[2] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[2]) + " < 3* > " + str(Globals.list_couleur_bouge_jeton[0]))
-
-	else:
-		similaire = false
-	
-	if (liste_colision_autour[3] == Globals.list_couleur_bouge_jeton[1] or Globals.list_couleur_bouge_jeton[1] == str(joker)) and liste_colision_autour[3] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[3]) + " < 4* > " +  str(Globals.list_couleur_bouge_jeton[1]))
-	
-	elif liste_colision_autour[3] == str(blanc):
-		print(str(liste_colision_autour[3]) + " < 4* > " + str(blanc))
-	
-	elif  liste_colision_autour[3] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[3]) + " < 4* > " + str(Globals.list_couleur_bouge_jeton[1]))
-	
-	else:
-		similaire = false
-	
-	if (liste_colision_autour[4] == Globals.list_couleur_bouge_jeton[1] or Globals.list_couleur_bouge_jeton[1] == str(joker)) and liste_colision_autour[4] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[4]) + " < 5* > " +  str(Globals.list_couleur_bouge_jeton[1]))
-	
-	elif liste_colision_autour[4] == str(blanc):
-		print(str(liste_colision_autour[4]) + " < 5* > " + str(blanc))
-	
-	elif  liste_colision_autour[4] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[4]) + " < 5* > " + str(Globals.list_couleur_bouge_jeton[1]))
-	
-	else:
-		similaire = false
-	
-	if (liste_colision_autour[5] == Globals.list_couleur_bouge_jeton[2] or Globals.list_couleur_bouge_jeton[2] == str(joker)) and liste_colision_autour[5] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[5]) + " < 6* > " +  str(Globals.list_couleur_bouge_jeton[2]))
-	
-	elif liste_colision_autour[5] == str(blanc):
-		print(str(liste_colision_autour[5]) + " < 6* > " + str(blanc))
-	
-	elif  liste_colision_autour[5] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[5]) + " < 6* > " + str(Globals.list_couleur_bouge_jeton[2]))
-	
-	else:
-		similaire = false
-	
-	if (liste_colision_autour[6] == Globals.list_couleur_bouge_jeton[2] or Globals.list_couleur_bouge_jeton[2] == str(joker)) and liste_colision_autour[6] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[6]) + " < 7* > " +  str(Globals.list_couleur_bouge_jeton[2]))
-	
-	elif liste_colision_autour[6] == str(blanc):
-		print(str(liste_colision_autour[6]) + " < 7* > " + str(blanc))
-	
-	elif  liste_colision_autour[6] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[6]) + " < 7* > " + str(Globals.list_couleur_bouge_jeton[2]))
-	
-	else:
-		similaire = false
-	
-	if (liste_colision_autour[7] == Globals.list_couleur_bouge_jeton[2] or Globals.list_couleur_bouge_jeton[2] == str(joker)) and liste_colision_autour[7] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[7]) + " < 8* > " + str(Globals.list_couleur_bouge_jeton[2]))
-	
-	elif liste_colision_autour[7] == str(blanc):
-		print(str(liste_colision_autour[7]) + " < 8* > " + str(blanc))
-		
-	elif  liste_colision_autour[7] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[7]) + " < 8* > " + str(Globals.list_couleur_bouge_jeton[2]))
-	
-	else:
-		similaire = false
-	
 	if similaire :
 			print(str(path_similaire) + " couleurs similaire")
-			
 	else:
 		print("interdit")
 		
@@ -256,125 +180,47 @@ func check_colision_vertical():
 			remplace_couleurs()
 			path_similaire = 0
 	
+func check_colision_h(autour: int, jeton1: int, jeton2: int) -> bool:
+	var similaire = true
+	var info = str(liste_colision_autour[autour]) + " < " +str(autour + 1) + "* > "
+	#print(Globals.list_couleur_bouge_jeton)
+	if (liste_colision_autour[autour] == Globals.list_couleur_bouge_jeton[jeton1] or Globals.list_couleur_bouge_jeton[jeton2] == str(joker)) and liste_colision_autour[autour] != str(blanc):
+		path_similaire += 1
+		print(info +  str(Globals.list_couleur_bouge_jeton[jeton1]))
+		
+	elif liste_colision_autour[autour] == str(blanc):
+		print(info + str(blanc))
+	
+	elif  liste_colision_autour[autour] == str(joker):
+		path_similaire += 1
+		print(info + str(Globals.list_couleur_bouge_jeton[jeton1]))
+	
+	else:
+		similaire = false
+	return similaire
+
 func check_colision_horizontal():
 	var similaire = true
 	path_similaire = 0
-	#print(Globals.list_couleur_bouge_jeton)
-	if (liste_colision_autour[0] == Globals.list_couleur_bouge_jeton[0] or Globals.list_couleur_bouge_jeton[0] == str(joker)) and liste_colision_autour[0] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[0]) + " < 1* > " +  str(Globals.list_couleur_bouge_jeton[0]))
-		
-	elif liste_colision_autour[0] == str(blanc):
-		print(str(liste_colision_autour[0]) + " < 1* > " + str(blanc))
-	
-	elif  liste_colision_autour[0] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[0]) + " < 1* > " + str(Globals.list_couleur_bouge_jeton[0]))
-	
-	else:
+	if !check_colision_h(0,0,0):
 		similaire = false
-		
-	if (liste_colision_autour[1] == Globals.list_couleur_bouge_jeton[1] or Globals.list_couleur_bouge_jeton[0] == str(joker)) and liste_colision_autour[1] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[1]) + " < 2* > " +  str(Globals.list_couleur_bouge_jeton[1]))
-	
-	elif liste_colision_autour[1] == str(blanc):
-		print(str(liste_colision_autour[1]) + " < 2* > " + str(blanc))
-	
-	elif  liste_colision_autour[1] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[1]) + " < 2* > " + str(Globals.list_couleur_bouge_jeton[1]))
-	
-	else:
+	if !check_colision_h(1,1,0):
 		similaire = false
-	
-	if (liste_colision_autour[2] == Globals.list_couleur_bouge_jeton[2] or Globals.list_couleur_bouge_jeton[0] == str(joker)) and liste_colision_autour[2] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[2]) + " < 3* > " +  str(Globals.list_couleur_bouge_jeton[2]))
-	
-	elif liste_colision_autour[2] == str(blanc):
-		print(str(liste_colision_autour[2]) + " < 3* > " + str(blanc))
+	if !check_colision_h(2,2,0):
+		similaire = false
+	if !check_colision_h(3,0,1):
+		similaire = false
+	if !check_colision_h(4,2,1):
+		similaire = false
+	if !check_colision_h(5,0,2):
+		similaire = false
+	if !check_colision_h(6,1,2):
+		similaire = false
+	if !check_colision_h(7,2,2):
+		similaire = false
 
-	elif  liste_colision_autour[2] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[2]) + " < 3* > " + str(Globals.list_couleur_bouge_jeton[2]))
-
-	else:
-		similaire = false
-	
-	if (liste_colision_autour[3] == Globals.list_couleur_bouge_jeton[0] or Globals.list_couleur_bouge_jeton[1] == str(joker)) and liste_colision_autour[3] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[3]) + " < 4* > " +  str(Globals.list_couleur_bouge_jeton[0]))
-	
-	elif liste_colision_autour[3] == str(blanc):
-		print(str(liste_colision_autour[3]) + " < 4* > " + str(blanc))
-	
-	elif  liste_colision_autour[3] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[3]) + " < 4* > " + str(Globals.list_couleur_bouge_jeton[0]))
-	
-	else:
-		similaire = false
-	
-	if (liste_colision_autour[4] == Globals.list_couleur_bouge_jeton[2] or Globals.list_couleur_bouge_jeton[1] == str(joker)) and liste_colision_autour[4] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[4]) + " < 5* > " +  str(Globals.list_couleur_bouge_jeton[2]))
-	
-	elif liste_colision_autour[4] == str(blanc):
-		print(str(liste_colision_autour[4]) + " < 5* > " + str(blanc))
-	
-	elif  liste_colision_autour[4] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[4]) + " < 5* > " + str(Globals.list_couleur_bouge_jeton[2]))
-	
-	else:
-		similaire = false
-	
-	if (liste_colision_autour[5] == Globals.list_couleur_bouge_jeton[0] or Globals.list_couleur_bouge_jeton[2] == str(joker)) and liste_colision_autour[5] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[5]) + " < 6* > " +  str(Globals.list_couleur_bouge_jeton[0]))
-	
-	elif liste_colision_autour[5] == str(blanc):
-		print(str(liste_colision_autour[5]) + " < 6* > " + str(blanc))
-	
-	elif  liste_colision_autour[5] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[5]) + " < 6* > " + str(Globals.list_couleur_bouge_jeton[0]))
-	
-	else:
-		similaire = false
-	
-	if (liste_colision_autour[6] == Globals.list_couleur_bouge_jeton[1] or Globals.list_couleur_bouge_jeton[2] == str(joker)) and liste_colision_autour[6] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[6]) + " < 7* > " +  str(Globals.list_couleur_bouge_jeton[1]))
-	
-	elif liste_colision_autour[6] == str(blanc):
-		print(str(liste_colision_autour[6]) + " < 7* > " + str(blanc))
-	
-	elif  liste_colision_autour[6] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[6]) + " < 7* > " + str(Globals.list_couleur_bouge_jeton[1]))
-	
-	else:
-		similaire = false
-	
-	if (liste_colision_autour[7] == Globals.list_couleur_bouge_jeton[2] or Globals.list_couleur_bouge_jeton[2] == str(joker)) and liste_colision_autour[7] != str(blanc):
-		path_similaire += 1
-		print(str(liste_colision_autour[7]) + " < 8* > " + str(Globals.list_couleur_bouge_jeton[2]))
-	
-	elif liste_colision_autour[7] == str(blanc):
-		print(str(liste_colision_autour[7]) + " < 8* > " + str(blanc))
-		
-	elif  liste_colision_autour[7] == str(joker):
-		path_similaire += 1
-		print(str(liste_colision_autour[7]) + " < 8* > " + str(Globals.list_couleur_bouge_jeton[2]))
-	
-	else:
-		similaire = false
-	
 	if similaire :
 			print(str(path_similaire) + " couleurs similaire")
-			
 	else:
 		print("interdit")
 	
