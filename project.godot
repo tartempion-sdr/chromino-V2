@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "Jeton",
 "language": "GDScript",
 "path": "res://models/Jeton.gd"
+}, {
+"base": "Node",
+"class": "PiocheUseCase",
+"language": "GDScript",
+"path": "res://usecases/PiocheUseCase.gd"
 } ]
 _global_script_class_icons={
 "Colors": "",
 "Coordinator": "",
 "Ecran": "",
-"Jeton": ""
+"Jeton": "",
+"PiocheUseCase": ""
 }
 
 [application]
