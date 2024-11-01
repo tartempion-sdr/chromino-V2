@@ -87,22 +87,15 @@ func _on_jetons_area_entered(area):
 
 
 func _on_jetons_area_exited(area):
-	
 	list_pos_plateau_remplace_blanc.clear()
 	jeton_blanc_3 = false
 
 func _on_verifieautour_area_entered(area_autour):
-		
 	if area_autour.is_in_group("plateau"):
-		var node2d_jeton_autour = self  # Le `Node2D` du jeton
 		var node2d_plateau = area_autour  # Le `Node2D` du plateau
-		
-		#print(node2d_plateau.get_child(0).texture.get_path())
 		liste_colision_autour.append(node2d_plateau.get_child(0).texture.get_path())
-		if len(liste_colision_autour) == 8:
-			if jeton_blanc_3 :
-				
-				compare_autour()
+		if liste_colision_autour.size() == 8 && jeton_blanc_3:
+			compare_autour()
 	
 
 func _on_verifieautour_area_exited(area_autour):
@@ -116,10 +109,10 @@ func compare_autour():
 		var jeton:Jeton = jtn
 		if Globals.id_child_node2d_jeton == jeton.jeton_id:
 			
-			if jeton.sens == "verticale-h" or jeton.sens == "verticale-b":
+			if jeton.is_vertical():
 				check_colision_vertical()
 					
-			if jeton.sens == "horizontale-d" or jeton.sens == "horizontale-g":
+			if jeton.is_horizontal():
 				check_colision_horizontal()
 
 func check_colision_v(autour: int, jeton_index: int) -> bool:
@@ -223,16 +216,12 @@ func check_colision_horizontal():
 			path_similaire = 0
 
 func remplace_couleurs():
-	var childc
 	print("hurra joueur1 !")
 	#print(list_pos_plateau_remplace_blanc)
 	
-	
 	for a in range(0, 3):
-		#print(a)
-		#(list_pos_plateau_remplace_blanc[a].texture)
 		list_pos_plateau_remplace_blanc[a].texture = load(Globals.list_couleur_bouge_jeton[a])
-				
+	
 	Globals.au_joueur1_de_jouer = false
 
 	Globals.rend_jeton_invisible()
@@ -241,16 +230,8 @@ func remplace_couleurs():
 	
 	
 func supprime_jeton_porte_jeton():
-	#print("jeton selectioner " + str(Globals.id_child_node2d_jeton))
-	#print("longeur list " + str(len(Globals.list_affiche_position_porte_jetons)))
-	#print(Globals.list_affiche_position_porte_jetons)
-
-	
 	for jtn in Globals.list_affiche_position_porte_jetons:
 		var jeton:Jeton = jtn
 		if int(Globals.id_child_node2d_jeton) == jeton.jeton_id:
-			
 			Globals.list_affiche_position_porte_jetons.erase(jeton)
-			#print("longeur list apres suppr " + str(len(Globals.list_affiche_position_porte_jetons)))
-			#print(Globals.list_affiche_position_porte_jetons)
 

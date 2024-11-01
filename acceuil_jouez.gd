@@ -7,4 +7,3 @@ func _ready():
 func _on_jouez_pressed():
 	print("Fermeture de la scène acceuil")
 	Coordinator.new().nouvelle_partie(self)
-	
