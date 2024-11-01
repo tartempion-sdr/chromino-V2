@@ -107,7 +107,6 @@ func souris_pos_plateau():
 
 func pioche_jetons():
 	var jeton_hazard:Jeton = pioche.pioche_jeton()
-	jeton_hazard.is_disponible = false
 	var instance_jeton = scene_jeton.instance()
 	
 	instance_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture = jeton_hazard.color0
@@ -117,8 +116,6 @@ func pioche_jetons():
 	var rech = instance_jeton.get_child(0)
 	jeton_hazard.jeton_id = rech.get_instance_id()
 	add_child(instance_jeton)
-	#print("id jeton " + str(jeton_child))
-	#print(instance_jeton.name)
 	Globals.affiche_jetons_piocher()
 
 func affiche_nb_jetons_restant():
@@ -131,9 +128,6 @@ func affiche_nb_jetons_restant():
 func child_pioche_jetons():
 	for d in nb_jetons_pioche:
 		var jeton_hazard: Jeton = pioche.pioche_jeton()
-		jeton_hazard.is_disponible = false
-		
-		
 		var instance_jeton = scene_jeton.instance()
 	
 		instance_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture = jeton_hazard.color0

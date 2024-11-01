@@ -104,7 +104,6 @@ var list_couleurs_jetons: Array = [
 func pioche_jeton() -> Jeton:
 	var hazard = random.randi_range(0, (list_couleurs_jetons.size() - 1))
 	var jeton_hazard:Jeton = list_couleurs_jetons[hazard]
-	jeton_hazard.is_disponible = false
 	list_couleurs_jetons.remove(hazard)
 	return jeton_hazard
 

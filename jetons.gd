@@ -62,31 +62,24 @@ func _on_jetons_area_entered(area):
 		list_pos_plateau_remplace_blanc.insert(0,child_node2d_plateau)
 		list_pos_plateau_remplace_blanc.sort()
 		if  child_node2d_plateau.texture == carre_blanc :
-			
 			collision_count += 1
 			if collision_count == 3:
-					
-					
-				#print("dessousjeton " + str(list_pos_plateau_remplace_blanc))
-					
-					#print("collision blanc " + str(collision_count))
 				for jtn in Globals.list_affiche_position_porte_jetons:
 					var jeton:Jeton = jtn
 					if Globals.id_child_node2d_jeton == jeton.jeton_id:
 						
-						if jeton.sens == "verticale-h" or jeton.sens ==  "horizontale-g":
+						if jeton.is_haut_or_gauche():
 							Globals.list_couleur_bouge_jeton.clear()
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path())
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu").texture.get_path())
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path())
-							
-						if jeton.sens == "verticale-b" or jeton.sens ==  "horizontale-d":
+						
+						if jeton.is_bas_or_droite():
 							Globals.list_couleur_bouge_jeton.clear()
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path())
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu").texture.get_path())
 							Globals.list_couleur_bouge_jeton.append(node2d_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path())
-
-							
+						
 				print(Globals.list_couleur_bouge_jeton)
 				#print(Globals.list_affiche_position_porte_jetons)
 				collision_count = 0
