@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://acceuil_jouez.gd" type="Script" id=1]
 [ext_resource path="res://assets/colors/carre-blanc.png" type="Texture" id=2]
@@ -18,13 +18,17 @@
 [ext_resource path="res://assets/animesprite/bleuanim.jpg" type="Texture" id=16]
 [ext_resource path="res://assets/animesprite/blackanim.jpg" type="Texture" id=17]
 [ext_resource path="res://assets/animesprite/rougeanim.jpg" type="Texture" id=18]
-[ext_resource path="res://assets/animesprite/artifice2.png" type="Texture" id=19]
-[ext_resource path="res://assets/animesprite/artifice0.png" type="Texture" id=20]
-[ext_resource path="res://assets/animesprite/artifice3.png" type="Texture" id=21]
-[ext_resource path="res://assets/animesprite/artifice5.png" type="Texture" id=22]
-[ext_resource path="res://assets/animesprite/artifice1.png" type="Texture" id=23]
-[ext_resource path="res://assets/animesprite/artifice4.png" type="Texture" id=24]
+[ext_resource path="res://assets/animesprite/etoilegimp7.png" type="Texture" id=19]
+[ext_resource path="res://assets/animesprite/etoilegimp5.png" type="Texture" id=20]
+[ext_resource path="res://assets/animesprite/etoilegimp6.png" type="Texture" id=21]
+[ext_resource path="res://assets/animesprite/etoilegimp3.png" type="Texture" id=22]
+[ext_resource path="res://assets/animesprite/etoilegimp8.png" type="Texture" id=23]
+[ext_resource path="res://assets/animesprite/etoilegimp4.png" type="Texture" id=24]
 [ext_resource path="res://assets/colors/black.jpg" type="Texture" id=25]
+[ext_resource path="res://assets/animesprite/etoilegimp1.png" type="Texture" id=26]
+[ext_resource path="res://assets/animesprite/etoilegimp2.png" type="Texture" id=27]
+[ext_resource path="res://assets/animesprite/etoilegimp9.png" type="Texture" id=28]
+[ext_resource path="res://assets/animesprite/etoilegimp10.png" type="Texture" id=29]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -44,7 +48,7 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 20 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 24 ), ExtResource( 22 ) ],
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 22 ), ExtResource( 24 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 19 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 28 ), ExtResource( 29 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -318,7 +322,8 @@ playing = true
 [node name="AnimatedSprite11" type="AnimatedSprite" parent="chromino/H"]
 position = Vector2( -289.598, 200.75 )
 frames = SubResource( 1 )
-frame = 5
+frame = 3
+playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="chromino/H"]
 position = Vector2( -289.247, 256.779 )
@@ -819,11 +824,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2( 100, 0 )
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2( 767, 217 )
 
-[node name="artifice" type="AnimatedSprite" parent="Area2D"]
-position = Vector2( 665.745, 298.437 )
+[node name="etoile_jaune" type="AnimatedSprite" parent="Area2D2"]
+position = Vector2( 0.810211, -3.11145 )
+z_index = 4
 frames = SubResource( 3 )
 frame = 3
 playing = true

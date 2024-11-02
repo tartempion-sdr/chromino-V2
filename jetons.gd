@@ -21,6 +21,8 @@ var violet = "res://assets/colors/violet.jpg"
 var rouge = "res://assets/colors/rouge.jpg"
 var blanc = "res://assets/colors/carre-blanc.png"
 var carre_blanc = preload("res://assets/colors/carre-blanc.png")
+var etoile = preload("res://etoile.tscn")
+
 
 func _ready():
 	pass
@@ -177,11 +179,18 @@ func check_colision_horizontal():
 
 func remplace_couleurs():
 	print("hurra joueur1 !")
-	#print(list_pos_plateau_remplace_blanc)
+	print(list_pos_plateau_remplace_blanc)
 	
 	for a in range(0, 3):
 		list_pos_plateau_remplace_blanc[a].texture = load(Globals.list_couleur_bouge_jeton[a])
-	
+		var instance_etoile = etoile.instance()
+		
+		print(list_pos_plateau_remplace_blanc[a].get_parent().position)
+		instance_etoile.position = Vector2(list_pos_plateau_remplace_blanc[a].get_parent().position)
+		var child = instance_etoile.get_child(0)
+		
+		add_child(instance_etoile)
+
 	Globals.au_joueur1_de_jouer = false
 
 	Globals.rend_jeton_invisible()
