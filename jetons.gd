@@ -219,13 +219,14 @@ func check_colision_v(autour: int, jeton_index: int) -> bool:
 	
 	var is_colision_not_blanc = liste_colision_autour[autour] != str(blanc)
 	var is_colision_blanc = liste_colision_autour[autour] == str(blanc)
+	var is_colision_jeton_joker = liste_colision_autour[autour] == str(joker)
 	var is_jeton_joker = Globals.list_couleur_bouge_jeton[jeton_index] == str(joker)
 	var is_same_color_than_colision = liste_colision_autour[autour] == Globals.list_couleur_bouge_jeton[jeton_index]
 	
-	if (is_same_color_than_colision or is_jeton_joker) and is_colision_not_blanc:
+	if (is_same_color_than_colision or is_colision_jeton_joker):
 		path_similaire += 1
 		print(info +  str(Globals.list_couleur_bouge_jeton[jeton_index]))	
-	elif  is_jeton_joker:
+	elif  is_jeton_joker and is_colision_not_blanc:
 		path_similaire += 1
 		print(info + str(Globals.list_couleur_bouge_jeton[jeton_index]))
 	elif is_colision_blanc:
