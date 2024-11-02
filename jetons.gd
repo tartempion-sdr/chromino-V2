@@ -198,11 +198,11 @@ func check_colision_h(autour: int, jeton1: int, jeton2: int) -> bool:
 	var similaire = true
 	var info = str(liste_colision_autour[autour]) + " < " +str(autour + 1) + "* > "
 	#print(Globals.list_couleur_bouge_jeton)
-	if (liste_colision_autour[autour] == Globals.list_couleur_bouge_jeton[jeton1] or Globals.list_couleur_bouge_jeton[jeton2] == str(joker)) and liste_colision_autour[autour] != str(blanc):
+	if liste_colision_autour[autour] == Globals.list_couleur_bouge_jeton[jeton1] or liste_colision_autour[autour] == str(joker):
 		path_similaire += 1
 		print(info +  str(Globals.list_couleur_bouge_jeton[jeton1]))
 			
-	elif  liste_colision_autour[autour] == str(joker):
+	elif  Globals.list_couleur_bouge_jeton[jeton1]  == str(joker) and liste_colision_autour[autour] != str(blanc):
 		path_similaire += 1
 		print(info + str(Globals.list_couleur_bouge_jeton[jeton1]))
 
