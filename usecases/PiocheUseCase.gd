@@ -102,6 +102,7 @@ var list_couleurs_jetons: Array = [
 ]
 
 func pioche_jeton() -> Jeton:
+	random.randomize()
 	var hazard = random.randi_range(0, (list_couleurs_jetons.size() - 1))
 	var jeton_hazard:Jeton = list_couleurs_jetons[hazard]
 	list_couleurs_jetons.remove(hazard)
