@@ -31,21 +31,17 @@ var hazard
 func _ready():
 	#random.randomize()
 	pos_plateau()
-	pioche_jetons()
+	#pioche_jetons()
 	
 	var premier_jeton:Jeton = pioche.pioche_jeton()
 	modifie_plateau(163, premier_jeton.color0)
 	modifie_plateau(182, premier_jeton.color1)
 	modifie_plateau(201, premier_jeton.color2)
 	
-	var child_jeton = get_child(363)
-	#print("Enfant à l'index ", " : ", child_jeton.name)
-	child_jeton.visible = false
 	
 	Globals.list_affiche_position_porte_jetons.clear()
 	affiche_nb_jetons_restant()
-	#var test_acceuil = scene_acceuil.instance()
-	#add_child(test_acceuil)
+	
 	
 func modifie_plateau(numero, couleur):
 	
