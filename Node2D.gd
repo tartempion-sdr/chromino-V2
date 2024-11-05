@@ -27,8 +27,9 @@ var nb_jetons_pioche = 7
 var random = RandomNumberGenerator.new()
 var hazard
 
+
 func _ready():
-	random.randomize()
+	#random.randomize()
 	pos_plateau()
 	pioche_jetons()
 	
