@@ -2,6 +2,7 @@ extends Node
 
 var taille = 1
 var list_affiche_position_porte_jetons = []
+var list_affiche_position_porte_jetons_ia = []
 var list_couleur_bouge_jeton = []
 var au_joueur1_de_jouer:bool = true
 var id_child_node2d_jeton

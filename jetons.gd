@@ -184,11 +184,9 @@ func remplace_couleurs():
 	for a in range(0, 3):
 		list_pos_plateau_remplace_blanc[a].texture = load(Globals.list_couleur_bouge_jeton[a])
 		var instance_etoile = etoile.instance()
-		
 		print(list_pos_plateau_remplace_blanc[a].get_parent().position)
 		instance_etoile.position = Vector2(list_pos_plateau_remplace_blanc[a].get_parent().position)
 		var child = instance_etoile.get_child(0)
-		
 		add_child(instance_etoile)
 
 	Globals.au_joueur1_de_jouer = false
@@ -198,7 +196,9 @@ func remplace_couleurs():
 	Globals.affiche_jetons_piocher()
 	var node2d_scene = get_tree().get_root().get_node("Node2D") 
 	print("Noeud Node2D trouvé : ", node2d_scene)
+	Globals.au_joueur1_de_jouer = false
 	node2d_scene.affiche_nb_jetons_restant()
+
 	
 func supprime_jeton_porte_jeton():
 	for jtn in Globals.list_affiche_position_porte_jetons:

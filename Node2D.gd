@@ -1,10 +1,9 @@
 extends Node2D 
 
 var pioche = PiocheUseCase.new()
-
 var ecart = 20
-
 var scene = preload("res://Plateau.tscn")
+var etoile = preload("res://etoile.tscn")
 var x1 = 0
 var y1 = 0
 var plateau_x
@@ -18,15 +17,12 @@ var sens = ["verticale-h", "horizontale-d", "verticale-b", "horizontale-g"]
 var nouveau
 #75 chrominos classiques, 
 #5 chrominos caméléon combinant 2 couleurs différentes à chaque extrémité
-
-
 var scene_jeton = preload("res://jetons.tscn")
 #var scene_acceuil = preload("res://acceuil.tscn")
 var nb_jetons_pioche = 7
 
 var random = RandomNumberGenerator.new()
 var hazard
-
 
 func _ready():
 	pos_plateau()
@@ -98,6 +94,7 @@ func souris_pos_plateau():
 	y1 -= retoury
 
 func pioche_jetons():
+	
 	var jeton_hazard:Jeton = pioche.pioche_jeton()
 	var instance_jeton = scene_jeton.instance()
 	
@@ -111,14 +108,21 @@ func pioche_jetons():
 	Globals.affiche_jetons_piocher()
 
 func affiche_nb_jetons_restant():
+	
+	if Globals.au_joueur1_de_jouer:
+		$Area2D/AnimatedSpriteaujoueur1.position =  Vector2(85,495)
+	else:
+		$Area2D/AnimatedSpriteaujoueur1.position =  Vector2(85,545)
 	var count = pioche.nb_jetons_restant()
 	$Area2D/TextureRect2/Button_pioche/RichTextLabel.text = "PIOCHE = %d" % count
 	var countjetonsjoueur1 = int(len(Globals.list_affiche_position_porte_jetons))
-	$Area2D/TextureRect2/Button_pioche/textejoueur1.text = "Joueur 1 = %d" % countjetonsjoueur1
-	$Area2D/TextureRect2/Button_pioche/textejoueurIA.text = "Joueur IA = "
+	var countjetonsjoueuria = int(len(Globals.list_affiche_position_porte_jetons_ia))
+	$Area2D/TextureRect2/Button_pioche/textejoueur1.text = " Joueur 1 \n jetons = %d \n victoire =" % countjetonsjoueur1
+	$Area2D/TextureRect2/Button_pioche/textejoueurIA.text = " Joueur IA \n jetons =  %d \n victoire =" % countjetonsjoueuria
 
 func child_pioche_jetons():
 	for d in nb_jetons_pioche:
+	
 		var jeton_hazard: Jeton = pioche.pioche_jeton()
 		var instance_jeton = scene_jeton.instance()
 	

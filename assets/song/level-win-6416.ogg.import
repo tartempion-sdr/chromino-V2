@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/level-win-6416.ogg-8bd1b745493aa85aeee51968bfcab5d9.oggstr"
+
+[deps]
+
+source_file="res://assets/song/level-win-6416.ogg"
+dest_files=[ "res://.import/level-win-6416.ogg-8bd1b745493aa85aeee51968bfcab5d9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
