@@ -29,16 +29,11 @@ var hazard
 
 
 func _ready():
-	#random.randomize()
 	pos_plateau()
-	#pioche_jetons()
-	
 	var premier_jeton:Jeton = pioche.pioche_jeton()
 	modifie_plateau(163, premier_jeton.color0)
 	modifie_plateau(182, premier_jeton.color1)
 	modifie_plateau(201, premier_jeton.color2)
-	
-	
 	Globals.list_affiche_position_porte_jetons.clear()
 	affiche_nb_jetons_restant()
 	
@@ -121,7 +116,7 @@ func affiche_nb_jetons_restant():
 	var countjetonsjoueur1 = int(len(Globals.list_affiche_position_porte_jetons))
 	$Area2D/TextureRect2/Button_pioche/textejoueur1.text = "Joueur 1 = %d" % countjetonsjoueur1
 	$Area2D/TextureRect2/Button_pioche/textejoueurIA.text = "Joueur IA = "
-	
+
 func child_pioche_jetons():
 	for d in nb_jetons_pioche:
 		var jeton_hazard: Jeton = pioche.pioche_jeton()

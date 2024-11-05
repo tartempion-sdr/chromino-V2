@@ -196,7 +196,10 @@ func remplace_couleurs():
 	Globals.rend_jeton_invisible()
 	supprime_jeton_porte_jeton()
 	Globals.affiche_jetons_piocher()
-
+	var node2d_scene = get_tree().get_root().get_node("Node2D") 
+	print("Noeud Node2D trouvé : ", node2d_scene)
+	node2d_scene.affiche_nb_jetons_restant()
+	
 func supprime_jeton_porte_jeton():
 	for jtn in Globals.list_affiche_position_porte_jetons:
 		var jeton:Jeton = jtn
