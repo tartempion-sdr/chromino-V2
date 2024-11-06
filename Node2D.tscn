@@ -164,9 +164,8 @@ __meta__ = {
 
 [node name="AnimatedSpriteaujoueur1" type="AnimatedSprite" parent="Area2D"]
 frames = SubResource( 1 )
-frame = 5
+frame = 7
 playing = true
-
 [connection signal="button_down" from="Area2D/TextureRect2/Button_pioche" to="." method="_on_Button_pioche_button_down"]
 [connection signal="button_down" from="Area2D/TextureRect2/Button_gauche2" to="." method="_on_Button_gauche_button_down"]
 [connection signal="button_down" from="Area2D/TextureRect2/Button_droite" to="." method="_on_Button_droite_button_down"]

@@ -198,12 +198,16 @@ func remplace_couleurs():
 	print("Noeud Node2D trouvé : ", node2d_scene)
 	Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
 	node2d_scene.affiche_nb_jetons_restant()
-	if Globals.au_joueur1_de_jouer == false:
+	if Globals.au_joueur1_de_jouer:
+		pass
+	else:
 		joueur_ia_cerveau()
-
 
 func joueur_ia_cerveau():
 	print("joueurIa")
+	var node2d_scene = get_tree().get_root().get_node("Node2D") 
+	node2d_scene.child_pioche_jetons()
+	
 	
 func supprime_jeton_porte_jeton():
 	for jtn in Globals.list_affiche_position_porte_jetons:

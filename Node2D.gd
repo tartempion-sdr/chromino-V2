@@ -19,7 +19,7 @@ var nouveau
 #5 chrominos caméléon combinant 2 couleurs différentes à chaque extrémité
 var scene_jeton = preload("res://jetons.tscn")
 #var scene_acceuil = preload("res://acceuil.tscn")
-var nb_jetons_pioche = 7
+
 
 var random = RandomNumberGenerator.new()
 var hazard
@@ -106,6 +106,8 @@ func pioche_jetons():
 	jeton_hazard.jeton_id = rech.get_instance_id()
 	add_child(instance_jeton)
 	Globals.affiche_jetons_piocher()
+	
+
 
 func affiche_nb_jetons_restant():
 	
@@ -121,7 +123,7 @@ func affiche_nb_jetons_restant():
 	$Area2D/TextureRect2/Button_pioche/textejoueurIA.text = " Joueur IA \n jetons =  %d \n victoire =" % countjetonsjoueuria
 
 func child_pioche_jetons():
-	for d in nb_jetons_pioche:
+	for d in Globals.nb_jetons_pioche:
 	
 		var jeton_hazard: Jeton = pioche.pioche_jeton()
 		var instance_jeton = scene_jeton.instance()
@@ -129,12 +131,19 @@ func child_pioche_jetons():
 		instance_jeton.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture = jeton_hazard.color0
 		instance_jeton.get_node("Area2D/jetons/Spritemilieu").texture = jeton_hazard.color1
 		instance_jeton.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture = jeton_hazard.color2
-		
 		var rech = instance_jeton.get_child(0)
 		jeton_hazard.jeton_id = rech.get_instance_id()
 		add_child(instance_jeton)
-		
-		Globals.list_affiche_position_porte_jetons.insert(0, jeton_hazard)
+		if Globals.au_joueur1_de_jouer:
+			Globals.list_affiche_position_porte_jetons.insert(0, jeton_hazard)
+		else:
+			#rendinvisible les jeton piocher par ia
+			Globals.list_affiche_position_porte_jetons_ia.insert(0, jeton_hazard)
+			for element in Globals.list_affiche_position_porte_jetons_ia:
+				var target_id = element.jeton_id  # Remplace par ton ID de nœud
+				var node = find_node_by_instance_id(get_tree().root, target_id)
+				if node:
+					node.visible = false
 		Globals.affiche_jetons_piocher()
 		affiche_nb_jetons_restant()
 

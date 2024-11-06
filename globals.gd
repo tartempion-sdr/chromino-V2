@@ -6,7 +6,7 @@ var list_affiche_position_porte_jetons_ia = []
 var list_couleur_bouge_jeton = []
 var au_joueur1_de_jouer:bool = true
 var id_child_node2d_jeton
-
+var nb_jetons_pioche = 7
 
 var list_position_pioche_jetons = [(Vector2(280, 543)),
 (Vector2(391, 543)),
