@@ -189,16 +189,21 @@ func remplace_couleurs():
 		var child = instance_etoile.get_child(0)
 		add_child(instance_etoile)
 
-	Globals.au_joueur1_de_jouer = false
+	
 
 	Globals.rend_jeton_invisible()
 	supprime_jeton_porte_jeton()
 	Globals.affiche_jetons_piocher()
 	var node2d_scene = get_tree().get_root().get_node("Node2D") 
 	print("Noeud Node2D trouvé : ", node2d_scene)
-	Globals.au_joueur1_de_jouer = false
+	Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
 	node2d_scene.affiche_nb_jetons_restant()
+	if Globals.au_joueur1_de_jouer == false:
+		joueur_ia_cerveau()
 
+
+func joueur_ia_cerveau():
+	print("joueurIa")
 	
 func supprime_jeton_porte_jeton():
 	for jtn in Globals.list_affiche_position_porte_jetons:
