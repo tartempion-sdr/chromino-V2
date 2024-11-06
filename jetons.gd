@@ -22,6 +22,8 @@ var rouge = "res://assets/colors/rouge.jpg"
 var blanc = "res://assets/colors/carre-blanc.png"
 var carre_blanc = preload("res://assets/colors/carre-blanc.png")
 var etoile = preload("res://etoile.tscn")
+var pioche = preload("res://assets/pioche.png")
+var croix = preload("res://assets/icon/croix.png")
 
 
 func _ready():
@@ -199,8 +201,14 @@ func remplace_couleurs():
 	Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
 	node2d_scene.affiche_nb_jetons_restant()
 	if Globals.au_joueur1_de_jouer:
-		pass
+		if node2d_scene: # Accède au bouton pioche 
+			var button_pioche = node2d_scene.get_node("Area2D/TextureRect2/Button_pioche")
+			button_pioche.texture_normal = pioche
 	else:
+		 
+		if node2d_scene: # Accède au bouton pioche 
+			var button_pioche = node2d_scene.get_node("Area2D/TextureRect2/Button_pioche")
+			button_pioche.texture_normal = croix
 		joueur_ia_cerveau()
 
 func joueur_ia_cerveau():
