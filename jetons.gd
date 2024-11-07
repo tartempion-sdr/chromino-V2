@@ -198,7 +198,7 @@ func remplace_couleurs():
 	Globals.affiche_jetons_piocher()
 	var node2d_scene = get_tree().get_root().get_node("Node2D") 
 	print("Noeud Node2D trouvé : ", node2d_scene)
-	Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
+	###Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
 	node2d_scene.affiche_nb_jetons_restant()
 	if Globals.au_joueur1_de_jouer:
 		if node2d_scene: # Accède au bouton pioche 
