@@ -20,10 +20,10 @@ func is_bas_or_droite() -> bool:
 	return sens == VERTI_B or sens ==  HORI_D
 
 func is_vertical() -> bool:
-	return sens == VERTI_H or sens == HORI_D
+	return sens == VERTI_H or sens == VERTI_B
 
 func is_horizontal() -> bool:
-	return sens == VERTI_B or sens == HORI_G
+	return sens == HORI_G or sens == HORI_D
 
 const VERTI_H = "verticale-h"
 const VERTI_B = "verticale-b"
