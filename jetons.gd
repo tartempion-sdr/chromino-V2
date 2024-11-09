@@ -13,6 +13,8 @@ var area_autour
 var suite = false
 var similaire = false
 
+var sens = ["verticale-h", "horizontale-d", "verticale-b", "horizontale-g"] 
+
 var joker = "res://assets/colors/joker.jpg"
 var jaune = "res://assets/colors/jaune.jpg"
 var vert = "res://assets/colors/vert.jpg"
@@ -223,9 +225,38 @@ func joueur_ia_cerveau():
 		var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
 		if node:
 			for index in Globals.position_de_chaque_carre_du_plateau.size():
-				yield(get_tree().create_timer(0.1), "timeout") # Attendre 1 seconde entre chaque position
+				#yield(get_tree().create_timer(0.1), "timeout") # Attendre 1 seconde entre chaque position
 				node.position = Vector2(Globals.position_de_chaque_carre_du_plateau[index])
+
 				node.visible = true
+				tourn_ia()
+				yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
+				tourn_ia()
+				yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
+				tourn_ia()
+				yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
+				tourn_ia()
+				yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
+				Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
+				node.visible = false
+	
+func tourn_ia():
+	if Globals.list_affiche_position_porte_jetons_ia.size() >= 0:
+			var nouveau
+			var target_id = Globals.list_affiche_position_porte_jetons_ia[0].jeton_id  # Remplace par ton ID de nœud
+			var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
+			if node:
+				node.rotation_degrees += 90
+				var actuel =  sens.find(Globals.list_affiche_position_porte_jetons_ia[0].sens)
+				if actuel < 3:
+					nouveau = actuel + 1
+				else:
+					nouveau = 0
+				Globals.list_affiche_position_porte_jetons_ia[0].sens = sens[nouveau]
+				#print(Globals.list_affiche_position_porte_jetons[0].sens)
+				#print("tourn_n_child" + str(Globals.list_affiche_position_porte_jetons[0].jeton_id))
+				#print("list " + str(Globals.list_affiche_position_porte_jetons))
+			
 	
 	
 func supprime_jeton_porte_jeton():
