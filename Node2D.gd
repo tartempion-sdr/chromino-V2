@@ -1,5 +1,6 @@
 extends Node2D 
 
+
 var pioche = PiocheUseCase.new()
 var ecart = 20
 var scene = preload("res://Plateau.tscn")
@@ -19,7 +20,7 @@ var nouveau
 #5 chrominos caméléon combinant 2 couleurs différentes à chaque extrémité
 var scene_jeton = preload("res://jetons.tscn")
 #var scene_acceuil = preload("res://acceuil.tscn")
-
+var croix = preload("res://assets/icon/croix.png")
 
 var random = RandomNumberGenerator.new()
 var hazard
@@ -113,7 +114,9 @@ func pioche_jetons():
 
 func affiche_nb_jetons_restant():
 	
+
 	if Globals.au_joueur1_de_jouer:
+		
 		$Area2D/AnimatedSpriteaujoueur1.position =  Vector2(85,495)
 	else:
 		$Area2D/AnimatedSpriteaujoueur1.position =  Vector2(85,545)
@@ -124,6 +127,7 @@ func affiche_nb_jetons_restant():
 	$Area2D/TextureRect2/Button_pioche/textejoueur1.text = " Joueur 1 \n jetons = %d \n victoire =" % countjetonsjoueur1
 	$Area2D/TextureRect2/Button_pioche/textejoueurIA.text = " Joueur IA \n jetons =  %d \n victoire =" % countjetonsjoueuria
 
+	
 func child_pioche_jetons():
 	for d in Globals.nb_jetons_pioche:
 	

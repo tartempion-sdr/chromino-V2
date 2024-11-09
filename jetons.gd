@@ -212,47 +212,50 @@ func remplace_couleurs():
 			var button_pioche = node2d_scene.get_node("Area2D/TextureRect2/Button_pioche")
 			button_pioche.texture_normal = croix
 		joueur_ia_cerveau()
-
+		
 func joueur_ia_cerveau():
 	print("joueurIa")
 	var node2d_scene = get_tree().get_root().get_node("Node2D")
 	node2d_scene.child_pioche_jetons()
 	
 	if Globals.list_affiche_position_porte_jetons_ia.size() > 0:
-		print("ia " + str(Globals.list_affiche_position_porte_jetons_ia[0]))
-		var visi_node_ia = Globals.list_affiche_position_porte_jetons_ia[0]
-		var target_id = visi_node_ia.jeton_id  # Remplace par ton ID de nœud
-		var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
-		if node:
+		
+		for element in Globals.list_affiche_position_porte_jetons_ia.size():
 			for index in Globals.position_de_chaque_carre_du_plateau.size():
 				#yield(get_tree().create_timer(0.1), "timeout") # Attendre 1 seconde entre chaque position
-				node.position = Vector2(Globals.position_de_chaque_carre_du_plateau[index])
+				var visi_node_ia = Globals.list_affiche_position_porte_jetons_ia[element]
+				var target_id = visi_node_ia.jeton_id  # Remplace par ton ID de nœud
+				var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
+				if node:
+					node.position = Vector2(Globals.position_de_chaque_carre_du_plateau[index])
 
-				node.visible = true
-				tourn_ia()
-				yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
-				tourn_ia()
-				yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
-				tourn_ia()
-				yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
-				tourn_ia()
-				yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
-				Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
+					node.visible = true
+					tourn_ia()
+					yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
+					tourn_ia()
+					yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
+					tourn_ia()
+					yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
+					tourn_ia()
+					yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
+
 				node.visible = false
-	
+			Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
+			
 func tourn_ia():
 	if Globals.list_affiche_position_porte_jetons_ia.size() >= 0:
+		for element in Globals.list_affiche_position_porte_jetons_ia.size():
 			var nouveau
-			var target_id = Globals.list_affiche_position_porte_jetons_ia[0].jeton_id  # Remplace par ton ID de nœud
+			var target_id = Globals.list_affiche_position_porte_jetons_ia[element].jeton_id  # Remplace par ton ID de nœud
 			var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
 			if node:
 				node.rotation_degrees += 90
-				var actuel =  sens.find(Globals.list_affiche_position_porte_jetons_ia[0].sens)
+				var actuel =  sens.find(Globals.list_affiche_position_porte_jetons_ia[element].sens)
 				if actuel < 3:
 					nouveau = actuel + 1
 				else:
 					nouveau = 0
-				Globals.list_affiche_position_porte_jetons_ia[0].sens = sens[nouveau]
+				Globals.list_affiche_position_porte_jetons_ia[element].sens = sens[0]
 				#print(Globals.list_affiche_position_porte_jetons[0].sens)
 				#print("tourn_n_child" + str(Globals.list_affiche_position_porte_jetons[0].jeton_id))
 				#print("list " + str(Globals.list_affiche_position_porte_jetons))
