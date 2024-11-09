@@ -215,13 +215,11 @@ func joueur_ia_cerveau():
 	print("joueurIa")
 	var node2d_scene = get_tree().get_root().get_node("Node2D")
 	node2d_scene.child_pioche_jetons()
-	#for index in Globals.list_affiche_position_porte_jetons_ia.size():
-		#print(Globals.list_affiche_position_porte_jetons_ia[index])
-		#for element in Globals.position_de_chaque_carre_du_plateau.size():
+	
 	if Globals.list_affiche_position_porte_jetons_ia.size() > 0:
 		print("ia " + str(Globals.list_affiche_position_porte_jetons_ia[0]))
 		var visi_node_ia = Globals.list_affiche_position_porte_jetons_ia[0]
-		var target_id = visi_node_ia  # Remplace par ton ID de nœud
+		var target_id = visi_node_ia.jeton_id  # Remplace par ton ID de nœud
 		var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
 		if node:
 			for index in Globals.position_de_chaque_carre_du_plateau.size():

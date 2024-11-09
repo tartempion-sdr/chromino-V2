@@ -140,12 +140,8 @@ func child_pioche_jetons():
 			Globals.list_affiche_position_porte_jetons.insert(0, jeton_hazard)
 		else:
 			#rendinvisible les jeton piocher par ia
-			Globals.list_affiche_position_porte_jetons_ia.insert(0, jeton_hazard.jeton_id)
-			for element in Globals.list_affiche_position_porte_jetons_ia:
-				var target_id = element  # Remplace par ton ID de nœud
-				var node = find_node_by_instance_id(get_tree().root, target_id)
-				if node:
-					node.visible = false
+			Globals.list_affiche_position_porte_jetons_ia.insert(0, jeton_hazard)
+			
 		Globals.affiche_jetons_piocher()
 		affiche_nb_jetons_restant()
 
@@ -220,22 +216,23 @@ func _on_Button_gauche_button_down():
 	affiche_nb_jetons_restant()
 	
 func _on_Button_tourne_button_down():
+	tourne_jeton()
 	
-	if len(Globals.list_affiche_position_porte_jetons) == 0:
-		print("pioche d'abord")
-	
-	elif len(Globals.list_affiche_position_porte_jetons) >= 0:
+func tourne_jeton():
+	if Globals.au_joueur1_de_jouer:
+		if len(Globals.list_affiche_position_porte_jetons) == 0:
+			print("pioche d'abord joueur 1")
+	else:
+		if len(Globals.list_affiche_position_porte_jetons_ia) == 0:
+			print("pioche d'abord joueur IA")
+		
+	if len(Globals.list_affiche_position_porte_jetons) >= 0:
 		
 		var target_id = Globals.list_affiche_position_porte_jetons[0].jeton_id  # Remplace par ton ID de nœud
 		var node = find_node_by_instance_id(get_tree().root, target_id)
-		#print("target" + str(target_id))
 		if node:
-			
 			node.rotation_degrees += 90
-			#child_jeton.get_node("Area2D").rotation_degrees += 90
-			
 			var actuel =  sens.find(Globals.list_affiche_position_porte_jetons[0].sens)
-			
 			if actuel < 3:
 				nouveau = actuel + 1
 			else:
