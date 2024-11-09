@@ -83,7 +83,7 @@ func _on_jetons_area_entered(area):
 								self.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path()
 							)
 						
-				print(Globals.list_couleur_bouge_jeton)
+				#print(Globals.list_couleur_bouge_jeton)
 				collision_count = 0
 				jeton_blanc_3 = true
 
@@ -111,14 +111,24 @@ func bouge_pion():
 		child_node.global_position = mouse_pos
 
 func compare_autour():
-	print(liste_colision_autour)
-	for jtn in Globals.list_affiche_position_porte_jetons:
-		var jeton:Jeton = jtn
-		if Globals.id_child_node2d_jeton == jeton.jeton_id:
-			if jeton.is_vertical():
-				check_colision_vertical()
-			if jeton.is_horizontal():
-				check_colision_horizontal()
+	#print(liste_colision_autour)
+	if Globals.au_joueur1_de_jouer:
+		
+		for jtn in Globals.list_affiche_position_porte_jetons:
+			var jeton:Jeton = jtn
+			if Globals.id_child_node2d_jeton == jeton.jeton_id:
+				if jeton.is_vertical():
+					check_colision_vertical()
+				if jeton.is_horizontal():
+					check_colision_horizontal()
+	else:
+		for jtn in Globals.list_affiche_position_porte_jetons_ia:
+				var jeton:Jeton = jtn
+				if Globals.id_child_node2d_jeton == jeton.jeton_id:
+					if jeton.is_vertical():
+						check_colision_vertical()
+					if jeton.is_horizontal():
+						check_colision_horizontal()
 
 func check_colision_vertical():
 	var similaire = true
@@ -142,7 +152,8 @@ func check_colision_vertical():
 		similaire = false
 
 	if similaire :
-		print(str(path_similaire) + " couleurs similaire")
+		#print(str(path_similaire) + " couleurs similaire")
+		pass
 	else:
 		print("interdit")
 		
@@ -206,6 +217,7 @@ func remplace_couleurs():
 		if node2d_scene: # Accède au bouton pioche
 			var button_pioche = node2d_scene.get_node("Area2D/TextureRect2/Button_pioche")
 			button_pioche.texture_normal = pioche
+
 	else:
 		 
 		if node2d_scene: # Accède au bouton pioche
@@ -231,16 +243,16 @@ func joueur_ia_cerveau():
 
 					node.visible = true
 					tourn_ia()
-					yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
+					yield(get_tree().create_timer(0.015), "timeout") # Attendre 1 seconde entre chaque position
 					tourn_ia()
-					yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
+					yield(get_tree().create_timer(0.015), "timeout") # Attendre 1 seconde entre chaque position
 					tourn_ia()
-					yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
+					yield(get_tree().create_timer(0.015), "timeout") # Attendre 1 seconde entre chaque position
 					tourn_ia()
-					yield(get_tree().create_timer(0.025), "timeout") # Attendre 1 seconde entre chaque position
+					yield(get_tree().create_timer(0.015), "timeout") # Attendre 1 seconde entre chaque position
 
 				node.visible = false
-			Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
+		Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
 			
 func tourn_ia():
 	if Globals.list_affiche_position_porte_jetons_ia.size() >= 0:
@@ -281,8 +293,8 @@ func check_colision_h(autour: int, jeton1: int, jeton2: int) -> bool:
 		###print(info + str(Globals.list_couleur_bouge_jeton[jeton1]))
 
 	elif liste_colision_autour[autour] == str(blanc):
-		print(info + str(blanc))
-
+		#print(info + str(blanc))
+		pass
 	else:
 		similaire = false
 	return similaire
@@ -304,7 +316,8 @@ func check_colision_v(autour: int, jeton_index: int) -> bool:
 		path_similaire += 1
 		###print(info + str(Globals.list_couleur_bouge_jeton[jeton_index]))
 	elif is_colision_blanc:
-		print(info + str(blanc))
+		#print(info + str(blanc))
+		pass
 	else:
 		similaire = false
 	
