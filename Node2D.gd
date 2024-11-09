@@ -58,6 +58,7 @@ func pos_plateau():
 		for n in range(0, 19):
 			
 			plateau(Vector2(x, y))
+			Globals.position_de_chaque_carre_du_plateau.insert(0 ,Vector2(x, y))
 			a = 20
 			x += 20 
 			retour = retour + a
@@ -68,7 +69,7 @@ func pos_plateau():
 	y = 0   
 
 func souris_pos_plateau():
-	
+	Globals.position_de_chaque_carre_du_plateau.clear()
 	var retourx = 0
 	var retoury = 0
 	num = 2
@@ -84,6 +85,7 @@ func souris_pos_plateau():
 				child.scale.x = Globals.taille
 				child.scale.y = Globals.taille
 				child.position = Vector2(x1, y1)
+				Globals.position_de_chaque_carre_du_plateau.insert(0 ,Vector2(x1, y1))
 				x1 = x1  + (20 * Globals.taille) 
 				num += 1
 				retourx = retourx + (20*Globals.taille)
@@ -138,9 +140,9 @@ func child_pioche_jetons():
 			Globals.list_affiche_position_porte_jetons.insert(0, jeton_hazard)
 		else:
 			#rendinvisible les jeton piocher par ia
-			Globals.list_affiche_position_porte_jetons_ia.insert(0, jeton_hazard)
+			Globals.list_affiche_position_porte_jetons_ia.insert(0, jeton_hazard.jeton_id)
 			for element in Globals.list_affiche_position_porte_jetons_ia:
-				var target_id = element.jeton_id  # Remplace par ton ID de nœud
+				var target_id = element  # Remplace par ton ID de nœud
 				var node = find_node_by_instance_id(get_tree().root, target_id)
 				if node:
 					node.visible = false

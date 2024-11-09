@@ -34,7 +34,7 @@ func _physics_process(delta):
 		bouge_pion()
 
 func _on_TextureButton_button_down():
-	move_child = true 
+	move_child = true
 
 func _on_TextureButton_button_up():
 	move_child = false
@@ -140,7 +140,7 @@ func check_colision_vertical():
 		similaire = false
 
 	if similaire :
-			print(str(path_similaire) + " couleurs similaire")
+		print(str(path_similaire) + " couleurs similaire")
 	else:
 		print("interdit")
 		
@@ -170,7 +170,7 @@ func check_colision_horizontal():
 		similaire = false
 
 	if similaire :
-			print(str(path_similaire) + " couleurs similaire")
+		print(str(path_similaire) + " couleurs similaire")
 	else:
 		print("interdit")
 	
@@ -196,25 +196,38 @@ func remplace_couleurs():
 	Globals.rend_jeton_invisible()
 	supprime_jeton_porte_jeton()
 	Globals.affiche_jetons_piocher()
-	var node2d_scene = get_tree().get_root().get_node("Node2D") 
+	var node2d_scene = get_tree().get_root().get_node("Node2D")
 	print("Noeud Node2D trouvé : ", node2d_scene)
-	###Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
+	Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
 	node2d_scene.affiche_nb_jetons_restant()
 	if Globals.au_joueur1_de_jouer:
-		if node2d_scene: # Accède au bouton pioche 
+		if node2d_scene: # Accède au bouton pioche
 			var button_pioche = node2d_scene.get_node("Area2D/TextureRect2/Button_pioche")
 			button_pioche.texture_normal = pioche
 	else:
 		 
-		if node2d_scene: # Accède au bouton pioche 
+		if node2d_scene: # Accède au bouton pioche
 			var button_pioche = node2d_scene.get_node("Area2D/TextureRect2/Button_pioche")
 			button_pioche.texture_normal = croix
 		joueur_ia_cerveau()
 
 func joueur_ia_cerveau():
 	print("joueurIa")
-	var node2d_scene = get_tree().get_root().get_node("Node2D") 
+	var node2d_scene = get_tree().get_root().get_node("Node2D")
 	node2d_scene.child_pioche_jetons()
+	#for index in Globals.list_affiche_position_porte_jetons_ia.size():
+		#print(Globals.list_affiche_position_porte_jetons_ia[index])
+		#for element in Globals.position_de_chaque_carre_du_plateau.size():
+	if Globals.list_affiche_position_porte_jetons_ia.size() > 0:
+		print("ia " + str(Globals.list_affiche_position_porte_jetons_ia[0]))
+		var visi_node_ia = Globals.list_affiche_position_porte_jetons_ia[0]
+		var target_id = visi_node_ia  # Remplace par ton ID de nœud
+		var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
+		if node:
+			for index in Globals.position_de_chaque_carre_du_plateau.size():
+				yield(get_tree().create_timer(0.1), "timeout") # Attendre 1 seconde entre chaque position
+				node.position = Vector2(Globals.position_de_chaque_carre_du_plateau[index])
+				node.visible = true
 	
 	
 func supprime_jeton_porte_jeton():
@@ -229,11 +242,11 @@ func check_colision_h(autour: int, jeton1: int, jeton2: int) -> bool:
 	#print(Globals.list_couleur_bouge_jeton)
 	if liste_colision_autour[autour] == Globals.list_couleur_bouge_jeton[jeton1] or liste_colision_autour[autour] == str(joker):
 		path_similaire += 1
-		print(info +  str(Globals.list_couleur_bouge_jeton[jeton1]))
+		###print(info +  str(Globals.list_couleur_bouge_jeton[jeton1]))
 			
 	elif  Globals.list_couleur_bouge_jeton[jeton1]  == str(joker) and liste_colision_autour[autour] != str(blanc):
 		path_similaire += 1
-		print(info + str(Globals.list_couleur_bouge_jeton[jeton1]))
+		###print(info + str(Globals.list_couleur_bouge_jeton[jeton1]))
 
 	elif liste_colision_autour[autour] == str(blanc):
 		print(info + str(blanc))
@@ -254,10 +267,10 @@ func check_colision_v(autour: int, jeton_index: int) -> bool:
 	
 	if (is_same_color_than_colision or is_colision_jeton_joker):
 		path_similaire += 1
-		print(info +  str(Globals.list_couleur_bouge_jeton[jeton_index]))	
+		###print(info +  str(Globals.list_couleur_bouge_jeton[jeton_index]))
 	elif  is_jeton_joker and is_colision_not_blanc:
 		path_similaire += 1
-		print(info + str(Globals.list_couleur_bouge_jeton[jeton_index]))
+		###print(info + str(Globals.list_couleur_bouge_jeton[jeton_index]))
 	elif is_colision_blanc:
 		print(info + str(blanc))
 	else:
