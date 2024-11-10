@@ -12,7 +12,7 @@ var collision_autour_count = 0
 var area_autour
 var suite = false
 var similaire = false
-
+var jeton_ia_place_trouver:bool = false
 var sens = ["verticale-h", "horizontale-d", "verticale-b", "horizontale-g"] 
 
 var joker = "res://assets/colors/joker.jpg"
@@ -246,19 +246,21 @@ func remplace_couleurs():
 	Globals.affiche_jetons_piocher()
 	var node2d_scene = get_tree().get_root().get_node("Node2D")
 	print("Noeud Node2D trouvé : ", node2d_scene)
-	Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
+	
 	node2d_scene.affiche_nb_jetons_restant()
 	if Globals.au_joueur1_de_jouer:
 		if node2d_scene: # Accède au bouton pioche
 			var button_pioche = node2d_scene.get_node("Area2D/TextureRect2/Button_pioche")
 			button_pioche.texture_normal = pioche
-
+			Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
+			joueur_ia_cerveau()
 	else:
 		 
 		if node2d_scene: # Accède au bouton pioche
 			var button_pioche = node2d_scene.get_node("Area2D/TextureRect2/Button_pioche")
 			button_pioche.texture_normal = croix
-		joueur_ia_cerveau()
+			jeton_ia_place_trouver = true
+
 		
 func joueur_ia_cerveau():
 	print("joueurIa")
@@ -277,14 +279,16 @@ func joueur_ia_cerveau():
 					node.position = Vector2(Globals.position_de_chaque_carre_du_plateau[index])
 
 					node.visible = true
-					tourn_ia()
-					yield(get_tree().create_timer(0.015), "timeout") # Attendre 1 seconde entre chaque position
-					tourn_ia()
-					yield(get_tree().create_timer(0.015), "timeout") # Attendre 1 seconde entre chaque position
-					tourn_ia()
-					yield(get_tree().create_timer(0.015), "timeout") # Attendre 1 seconde entre chaque position
-					tourn_ia()
-					yield(get_tree().create_timer(0.015), "timeout") # Attendre 1 seconde entre chaque position
+					for tourne in range(0, 4):
+						if jeton_ia_place_trouver:
+							jeton_ia_place_trouver = false
+							node.visible = false
+							Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
+							break
+						else:
+							tourn_ia()
+							yield(get_tree().create_timer(0.005), "timeout") # Attendre 1 seconde entre chaque position
+					
 
 				node.visible = false
 		Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer

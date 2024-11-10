@@ -259,55 +259,55 @@ position = Vector2( 737.656, 76.776 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="chromino/C"]
 position = Vector2( -327.096, 200.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="chromino/C"]
 position = Vector2( -308.096, 273.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite9" type="AnimatedSprite" parent="chromino/C"]
 position = Vector2( -290.096, 273.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="chromino/C"]
 position = Vector2( -291.096, 200.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/C"]
 position = Vector2( -309.096, 200.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="chromino/C"]
 position = Vector2( -327.331, 219.485 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/C"]
 position = Vector2( -327.096, 237.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="chromino/C"]
 position = Vector2( -325.878, 273.29 )
 frames = SubResource( 2 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/C"]
 position = Vector2( -327.096, 255.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="H" type="Area2D" parent="chromino"]
@@ -316,67 +316,67 @@ position = Vector2( 823.656, 76.776 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="chromino/H"]
 position = Vector2( -327.096, 200.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite11" type="AnimatedSprite" parent="chromino/H"]
 position = Vector2( -289.598, 200.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="chromino/H"]
 position = Vector2( -289.247, 256.779 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite9" type="AnimatedSprite" parent="chromino/H"]
 position = Vector2( -289.096, 273.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="chromino/H"]
 position = Vector2( -290.389, 237.933 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/H"]
 position = Vector2( -290.297, 219.063 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="chromino/H"]
 position = Vector2( -327.331, 219.485 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/H"]
 position = Vector2( -327.096, 237.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite10" type="AnimatedSprite" parent="chromino/H"]
 position = Vector2( -309.096, 237.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/H"]
 position = Vector2( -327.096, 255.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="chromino/H"]
 position = Vector2( -326.879, 273.29 )
 frames = SubResource( 2 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="R" type="Area2D" parent="chromino"]
@@ -385,73 +385,73 @@ position = Vector2( 899.656, 76.776 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="chromino/R"]
 position = Vector2( -327.096, 200.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite12" type="AnimatedSprite" parent="chromino/R"]
 position = Vector2( -310.096, 200.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite11" type="AnimatedSprite" parent="chromino/R"]
 position = Vector2( -293.842, 203.245 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="chromino/R"]
 position = Vector2( -289.247, 256.779 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite9" type="AnimatedSprite" parent="chromino/R"]
 position = Vector2( -289.096, 273.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="chromino/R"]
 position = Vector2( -295.953, 245.201 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/R"]
 position = Vector2( -294.04, 223.307 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="chromino/R"]
 position = Vector2( -327.331, 219.485 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/R"]
 position = Vector2( -327.096, 237.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite10" type="AnimatedSprite" parent="chromino/R"]
 position = Vector2( -309.096, 237.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/R"]
 position = Vector2( -327.096, 255.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="chromino/R"]
 position = Vector2( -327.138, 273.29 )
 frames = SubResource( 2 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="O" type="Area2D" parent="chromino"]
@@ -460,73 +460,73 @@ position = Vector2( 976.294, 76.776 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="chromino/O"]
 position = Vector2( -324.096, 207.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite12" type="AnimatedSprite" parent="chromino/O"]
 position = Vector2( -310.096, 203.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite11" type="AnimatedSprite" parent="chromino/O"]
 position = Vector2( -296.842, 208.245 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="chromino/O"]
 position = Vector2( -292.247, 256.779 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite9" type="AnimatedSprite" parent="chromino/O"]
 position = Vector2( -296.219, 269.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="chromino/O"]
 position = Vector2( -293.953, 240.201 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/O"]
 position = Vector2( -294.04, 223.307 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="chromino/O"]
 position = Vector2( -327.331, 219.485 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/O"]
 position = Vector2( -327.096, 237.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/O"]
 position = Vector2( -327.096, 255.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="chromino/O"]
 position = Vector2( -324.138, 269.29 )
 frames = SubResource( 2 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite10" type="AnimatedSprite" parent="chromino/O"]
 position = Vector2( -309.138, 273.29 )
 frames = SubResource( 2 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="M" type="Area2D" parent="chromino"]
@@ -535,79 +535,79 @@ position = Vector2( 1042.62, 77.6681 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="chromino/M"]
 position = Vector2( -327.096, 203.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite12" type="AnimatedSprite" parent="chromino/M"]
 position = Vector2( -320.096, 211.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite13" type="AnimatedSprite" parent="chromino/M"]
 position = Vector2( -297.096, 211.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite11" type="AnimatedSprite" parent="chromino/M"]
 position = Vector2( -293.135, 203.537 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="chromino/M"]
 position = Vector2( -292.247, 255.779 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite9" type="AnimatedSprite" parent="chromino/M"]
 position = Vector2( -292.096, 272.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="chromino/M"]
 position = Vector2( -293.953, 239.201 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/M"]
 position = Vector2( -294.04, 222.307 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="chromino/M"]
 position = Vector2( -327.331, 219.485 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/M"]
 position = Vector2( -327.096, 237.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/M"]
 position = Vector2( -327.096, 255.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="chromino/M"]
 position = Vector2( -328.082, 272.29 )
 frames = SubResource( 2 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite10" type="AnimatedSprite" parent="chromino/M"]
 position = Vector2( -310.138, 221.29 )
 frames = SubResource( 2 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="I" type="Area2D" parent="chromino"]
@@ -616,25 +616,25 @@ position = Vector2( 1106.59, 74.4249 )
 [node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/I"]
 position = Vector2( -311.789, 225.937 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/I"]
 position = Vector2( -311.717, 241.659 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/I"]
 position = Vector2( -310.977, 257.769 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite10" type="AnimatedSprite" parent="chromino/I"]
 position = Vector2( -311.195, 273.29 )
 frames = SubResource( 2 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="N" type="Area2D" parent="chromino"]
@@ -643,79 +643,79 @@ position = Vector2( 1171.59, 75.4249 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="chromino/N"]
 position = Vector2( -327.096, 202.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite12" type="AnimatedSprite" parent="chromino/N"]
 position = Vector2( -309.506, 237.248 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite13" type="AnimatedSprite" parent="chromino/N"]
 position = Vector2( -319.506, 219.248 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite11" type="AnimatedSprite" parent="chromino/N"]
 position = Vector2( -293.842, 204.245 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="chromino/N"]
 position = Vector2( -292.247, 256.779 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite9" type="AnimatedSprite" parent="chromino/N"]
 position = Vector2( -292.096, 273.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="chromino/N"]
 position = Vector2( -292.953, 238.201 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/N"]
 position = Vector2( -293.04, 221.307 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="chromino/N"]
 position = Vector2( -327.331, 219.485 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/N"]
 position = Vector2( -327.096, 237.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/N"]
 position = Vector2( -327.096, 255.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="chromino/N"]
 position = Vector2( -326.138, 272.29 )
 frames = SubResource( 2 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite10" type="AnimatedSprite" parent="chromino/N"]
 position = Vector2( -300.319, 256.321 )
 frames = SubResource( 2 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="O2" type="Area2D" parent="chromino"]
@@ -724,73 +724,73 @@ position = Vector2( 1239.59, 75.4249 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="chromino/O2"]
 position = Vector2( -324.096, 207.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite12" type="AnimatedSprite" parent="chromino/O2"]
 position = Vector2( -310.987, 203.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite11" type="AnimatedSprite" parent="chromino/O2"]
 position = Vector2( -296.842, 208.245 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="chromino/O2"]
 position = Vector2( -292.247, 256.779 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite9" type="AnimatedSprite" parent="chromino/O2"]
 position = Vector2( -295.096, 269.75 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="chromino/O2"]
 position = Vector2( -293.953, 240.201 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite8" type="AnimatedSprite" parent="chromino/O2"]
 position = Vector2( -294.04, 223.307 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="chromino/O2"]
 position = Vector2( -327.331, 219.485 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="chromino/O2"]
 position = Vector2( -327.096, 237.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="chromino/O2"]
 position = Vector2( -327.096, 255.25 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="chromino/O2"]
 position = Vector2( -324.138, 269.29 )
 frames = SubResource( 2 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite10" type="AnimatedSprite" parent="chromino/O2"]
 position = Vector2( -309.138, 273.29 )
 frames = SubResource( 2 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -826,6 +826,6 @@ position = Vector2( 764, 263 )
 position = Vector2( 0.810211, -3.11145 )
 z_index = 4
 frames = SubResource( 3 )
-frame = 4
+frame = 6
 playing = true
 [connection signal="pressed" from="jouez" to="jouez" method="_on_jouez_pressed"]

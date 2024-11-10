@@ -54,6 +54,10 @@ config/name="chromino-V2"
 run/main_scene="res://acceuil.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+default_bus_layout=""
+
 [autoload]
 
 Globals="*res://globals.gd"
