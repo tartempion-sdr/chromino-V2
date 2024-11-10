@@ -124,8 +124,8 @@ func affiche_nb_jetons_restant():
 	$Area2D/TextureRect2/Button_pioche/RichTextLabel.text = "PIOCHE = %d" % count
 	var countjetonsjoueur1 = int(len(Globals.list_affiche_position_porte_jetons))
 	var countjetonsjoueuria = int(len(Globals.list_affiche_position_porte_jetons_ia))
-	$Area2D/TextureRect2/Button_pioche/textejoueur1.text = " Joueur 1 \n jetons = %d \n victoire =" % countjetonsjoueur1
-	$Area2D/TextureRect2/Button_pioche/textejoueurIA.text = " Joueur IA \n jetons =  %d \n victoire =" % countjetonsjoueuria
+	$Area2D/TextureRect2/Button_pioche/textejoueur1.text = " JOUEUR 1 \n jetons = %d \n victoire = 0" % countjetonsjoueur1
+	$Area2D/TextureRect2/Button_pioche/textejoueurIA.text = " JOUEUR IA \n jetons =  %d \n victoire = 0" % countjetonsjoueuria
 
 	
 func child_pioche_jetons():
