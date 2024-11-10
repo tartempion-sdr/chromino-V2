@@ -277,15 +277,11 @@ func joueur_ia_cerveau():
 				var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
 				if node:
 					node.position = Vector2(Globals.position_de_chaque_carre_du_plateau[index])
-<<<<<<< HEAD
-					var child = node.get_child(0)
-					child.scale.y = Globals.taille
-					child.scale.x = Globals.taille
-=======
+
 					var child_scale = node.get_child(0)
 					child_scale.scale.x = Globals.taille
 					child_scale.scale.y = Globals.taille
->>>>>>> nouvelle_branche
+
 					node.visible = true
 					for tourne in range(0, 4):
 						if jeton_ia_place_trouver:
