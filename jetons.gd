@@ -272,45 +272,41 @@ func joueur_ia_cerveau():
 	print("joueurIa")
 	var node2d_scene = get_tree().get_root().get_node("Node2D")
 	node2d_scene.child_pioche_jetons()
-
 	if Globals.list_affiche_position_porte_jetons_ia.size() > 0 and jeton_ia_place_trouver == false:
 		for element in Globals.list_affiche_position_porte_jetons_ia.size():
+			if len(Globals.list_affiche_position_porte_jetons_ia) > 1:
+				var dernier_element = Globals.list_affiche_position_porte_jetons_ia.pop_back() # Supprime et retourne le dernier élément 
+				Globals.list_affiche_position_porte_jetons_ia.insert(0, dernier_element) # Insère l'élément à la position 0 
+			else: 
+				print("La liste ne contient qu'un seul élément ou est vide.")
 			for tourne in range(0, 4):
 				var script_node2D = get_tree().root.get_node("Node2D")
 				if script_node2D != null: 
-
 					var result = script_node2D.call("tourne_jeton") 
 					print("Resultat de tourne_jeton : " + str(result)) 
 				else: 
 					print("Erreur : script_node2D est null")
 					var tourne_ia = script_node2D.call("tourne_jeton") 
 					tourne_ia
-						
-				
 				for index in Globals.position_de_chaque_carre_du_plateau.size():
-				
 						#yield(get_tree().create_timer(0.1), "timeout") # Attendre 1 seconde entre chaque position
-						var visi_node_ia = Globals.list_affiche_position_porte_jetons_ia[element]
+						var visi_node_ia = Globals.list_affiche_position_porte_jetons_ia[0]
 						var target_id = visi_node_ia.jeton_id  # Remplace par ton ID de nœud
 						var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
 						if node:
 							node.position = Vector2(Globals.position_de_chaque_carre_du_plateau[index])
-
 							var child_scale = node.get_child(0)
 							child_scale.scale.x = Globals.taille
 							child_scale.scale.y = Globals.taille
 							node.visible = true
+							
 							yield(get_tree().create_timer(0.0005), "timeout") # Attendre 1 seconde entre chaque position
-							
 							#print(Globals.list_affiche_position_porte_jetons[element].sens)
-							
 							if jeton_ia_place_trouver:
 								#jeton_ia_place_trouver = false
 								node.visible = false
 								Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
 								break
-					
-							
 						node.visible = false
 		Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
 
