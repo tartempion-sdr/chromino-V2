@@ -223,46 +223,54 @@ func _on_Button_tourne_button_down():
 	tourne_jeton()
 	
 func tourne_jeton():
+	print("Appel de tourne_jeton")
 	if Globals.au_joueur1_de_jouer:
+		print("Tour du joueur 1")
 		if len(Globals.list_affiche_position_porte_jetons) == 0:
 			print("pioche d'abord joueur 1")
+			return null
+		else:
+			print("Liste de jetons joueur 1 non vide")
+			var target_id = Globals.list_affiche_position_porte_jetons[0].jeton_id
+			print("Target ID joueur 1:", target_id)
+			var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
+			if node:
+				print("Nœud trouvé pour le joueur 1")
+				node.rotation_degrees += 90
+				var actuel = sens.find(Globals.list_affiche_position_porte_jetons[0].sens)
+				print("Sens actuel joueur 1:", actuel)
+				if actuel != -1:
+					Globals.nouveau = (actuel + 1) % 4
+					Globals.list_affiche_position_porte_jetons[0].sens = sens[Globals.nouveau]
+					print("Nouveau sens joueur 1:", sens[Globals.nouveau])
+					return sens[Globals.nouveau]
+				else:
+					print("Sens non trouvé pour le joueur 1")
 	else:
+		print("Tour de l'IA")
 		if len(Globals.list_affiche_position_porte_jetons_ia) == 0:
 			print("pioche d'abord joueur IA")
-	if Globals.au_joueur1_de_jouer:
-		if len(Globals.list_affiche_position_porte_jetons) >= 0:
-			
-			var target_id = Globals.list_affiche_position_porte_jetons[0].jeton_id  # Remplace par ton ID de nœud
-			var node = find_node_by_instance_id(get_tree().root, target_id)
+			return null
+		else:
+			print("Liste de jetons IA non vide")
+			var target_id = Globals.list_affiche_position_porte_jetons_ia[0].jeton_id
+			print("Target ID IA:", target_id)
+			var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
 			if node:
+				print("Nœud trouvé pour l'IA")
 				node.rotation_degrees += 90
-				var actuel =  sens.find(Globals.list_affiche_position_porte_jetons[0].sens)
-				if actuel < 3:
-					Globals.nouveau = actuel + 1
+				var actuel = sens.find(Globals.list_affiche_position_porte_jetons_ia[0].sens)
+				print("Sens actuel IA:", actuel)
+				if actuel != -1:
+					Globals.nouveau = (actuel + 1) % 4
+					Globals.list_affiche_position_porte_jetons_ia[0].sens = sens[Globals.nouveau]
+					print("Nouveau sens IA:", sens[Globals.nouveau])
+					return sens[Globals.nouveau]
 				else:
-					Globals.nouveau = 0
-				Globals.list_affiche_position_porte_jetons[0].sens = sens[Globals.nouveau]
-				return sens[Globals.nouveau]
-				#print(Globals.list_affiche_position_porte_jetons[0].sens)
-				#print("tourn_n_child" + str(Globals.list_affiche_position_porte_jetons[0].jeton_id))
-				#print("list " + str(Globals.list_affiche_position_porte_jetons))
-	else:
-		if Globals.list_affiche_position_porte_jetons_ia.size() >= 0:
-			
-			var target_id = Globals.list_affiche_position_porte_jetons_ia[0].jeton_id  # Remplace par ton ID de nœud
-			var node = find_node_by_instance_id(get_tree().root, target_id)
-			if node:
-				node.rotation_degrees += 90
-				var actuel =  sens.find(Globals.list_affiche_position_porte_jetons_ia[0].sens)
-				if actuel < 3:
-					Globals.nouveau = actuel + 1
-				else:
-					Globals.nouveau = 0
-				Globals.list_affiche_position_porte_jetons_ia[0].sens = sens[Globals.nouveau]
-				#print(Globals.list_affiche_position_porte_jetons[0].sens)
-				#print("tourn_n_child" + str(Globals.list_affiche_position_porte_jetons[0].jeton_id))
-				#print("list " + str(Globals.list_affiche_position_porte_jetons))
-			
+					print("Sens non trouvé pour l'IA")
+	print("Aucune condition remplie, retourne null")
+	return null
+
 func find_node_by_instance_id(node, target_id):
 	if node.get_instance_id() == target_id:
 		return node

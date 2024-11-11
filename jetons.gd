@@ -13,7 +13,7 @@ var area_autour
 var suite = false
 var similaire = false
 var jeton_ia_place_trouver:bool = false
-var sens = ["verticale-h", "horizontale-d", "verticale-b", "horizontale-g"] 
+#var sens = ["verticale-h", "horizontale-d", "verticale-b", "horizontale-g"] 
 
 var joker = "res://assets/colors/joker.jpg"
 var jaune = "res://assets/colors/jaune.jpg"
@@ -26,10 +26,12 @@ var carre_blanc = preload("res://assets/colors/carre-blanc.png")
 var etoile = preload("res://etoile.tscn")
 var pioche = preload("res://assets/pioche.png")
 var croix = preload("res://assets/icon/croix.png")
-var script_node2D = load("res://Node2D.gd")
+
+
 
 func _ready():
 	pass
+
 
 func _physics_process(delta):
 	if move_child:
@@ -270,39 +272,46 @@ func joueur_ia_cerveau():
 	print("joueurIa")
 	var node2d_scene = get_tree().get_root().get_node("Node2D")
 	node2d_scene.child_pioche_jetons()
-	
+
 	if Globals.list_affiche_position_porte_jetons_ia.size() > 0 and jeton_ia_place_trouver == false:
 		for element in Globals.list_affiche_position_porte_jetons_ia.size():
 			for tourne in range(0, 4):
-				var tourne_ia = script_node2D.tourne_jeton()
-				tourne_ia
-				print("sens" + str(tourne_ia))
-				for index in Globals.position_de_chaque_carre_du_plateau.size():
-					
-							#yield(get_tree().create_timer(0.1), "timeout") # Attendre 1 seconde entre chaque position
-							var visi_node_ia = Globals.list_affiche_position_porte_jetons_ia[element]
-							var target_id = visi_node_ia.jeton_id  # Remplace par ton ID de nœud
-							var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
-							if node:
-								node.position = Vector2(Globals.position_de_chaque_carre_du_plateau[index])
+				var script_node2D = get_tree().root.get_node("Node2D")
+				if script_node2D != null: 
 
-								var child_scale = node.get_child(0)
-								child_scale.scale.x = Globals.taille
-								child_scale.scale.y = Globals.taille
-								node.visible = true
-								yield(get_tree().create_timer(0.0005), "timeout") # Attendre 1 seconde entre chaque position
-								
-								print(Globals.list_affiche_position_porte_jetons[element].sens)
+					var result = script_node2D.call("tourne_jeton") 
+					print("Resultat de tourne_jeton : " + str(result)) 
+				else: 
+					print("Erreur : script_node2D est null")
+					var tourne_ia = script_node2D.call("tourne_jeton") 
+					tourne_ia
+						
+				
+				for index in Globals.position_de_chaque_carre_du_plateau.size():
+				
+						#yield(get_tree().create_timer(0.1), "timeout") # Attendre 1 seconde entre chaque position
+						var visi_node_ia = Globals.list_affiche_position_porte_jetons_ia[element]
+						var target_id = visi_node_ia.jeton_id  # Remplace par ton ID de nœud
+						var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
+						if node:
+							node.position = Vector2(Globals.position_de_chaque_carre_du_plateau[index])
+
+							var child_scale = node.get_child(0)
+							child_scale.scale.x = Globals.taille
+							child_scale.scale.y = Globals.taille
+							node.visible = true
+							yield(get_tree().create_timer(0.0005), "timeout") # Attendre 1 seconde entre chaque position
 							
-						
-								if jeton_ia_place_trouver:
-									#jeton_ia_place_trouver = false
-									node.visible = false
-									Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
-									break
-						
-								
-							node.visible = false
+							#print(Globals.list_affiche_position_porte_jetons[element].sens)
+							
+							if jeton_ia_place_trouver:
+								#jeton_ia_place_trouver = false
+								node.visible = false
+								Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
+								break
+					
+							
+						node.visible = false
 		Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
 
 	
