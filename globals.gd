@@ -8,7 +8,7 @@ var au_joueur1_de_jouer:bool = true
 var id_child_node2d_jeton
 var nb_jetons_pioche = 7
 var position_de_chaque_carre_du_plateau = []
-
+var nouveau
 var list_position_pioche_jetons = [(Vector2(280, 543)),
 (Vector2(391, 543)),
 (Vector2(502, 543)),

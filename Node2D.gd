@@ -15,7 +15,7 @@ var y = 0
 var num = 2
 var jeton_child = 363
 var sens = ["verticale-h", "horizontale-d", "verticale-b", "horizontale-g"] 
-var nouveau
+
 #75 chrominos classiques, 
 #5 chrominos caméléon combinant 2 couleurs différentes à chaque extrémité
 var scene_jeton = preload("res://jetons.tscn")
@@ -238,10 +238,11 @@ func tourne_jeton():
 				node.rotation_degrees += 90
 				var actuel =  sens.find(Globals.list_affiche_position_porte_jetons[0].sens)
 				if actuel < 3:
-					nouveau = actuel + 1
+					Globals.nouveau = actuel + 1
 				else:
-					nouveau = 0
-				Globals.list_affiche_position_porte_jetons[0].sens = sens[nouveau]
+					Globals.nouveau = 0
+				Globals.list_affiche_position_porte_jetons[0].sens = sens[Globals.nouveau]
+				return sens[Globals.nouveau]
 				#print(Globals.list_affiche_position_porte_jetons[0].sens)
 				#print("tourn_n_child" + str(Globals.list_affiche_position_porte_jetons[0].jeton_id))
 				#print("list " + str(Globals.list_affiche_position_porte_jetons))
@@ -254,10 +255,10 @@ func tourne_jeton():
 				node.rotation_degrees += 90
 				var actuel =  sens.find(Globals.list_affiche_position_porte_jetons_ia[0].sens)
 				if actuel < 3:
-					nouveau = actuel + 1
+					Globals.nouveau = actuel + 1
 				else:
-					nouveau = 0
-				Globals.list_affiche_position_porte_jetons_ia[0].sens = sens[nouveau]
+					Globals.nouveau = 0
+				Globals.list_affiche_position_porte_jetons_ia[0].sens = sens[Globals.nouveau]
 				#print(Globals.list_affiche_position_porte_jetons[0].sens)
 				#print("tourn_n_child" + str(Globals.list_affiche_position_porte_jetons[0].jeton_id))
 				#print("list " + str(Globals.list_affiche_position_porte_jetons))
