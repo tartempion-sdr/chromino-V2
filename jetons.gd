@@ -259,6 +259,7 @@ func remplace_couleurs():
 			
 			var button_pioche = node2d_scene.get_node("Area2D/TextureRect2/Button_pioche")
 			button_pioche.texture_normal = croix
+			button_pioche.disabled = true
 			joueur_ia_cerveau()
 
 	else:
@@ -266,6 +267,7 @@ func remplace_couleurs():
 		if node2d_scene: # Accède au bouton pioche
 			var button_pioche = node2d_scene.get_node("Area2D/TextureRect2/Button_pioche")
 			button_pioche.texture_normal = pioche
+			button_pioche.disabled = false
 			Globals.jeton_ia_place_trouver = true
 			print("jeton_ia_place_trouver = " + str(Globals.jeton_ia_place_trouver))
 			var jetons_ia = Globals.list_affiche_position_porte_jetons_ia 
@@ -279,7 +281,9 @@ func remplace_couleurs():
 func joueur_ia_cerveau():
 	print("joueurIa")
 	var node2d_scene = get_tree().get_root().get_node("Node2D")
-	node2d_scene.child_pioche_jetons()
+	if Globals.list_affiche_position_porte_jetons_ia.size() == 0:
+		node2d_scene.child_pioche_jetons()
+		
 	if Globals.list_affiche_position_porte_jetons_ia.size() > 0 and Globals.jeton_ia_place_trouver == false:
 		for element in Globals.list_affiche_position_porte_jetons_ia.size():
 			if len(Globals.list_affiche_position_porte_jetons_ia) > 1:
@@ -314,19 +318,21 @@ func joueur_ia_cerveau():
 						#print(Globals.list_affiche_position_porte_jetons[element].sens)
 						
 					else:
-						
 						node.visible = false
-
 						print("fin")
 						break
-
-						
 					node.visible = false
-#					
 					
+		if Globals.jeton_ia_place_trouver == false:
+			print("ia jeton non poser , jeton piocher")
+			node2d_scene.child_pioche_jetons()
+		else:
+			print("ia jeton poser pas de pioche")
+			pass
 		Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
 		Globals.jeton_ia_place_trouver = false
 		node2d_scene.affiche_nb_jetons_restant()
+		
 	
 func supprime_jeton_porte_jeton():
 	for jtn in Globals.list_affiche_position_porte_jetons:

@@ -129,6 +129,28 @@ func affiche_nb_jetons_restant():
 
 	
 func child_pioche_jetons():
+	#condition globals bool , faire de Globals.nb_jetons_pioche une list de int
+	if Globals.au_joueur1_de_jouer:
+		if Globals.dedut_de_partie_nb_jetons_j1:
+			Globals.nb_jetons_pioche = 7
+			Globals.dedut_de_partie_nb_jetons_j1 = false
+			
+		elif Globals.victoir_pioche_nb_jeton_j1 and Globals.list_affiche_position_porte_jetons.size() == 0:
+			Globals.nb_jetons_pioche = 3
+		
+		else:
+			Globals.nb_jetons_pioche = 1
+	else:
+		if Globals.dedut_de_partie_nb_jetons_jia:
+			Globals.nb_jetons_pioche = 7
+			Globals.dedut_de_partie_nb_jetons_jia = false
+		
+		elif Globals.victoir_pioche_nb_jeton_jia and Globals.list_affiche_position_porte_jetons_ia.size() == 0:
+			Globals.nb_jetons_pioche = 3
+		
+		else:
+			Globals.nb_jetons_pioche = 1
+	
 	for d in Globals.nb_jetons_pioche:
 	
 		var jeton_hazard: Jeton = pioche.pioche_jeton()
