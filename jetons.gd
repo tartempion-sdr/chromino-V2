@@ -268,7 +268,14 @@ func remplace_couleurs():
 			button_pioche.texture_normal = pioche
 			Globals.jeton_ia_place_trouver = true
 			print("jeton_ia_place_trouver = " + str(Globals.jeton_ia_place_trouver))
-		
+			var jetons_ia = Globals.list_affiche_position_porte_jetons_ia 
+			if jetons_ia.size() > 0: 
+				jetons_ia = jetons_ia.slice(1, jetons_ia.size() - 1) 
+				Globals.list_affiche_position_porte_jetons_ia = jetons_ia 
+				print("Premier élément supprimé, nouvelle liste :", jetons_ia) 
+			else: 
+				print("L'Array est vide")
+				
 func joueur_ia_cerveau():
 	print("joueurIa")
 	var node2d_scene = get_tree().get_root().get_node("Node2D")
@@ -302,19 +309,24 @@ func joueur_ia_cerveau():
 						child_scale.scale.x = Globals.taille
 						child_scale.scale.y = Globals.taille
 						node.visible = true
-						
-						yield(get_tree().create_timer(0.05), "timeout") # Attendre 1 seconde entre chaque position
+
+						yield(get_tree().create_timer(0.02), "timeout") # Attendre 1 seconde entre chaque position
 						#print(Globals.list_affiche_position_porte_jetons[element].sens)
 						
 					else:
 						
 						node.visible = false
-						
-						break
-						Globals.jeton_ia_place_trouver = false
-					node.visible = false
-		Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
 
+						print("fin")
+						break
+
+						
+					node.visible = false
+#					
+					
+		Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
+		Globals.jeton_ia_place_trouver = false
+		node2d_scene.affiche_nb_jetons_restant()
 	
 func supprime_jeton_porte_jeton():
 	for jtn in Globals.list_affiche_position_porte_jetons:
