@@ -21,6 +21,7 @@ var sens = ["verticale-h", "horizontale-d", "verticale-b", "horizontale-g"]
 var scene_jeton = preload("res://jetons.tscn")
 #var scene_acceuil = preload("res://acceuil.tscn")
 var croix = preload("res://assets/icon/croix.png")
+var pioche_icon = preload("res://assets/pioche.png")
 
 var random = RandomNumberGenerator.new()
 var hazard
@@ -116,16 +117,19 @@ func affiche_nb_jetons_restant():
 	
 
 	if Globals.au_joueur1_de_jouer:
-		
+		$Area2D/TextureRect2/Button_pioche.texture_normal = pioche_icon
 		$Area2D/AnimatedSpriteaujoueur1.position =  Vector2(85,495)
 	else:
+		$Area2D/TextureRect2/Button_pioche.texture_normal = croix
 		$Area2D/AnimatedSpriteaujoueur1.position =  Vector2(85,545)
 	var count = pioche.nb_jetons_restant()
 	$Area2D/TextureRect2/Button_pioche/RichTextLabel.text = "PIOCHE = %d" % count
 	var countjetonsjoueur1 = int(len(Globals.list_affiche_position_porte_jetons))
 	var countjetonsjoueuria = int(len(Globals.list_affiche_position_porte_jetons_ia))
-	$Area2D/TextureRect2/Button_pioche/textejoueur1.text = " JOUEUR 1 \n jetons = %d \n victoire = 0" % countjetonsjoueur1
-	$Area2D/TextureRect2/Button_pioche/textejoueurIA.text = " JOUEUR IA \n jetons =  %d \n victoire = 0" % countjetonsjoueuria
+	var victoirj1 = int(Globals.nb_victoir_j1)
+	var victoirjia = int(Globals.nb_victoir_jia)
+	$Area2D/TextureRect2/Button_pioche/textejoueur1.text = " JOUEUR 1 \n jetons = %d \n victoire = %d  " % [countjetonsjoueur1, victoirj1]
+	$Area2D/TextureRect2/Button_pioche/textejoueurIA.text = " JOUEUR IA \n jetons =  %d \n victoire =  %d " % [countjetonsjoueuria, victoirjia]
 
 	
 func child_pioche_jetons():

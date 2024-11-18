@@ -254,19 +254,29 @@ func remplace_couleurs():
 	
 	node2d_scene.affiche_nb_jetons_restant()
 	if Globals.au_joueur1_de_jouer:
+		
 		if node2d_scene: # Accède au bouton pioche
+			if Globals.dedut_de_partie_nb_jetons_j1 == false and Globals.list_affiche_position_porte_jetons.size() == 0:
+				Globals.victoir_pioche_nb_jeton_j1 = true
+				Globals.nb_victoir_jia += 1
+				node2d_scene.child_pioche_jetons()
+			else:
+				Globals.victoir_pioche_nb_jeton_j1 = false
+				
 			Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
-			
 			var button_pioche = node2d_scene.get_node("Area2D/TextureRect2/Button_pioche")
-			button_pioche.texture_normal = croix
 			button_pioche.disabled = true
+			Globals.affiche_jetons_piocher()
+			node2d_scene.affiche_nb_jetons_restant()
 			joueur_ia_cerveau()
 
 	else:
 		 
 		if node2d_scene: # Accède au bouton pioche
+			
+				
 			var button_pioche = node2d_scene.get_node("Area2D/TextureRect2/Button_pioche")
-			button_pioche.texture_normal = pioche
+			node2d_scene.affiche_nb_jetons_restant()
 			button_pioche.disabled = false
 			Globals.jeton_ia_place_trouver = true
 			print("jeton_ia_place_trouver = " + str(Globals.jeton_ia_place_trouver))
@@ -301,34 +311,42 @@ func joueur_ia_cerveau():
 					var tourne_ia = script_node2D.call("tourne_jeton") 
 					tourne_ia
 				for index in range(Globals.position_de_chaque_carre_du_plateau.size()):
-					var visi_node_ia = Globals.list_affiche_position_porte_jetons_ia[0]
-					var target_id = visi_node_ia.jeton_id  # Remplace par ton ID de nœud
-					var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
-					if not Globals.jeton_ia_place_trouver:
-						#yield(get_tree().create_timer(0.1), "timeout") # Attendre 1 seconde entre chaque position
-						
-						
-						node.position = Vector2(Globals.position_de_chaque_carre_du_plateau[index])
-						var child_scale = node.get_child(0)
-						child_scale.scale.x = Globals.taille
-						child_scale.scale.y = Globals.taille
-						node.visible = true
+					if Globals.list_affiche_position_porte_jetons_ia.size() > 0:
+						var visi_node_ia = Globals.list_affiche_position_porte_jetons_ia[0]
+						var target_id = visi_node_ia.jeton_id  # Remplace par ton ID de nœud
+						var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
+						if not Globals.jeton_ia_place_trouver:
+							#yield(get_tree().create_timer(0.1), "timeout") # Attendre 1 seconde entre chaque position
+							
+							
+							node.position = Vector2(Globals.position_de_chaque_carre_du_plateau[index])
+							var child_scale = node.get_child(0)
+							child_scale.scale.x = Globals.taille
+							child_scale.scale.y = Globals.taille
+							node.visible = true
 
-						yield(get_tree().create_timer(0.02), "timeout") # Attendre 1 seconde entre chaque position
-						#print(Globals.list_affiche_position_porte_jetons[element].sens)
-						
-					else:
+							yield(get_tree().create_timer(0.02), "timeout") # Attendre 1 seconde entre chaque position
+							#print(Globals.list_affiche_position_porte_jetons[element].sens)
+							
+						else:
+							node.visible = false
+							print("fin")
+							break
 						node.visible = false
-						print("fin")
-						break
-					node.visible = false
 					
 		if Globals.jeton_ia_place_trouver == false:
 			print("ia jeton non poser , jeton piocher")
+			var button_pioche = node2d_scene.get_node("Area2D/TextureRect2/Button_pioche")
+			button_pioche.disabled = false
 			node2d_scene.child_pioche_jetons()
 		else:
-			print("ia jeton poser pas de pioche")
-			pass
+			if Globals.dedut_de_partie_nb_jetons_jia == false and Globals.list_affiche_position_porte_jetons_ia.size() == 0:
+				Globals.victoir_pioche_nb_jeton_jia = true
+				Globals.nb_victoir_jia += 1
+				node2d_scene.child_pioche_jetons()
+			else:
+				Globals.victoir_pioche_nb_jeton_jia = false
+			
 		Globals.au_joueur1_de_jouer = not Globals.au_joueur1_de_jouer
 		Globals.jeton_ia_place_trouver = false
 		node2d_scene.affiche_nb_jetons_restant()
