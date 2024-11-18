@@ -296,6 +296,8 @@ func joueur_ia_cerveau():
 		
 	if Globals.list_affiche_position_porte_jetons_ia.size() > 0 and Globals.jeton_ia_place_trouver == false:
 		for element in Globals.list_affiche_position_porte_jetons_ia.size():
+			Globals.index_pioche_ia = int(element + 1)
+			node2d_scene.affiche_nb_jetons_restant()
 			if len(Globals.list_affiche_position_porte_jetons_ia) > 1:
 				var dernier_element = Globals.list_affiche_position_porte_jetons_ia.pop_back() # Supprime et retourne le dernier élément 
 				Globals.list_affiche_position_porte_jetons_ia.insert(0, dernier_element) # Insère l'élément à la position 0 
@@ -329,12 +331,16 @@ func joueur_ia_cerveau():
 							#print(Globals.list_affiche_position_porte_jetons[element].sens)
 							
 						else:
+							Globals.index_pioche_ia = 0
+							node2d_scene.affiche_nb_jetons_restant()
 							node.visible = false
 							print("fin")
 							break
 						node.visible = false
 					
 		if Globals.jeton_ia_place_trouver == false:
+			Globals.index_pioche_ia = 0
+			node2d_scene.affiche_nb_jetons_restant()
 			print("ia jeton non poser , jeton piocher")
 			var button_pioche = node2d_scene.get_node("Area2D/TextureRect2/Button_pioche")
 			button_pioche.disabled = false

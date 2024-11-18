@@ -21,6 +21,8 @@ var normal_pioche_nb_jetons_jia:bool = false
 var nb_victoir_j1 = 0
 var nb_victoir_jia = 0
 
+var index_pioche_ia = 0
+
 var list_position_pioche_jetons = [(Vector2(280, 543)),
 (Vector2(391, 543)),
 (Vector2(502, 543)),

@@ -128,8 +128,9 @@ func affiche_nb_jetons_restant():
 	var countjetonsjoueuria = int(len(Globals.list_affiche_position_porte_jetons_ia))
 	var victoirj1 = int(Globals.nb_victoir_j1)
 	var victoirjia = int(Globals.nb_victoir_jia)
+	var index = int(Globals.index_pioche_ia)
 	$Area2D/TextureRect2/Button_pioche/textejoueur1.text = " JOUEUR 1 \n jetons = %d \n victoire = %d  " % [countjetonsjoueur1, victoirj1]
-	$Area2D/TextureRect2/Button_pioche/textejoueurIA.text = " JOUEUR IA \n jetons =  %d \n victoire =  %d " % [countjetonsjoueuria, victoirjia]
+	$Area2D/TextureRect2/Button_pioche/textejoueurIA.text = " JOUEUR IA \n jetons = %d/%d \n victoire =  %d " % [index, countjetonsjoueuria, victoirjia]
 
 	
 func child_pioche_jetons():
