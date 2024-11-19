@@ -54,17 +54,17 @@ func _on_jetons_area_entered(area):
 		list_pos_plateau_remplace_blanc.sort()
 
 		if list_pos_plateau_remplace_blanc.size() == 3:
-			print("list pos plateau a verif" + str(list_pos_plateau_remplace_blanc))
+			#print("list pos plateau a verif" + str(list_pos_plateau_remplace_blanc))
 			var tous_elements_sont_blancs = true
 			for element in list_pos_plateau_remplace_blanc:
-				print(element.texture) 
-				print(carre_blanc)
+				#print(element.texture) 
+				#print(carre_blanc)
 				if element.texture != carre_blanc: 
 					tous_elements_sont_blancs = false 
 					break 
 			if tous_elements_sont_blancs: # Code à exécuter si tous les éléments sont vrais (ont la texture carre_blanc) 
 				jeton_blanc_3 = true
-				print("Tous les éléments sont blancs.") 
+				#print("Tous les éléments sont blancs.") 
 			else: # Code à exécuter si au moins un élément n'est pas vrai (n'a pas la texture carre_blanc) 
 				print("Au moins un élément n'est pas blanc.")
 					#print(Globals.list_couleur_bouge_jeton)
@@ -337,7 +337,7 @@ func joueur_ia_cerveau():
 							child_scale.scale.y = Globals.taille
 							node.visible = true
 
-							yield(get_tree().create_timer(0.02), "timeout") # Attendre 1 seconde entre chaque position
+							yield(get_tree().create_timer(0.0005), "timeout") # Attendre 1 seconde entre chaque position
 							#print(Globals.list_affiche_position_porte_jetons[element].sens)
 							
 						else:

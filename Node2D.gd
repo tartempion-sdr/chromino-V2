@@ -13,7 +13,7 @@ var child_2
 var x = 0
 var y = 0
 var num = 2
-var jeton_child = 363
+#var jeton_child = 363
 var sens = ["verticale-h", "horizontale-d", "verticale-b", "horizontale-g"] 
 
 #75 chrominos classiques, 
@@ -29,9 +29,9 @@ var hazard
 func _ready():
 	pos_plateau()
 	var premier_jeton:Jeton = pioche.pioche_jeton()
-	modifie_plateau(163, premier_jeton.color0)
-	modifie_plateau(182, premier_jeton.color1)
-	modifie_plateau(201, premier_jeton.color2)
+	modifie_plateau(420, premier_jeton.color0)
+	modifie_plateau(449, premier_jeton.color1)
+	modifie_plateau(478, premier_jeton.color2)
 	Globals.list_affiche_position_porte_jetons.clear()
 	affiche_nb_jetons_restant()
 	
@@ -56,8 +56,8 @@ func pos_plateau():
 	var a = 0
 	var retour = 0
 	
-	for i in range(0, 19):
-		for n in range(0, 19):
+	for i in range(0, 29):
+		for n in range(0, 29):
 			
 			plateau(Vector2(x, y))
 			Globals.position_de_chaque_carre_du_plateau.insert(0 ,Vector2(x, y))
@@ -76,9 +76,9 @@ func souris_pos_plateau():
 	var retoury = 0
 	num = 2
 	
-	for n in range(19):
+	for n in range(29):
 
-		for i in range(19):
+		for i in range(29):
 			
 			# Utiliser un index pour accéder à chaque enfant individuellement
 			var child = get_child(num)
