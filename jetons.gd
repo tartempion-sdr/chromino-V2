@@ -47,82 +47,91 @@ func _on_jetons_area_entered(area):
 	
 	if area.is_in_group("plateau"):
 		var node2d_plateau = area  # Le `Node2D` du plateau
-		
 		var child_node2d_jeton = self.get_child(0)
 		Globals.id_child_node2d_jeton =  child_node2d_jeton .get_instance_id()
-		
 		var child_node2d_plateau = node2d_plateau.get_child(0)
-		
 		list_pos_plateau_remplace_blanc.insert(0,child_node2d_plateau)
 		list_pos_plateau_remplace_blanc.sort()
-		if  child_node2d_plateau.texture == carre_blanc :
-			collision_count += 1
-			if collision_count == 3:
-				if Globals.au_joueur1_de_jouer: 
-					for jtn in Globals.list_affiche_position_porte_jetons:
-						var jeton:Jeton = jtn
-						if Globals.id_child_node2d_jeton == jeton.jeton_id:
-							
-							if jeton.is_haut_or_gauche():
-								Globals.list_couleur_bouge_jeton.clear()
-								Globals.list_couleur_bouge_jeton.append(
-									self.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path()
-								)
-								Globals.list_couleur_bouge_jeton.append(
-									self.get_node("Area2D/jetons/Spritemilieu").texture.get_path()
-								)
-								Globals.list_couleur_bouge_jeton.append(
-									self.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path()
-								)
-							
-							if jeton.is_bas_or_droite():
-								Globals.list_couleur_bouge_jeton.clear()
-								Globals.list_couleur_bouge_jeton.append(
-									self.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path()
-								)
-								Globals.list_couleur_bouge_jeton.append(
-									self.get_node("Area2D/jetons/Spritemilieu").texture.get_path()
-								)
-								Globals.list_couleur_bouge_jeton.append(
-									self.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path()
-								)
-							
+
+		if list_pos_plateau_remplace_blanc.size() == 3:
+			print("list pos plateau a verif" + str(list_pos_plateau_remplace_blanc))
+			var tous_elements_sont_blancs = true
+			for element in list_pos_plateau_remplace_blanc:
+				print(element.texture) 
+				print(carre_blanc)
+				if element.texture != carre_blanc: 
+					tous_elements_sont_blancs = false 
+					break 
+			if tous_elements_sont_blancs: # Code à exécuter si tous les éléments sont vrais (ont la texture carre_blanc) 
+				jeton_blanc_3 = true
+				print("Tous les éléments sont blancs.") 
+			else: # Code à exécuter si au moins un élément n'est pas vrai (n'a pas la texture carre_blanc) 
+				print("Au moins un élément n'est pas blanc.")
 					#print(Globals.list_couleur_bouge_jeton)
-					collision_count = 0
-					jeton_blanc_3 = true
+
+			if Globals.au_joueur1_de_jouer: 
+				for jtn in Globals.list_affiche_position_porte_jetons:
+					var jeton:Jeton = jtn
+					if Globals.id_child_node2d_jeton == jeton.jeton_id:
+						
+						if jeton.is_haut_or_gauche():
+							Globals.list_couleur_bouge_jeton.clear()
+							Globals.list_couleur_bouge_jeton.append(
+								self.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path()
+							)
+							Globals.list_couleur_bouge_jeton.append(
+								self.get_node("Area2D/jetons/Spritemilieu").texture.get_path()
+							)
+							Globals.list_couleur_bouge_jeton.append(
+								self.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path()
+							)
+						
+						if jeton.is_bas_or_droite():
+							Globals.list_couleur_bouge_jeton.clear()
+							Globals.list_couleur_bouge_jeton.append(
+								self.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path()
+							)
+							Globals.list_couleur_bouge_jeton.append(
+								self.get_node("Area2D/jetons/Spritemilieu").texture.get_path()
+							)
+							Globals.list_couleur_bouge_jeton.append(
+								self.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path()
+							)
+						
+				#print(Globals.list_couleur_bouge_jeton)
 				
-				else: 
-					for jtn in Globals.list_affiche_position_porte_jetons_ia:
-						var jeton:Jeton = jtn
-						if Globals.id_child_node2d_jeton == jeton.jeton_id:
-							
-							if jeton.is_haut_or_gauche():
-								Globals.list_couleur_bouge_jeton.clear()
-								Globals.list_couleur_bouge_jeton.append(
-									self.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path()
-								)
-								Globals.list_couleur_bouge_jeton.append(
-									self.get_node("Area2D/jetons/Spritemilieu").texture.get_path()
-								)
-								Globals.list_couleur_bouge_jeton.append(
-									self.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path()
-								)
-							
-							if jeton.is_bas_or_droite():
-								Globals.list_couleur_bouge_jeton.clear()
-								Globals.list_couleur_bouge_jeton.append(
-									self.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path()
-								)
-								Globals.list_couleur_bouge_jeton.append(
-									self.get_node("Area2D/jetons/Spritemilieu").texture.get_path()
-								)
-								Globals.list_couleur_bouge_jeton.append(
-									self.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path()
-								)
-							
-					#print(Globals.list_couleur_bouge_jeton)
-					collision_count = 0
-					jeton_blanc_3 = true
+				
+			
+			else: 
+				for jtn in Globals.list_affiche_position_porte_jetons_ia:
+					var jeton:Jeton = jtn
+					if Globals.id_child_node2d_jeton == jeton.jeton_id:
+						
+						if jeton.is_haut_or_gauche():
+							Globals.list_couleur_bouge_jeton.clear()
+							Globals.list_couleur_bouge_jeton.append(
+								self.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path()
+							)
+							Globals.list_couleur_bouge_jeton.append(
+								self.get_node("Area2D/jetons/Spritemilieu").texture.get_path()
+							)
+							Globals.list_couleur_bouge_jeton.append(
+								self.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path()
+							)
+						
+						if jeton.is_bas_or_droite():
+							Globals.list_couleur_bouge_jeton.clear()
+							Globals.list_couleur_bouge_jeton.append(
+								self.get_node("Area2D/jetons/Spritemilieu/Spritebas").texture.get_path()
+							)
+							Globals.list_couleur_bouge_jeton.append(
+								self.get_node("Area2D/jetons/Spritemilieu").texture.get_path()
+							)
+							Globals.list_couleur_bouge_jeton.append(
+								self.get_node("Area2D/jetons/Spritemilieu/Spritehaut").texture.get_path()
+							)
+		
+					
 
 func _on_jetons_area_exited(area):
 	list_pos_plateau_remplace_blanc.clear()
@@ -231,9 +240,9 @@ func check_colision_horizontal():
 
 func remplace_couleurs():
 	print("hurra joueur1 !")
-	print(list_pos_plateau_remplace_blanc)
+
 	
-	
+
 	if list_pos_plateau_remplace_blanc.size() >= 3 and Globals.list_couleur_bouge_jeton.size() >= 3:
 		for a in range(0, 3):
 			list_pos_plateau_remplace_blanc[a].texture = load(Globals.list_couleur_bouge_jeton[a])
@@ -314,6 +323,7 @@ func joueur_ia_cerveau():
 					tourne_ia
 				for index in range(Globals.position_de_chaque_carre_du_plateau.size()):
 					if Globals.list_affiche_position_porte_jetons_ia.size() > 0:
+
 						var visi_node_ia = Globals.list_affiche_position_porte_jetons_ia[0]
 						var target_id = visi_node_ia.jeton_id  # Remplace par ton ID de nœud
 						var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
@@ -334,7 +344,7 @@ func joueur_ia_cerveau():
 							Globals.index_pioche_ia = 0
 							node2d_scene.affiche_nb_jetons_restant()
 							node.visible = false
-							print("fin")
+							print("case blanc dessous = " + str(jeton_blanc_3))
 							break
 						node.visible = false
 					
