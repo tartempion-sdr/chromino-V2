@@ -29,6 +29,11 @@ var hazard
 func _ready():
 	pos_plateau()
 	var premier_jeton:Jeton = pioche.pioche_jeton()
+#pour19
+#	modifie_plateau(163, premier_jeton.color0)
+#	modifie_plateau(182, premier_jeton.color1)
+#	modifie_plateau(201, premier_jeton.color2)
+#pour 29
 	modifie_plateau(420, premier_jeton.color0)
 	modifie_plateau(449, premier_jeton.color1)
 	modifie_plateau(478, premier_jeton.color2)
@@ -77,7 +82,6 @@ func souris_pos_plateau():
 	num = 2
 	
 	for n in range(29):
-
 		for i in range(29):
 			
 			# Utiliser un index pour accéder à chaque enfant individuellement

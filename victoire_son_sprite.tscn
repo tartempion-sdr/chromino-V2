@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/song/victoireia_motus.ogg" type="AudioStream" id=1]
+[ext_resource path="res://AudioStreamPlayer.gd" type="Script" id=2]
+[ext_resource path="res://Sprite.gd" type="Script" id=3]
 
-[node name="victoire_son_sprite" type="Node2D"]
+[node name="victoire_son_sprite" type="Area2D"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 1 )
 autoplay = true
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="AudioStreamPlayer"]
+z_index = 4
+offset = Vector2( 525, 300 )
+script = ExtResource( 3 )

@@ -29,7 +29,8 @@ var pioche = preload("res://assets/pioche.png")
 var croix = preload("res://assets/icon/croix.png")
 var motus = preload("res://assets/song/victoireia_motus.ogg")
 var applaudisement = preload("res://assets/song//victoirej1_applaudi.ogg")
-
+var win  = preload("res://assets/animesprite/win.jpg")
+var lose  = preload("res://assets/animesprite/lose.jpg")
 
 func _ready():
 	pass
@@ -249,6 +250,7 @@ func remplace_couleurs():
 		for a in range(0, 3):
 			list_pos_plateau_remplace_blanc[a].texture = load(Globals.list_couleur_bouge_jeton[a])
 			print(list_pos_plateau_remplace_blanc[a].get_parent().position)
+			
 			var instance_etoile = etoile.instance()
 			instance_etoile.position = Vector2(list_pos_plateau_remplace_blanc[a].get_parent().position)
 			var child = instance_etoile.get_child(0)
@@ -274,6 +276,8 @@ func remplace_couleurs():
 				var instance_victoire = anim_victoire.instance()
 				var child = instance_victoire.get_child(0)
 				child.stream = applaudisement
+				var child_sprit = child.get_child(0)
+				child_sprit.texture = win
 				add_child(instance_victoire)
 				node2d_scene.child_pioche_jetons()
 			else:
@@ -288,18 +292,7 @@ func remplace_couleurs():
 
 	else:
 		 
-		if node2d_scene: # Accède au bouton pioche
-			if Globals.dedut_de_partie_nb_jetons_jia == false and Globals.list_affiche_position_porte_jetons_ia.size() == 0:
-				Globals.victoir_pioche_nb_jeton_jia = true
-				Globals.nb_victoir_jia += 1
-				var instance_victoire = anim_victoire.instance()
-				var child = instance_victoire.get_child(0)
-				child.stream = motus
-				add_child(instance_victoire)
-				node2d_scene.child_pioche_jetons()
-			else:
-				Globals.victoir_pioche_nb_jeton_jia = false
-				
+
 				
 			var button_pioche = node2d_scene.get_node("Area2D/TextureRect2/Button_pioche")
 			node2d_scene.affiche_nb_jetons_restant()
@@ -376,6 +369,12 @@ func joueur_ia_cerveau():
 			if Globals.dedut_de_partie_nb_jetons_jia == false and Globals.list_affiche_position_porte_jetons_ia.size() == 0:
 				Globals.victoir_pioche_nb_jeton_jia = true
 				Globals.nb_victoir_jia += 1
+				var instance_victoire = anim_victoire.instance()
+				var child = instance_victoire.get_child(0)
+				child.stream = motus
+				var child_sprit = child.get_child(0)
+				child_sprit.texture = lose
+				add_child(instance_victoire)
 				node2d_scene.child_pioche_jetons()
 			else:
 				Globals.victoir_pioche_nb_jeton_jia = false
