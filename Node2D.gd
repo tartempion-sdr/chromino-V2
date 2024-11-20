@@ -147,6 +147,7 @@ func child_pioche_jetons():
 			Globals.nb_jetons_pioche = 1
 	else:
 		if Globals.dedut_de_partie_nb_jetons_jia:
+			#test#Globals.nb_jetons_pioche = 7
 			Globals.nb_jetons_pioche = 7
 			Globals.dedut_de_partie_nb_jetons_jia = false
 		

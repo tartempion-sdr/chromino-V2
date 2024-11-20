@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/victoirej1_applaudi.ogg-e87a1e719acf1ee06accb731879c9b5f.oggstr"
+
+[deps]
+
+source_file="res://assets/song/victoirej1_applaudi.ogg"
+dest_files=[ "res://.import/victoirej1_applaudi.ogg-e87a1e719acf1ee06accb731879c9b5f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
