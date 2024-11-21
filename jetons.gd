@@ -69,7 +69,8 @@ func _on_jetons_area_entered(area):
 				jeton_blanc_3 = true
 				#print("Tous les éléments sont blancs.") 
 			else: # Code à exécuter si au moins un élément n'est pas vrai (n'a pas la texture carre_blanc) 
-				print("Au moins un élément n'est pas blanc.")
+				pass
+				#print("Au moins un élément n'est pas blanc.")
 					#print(Globals.list_couleur_bouge_jeton)
 
 			if Globals.au_joueur1_de_jouer: 
@@ -204,7 +205,8 @@ func check_colision_vertical():
 		#print(str(path_similaire) + " couleurs similaire")
 		pass
 	else:
-		print("interdit")
+		#print("interdit")
+		pass
 		
 	if path_similaire > 1 :
 		if similaire:
@@ -232,10 +234,12 @@ func check_colision_horizontal():
 		similaire = false
 
 	if similaire :
-		print(str(path_similaire) + " couleurs similaire")
+		#print(str(path_similaire) + " couleurs similaire")
+		pass
 	else:
-		print("interdit")
-	
+		#print("interdit")
+		pass
+		
 	if path_similaire > 1 :
 		if similaire:
 			remplace_couleurs()
@@ -308,7 +312,7 @@ func remplace_couleurs():
 				print("L'Array est vide")
 				
 func joueur_ia_cerveau():
-	print("joueurIa")
+	#print("joueurIa")
 	var node2d_scene = get_tree().get_root().get_node("Node2D")
 	if Globals.list_affiche_position_porte_jetons_ia.size() == 0:
 		node2d_scene.child_pioche_jetons()
@@ -338,8 +342,6 @@ func joueur_ia_cerveau():
 						var target_id = visi_node_ia.jeton_id  # Remplace par ton ID de nœud
 						var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
 						if not Globals.jeton_ia_place_trouver:
-							#yield(get_tree().create_timer(0.1), "timeout") # Attendre 1 seconde entre chaque position
-							
 							
 							node.position = Vector2(Globals.position_de_chaque_carre_du_plateau[index])
 							var child_scale = node.get_child(0)
@@ -347,8 +349,7 @@ func joueur_ia_cerveau():
 							child_scale.scale.y = Globals.taille
 							node.visible = true
 
-							yield(get_tree().create_timer(0.0005), "timeout") # Attendre 1 seconde entre chaque position
-							#print(Globals.list_affiche_position_porte_jetons[element].sens)
+							yield(get_tree().create_timer(0.00001), "timeout") # Attendre 1 seconde entre chaque position
 							
 						else:
 							Globals.index_pioche_ia = 0
