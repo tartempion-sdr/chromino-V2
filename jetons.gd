@@ -2,11 +2,12 @@ extends Node2D
 
 var screen_limits = Rect2(Vector2(0, 0), Vector2(1280, 720))  # Ajuste ces valeurs selon la taille de ta scène
 var move_child = false
-var jeton_blanc_3 = false
+
 var list_pos_plateau_remplace_blanc = []
-var liste_colision_autour = []
+
 var stream_list_couleur_bouge_jeton = []
 var path_similaire = 0
+
 var collision_count = 0
 var collision_autour_count = 0
 var area_autour
@@ -66,10 +67,10 @@ func _on_jetons_area_entered(area):
 					tous_elements_sont_blancs = false 
 					break 
 			if tous_elements_sont_blancs: # Code à exécuter si tous les éléments sont vrais (ont la texture carre_blanc) 
-				jeton_blanc_3 = true
+				Globals.jeton_blanc_3 = true
 				#print("Tous les éléments sont blancs.") 
 			else: # Code à exécuter si au moins un élément n'est pas vrai (n'a pas la texture carre_blanc) 
-				pass
+				Globals.jeton_blanc_3 = false
 				#print("Au moins un élément n'est pas blanc.")
 					#print(Globals.list_couleur_bouge_jeton)
 
@@ -139,18 +140,19 @@ func _on_jetons_area_entered(area):
 
 func _on_jetons_area_exited(area):
 	list_pos_plateau_remplace_blanc.clear()
-	jeton_blanc_3 = false
+	Globals.jeton_blanc_3 = false
 
 func _on_verifieautour_area_entered(area_autour):
 	if area_autour.is_in_group("plateau"):
 		var node2d_plateau = area_autour  # Le `Node2D` du plateau
-		liste_colision_autour.append(node2d_plateau.get_child(0).texture.get_path())
-		if liste_colision_autour.size() == 8 && jeton_blanc_3:
+		Globals.liste_colision_autour.append(node2d_plateau.get_child(0).texture.get_path())
+		if Globals.liste_colision_autour.size() == 8 && Globals.jeton_blanc_3:
 			compare_autour()
 
 func _on_verifieautour_area_exited(area_autour):
 	path_similaire = 0
-	liste_colision_autour.clear()
+	Globals.path_blanc = 0
+	Globals.liste_colision_autour.clear()
 	similaire = true
 
 func bouge_pion():
@@ -161,6 +163,9 @@ func bouge_pion():
 		child_node.global_position = mouse_pos
 
 func compare_autour():
+	path_similaire = 0
+	Globals.path_blanc = 0
+
 	#print(liste_colision_autour)
 	if Globals.au_joueur1_de_jouer:
 		
@@ -169,20 +174,25 @@ func compare_autour():
 			if Globals.id_child_node2d_jeton == jeton.jeton_id:
 				if jeton.is_vertical():
 					check_colision_vertical()
+					print("path_blanc = " + str(Globals.path_blanc))
 				if jeton.is_horizontal():
 					check_colision_horizontal()
+					print("path_blanc = " + str(Globals.path_blanc))
 	else:
 		for jtn in Globals.list_affiche_position_porte_jetons_ia:
 				var jeton:Jeton = jtn
 				if Globals.id_child_node2d_jeton == jeton.jeton_id:
 					if jeton.is_vertical():
 						check_colision_vertical()
+						print("path_blanc = " + str(Globals.path_blanc))
 					if jeton.is_horizontal():
 						check_colision_horizontal()
+						print("path_blanc = " + str(Globals.path_blanc))
 
 func check_colision_vertical():
 	var similaire = true
 	path_similaire = 0
+	
 	
 	if !check_colision_v(0, 0):
 		similaire = false
@@ -211,11 +221,12 @@ func check_colision_vertical():
 	if path_similaire > 1 :
 		if similaire:
 			remplace_couleurs()
-			path_similaire = 0
-
+			
 func check_colision_horizontal():
 	var similaire = true
 	path_similaire = 0
+	
+	
 	if !check_colision_h(0,0,0):
 		similaire = false
 	if !check_colision_h(1,1,0):
@@ -243,7 +254,7 @@ func check_colision_horizontal():
 	if path_similaire > 1 :
 		if similaire:
 			remplace_couleurs()
-			path_similaire = 0
+			
 
 func remplace_couleurs():
 	print("hurra joueur1 !")
@@ -311,8 +322,15 @@ func remplace_couleurs():
 			else: 
 				print("L'Array est vide")
 				
+
+				
 func joueur_ia_cerveau():
 	#print("joueurIa")
+	#test eco
+	
+	Globals.list_economie_test_position_plateau.clear()
+	var tour_deux_pour_liste_eco:int = 0
+	
 	var node2d_scene = get_tree().get_root().get_node("Node2D")
 	if Globals.list_affiche_position_porte_jetons_ia.size() == 0:
 		node2d_scene.child_pioche_jetons()
@@ -331,34 +349,62 @@ func joueur_ia_cerveau():
 				if script_node2D != null: 
 					var result = script_node2D.call("tourne_jeton") 
 					print("Resultat de tourne_jeton : " + str(result)) 
+					tour_deux_pour_liste_eco += 1
+					print("tour_deux_pour_liste_eco = " + str(tour_deux_pour_liste_eco))
+					if tour_deux_pour_liste_eco < 3:
+						Globals.alternance_pos_carre_blanc_plateau = Globals.position_de_chaque_carre_du_plateau
+					else:
+						
+						Globals.alternance_pos_carre_blanc_plateau = Globals.list_economie_test_position_plateau
 				else: 
 					print("Erreur : script_node2D est null")
 					var tourne_ia = script_node2D.call("tourne_jeton") 
 					tourne_ia
-				for index in range(Globals.position_de_chaque_carre_du_plateau.size()):
+					
+				#test_eco
+				print("nb de cases = " + str(Globals.list_economie_test_position_plateau.size()))
+				
+					
+				for index in range(Globals.alternance_pos_carre_blanc_plateau.size()):
 					if Globals.list_affiche_position_porte_jetons_ia.size() > 0:
-
+						
 						var visi_node_ia = Globals.list_affiche_position_porte_jetons_ia[0]
 						var target_id = visi_node_ia.jeton_id  # Remplace par ton ID de nœud
 						var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
 						if not Globals.jeton_ia_place_trouver:
 							
-							node.position = Vector2(Globals.position_de_chaque_carre_du_plateau[index])
+							
+							node.position = Vector2(Globals.alternance_pos_carre_blanc_plateau[index])
 							var child_scale = node.get_child(0)
 							child_scale.scale.x = Globals.taille
 							child_scale.scale.y = Globals.taille
 							node.visible = true
-
-							yield(get_tree().create_timer(0.00001), "timeout") # Attendre 1 seconde entre chaque position
+							yield(get_tree().create_timer(0.05), "timeout") # Attendre 1 seconde entre chaque position
+								
 							
+							#test_eco
+						
+							if tour_deux_pour_liste_eco < 3 and Globals.jeton_blanc_3 and Globals.liste_colision_autour.size() == 8 and Globals.path_blanc < 8 and not Globals.list_economie_test_position_plateau.has(node.position):
+								print("path_blanc = " + str(Globals.path_blanc))  
+								print("La variable n'est pas dans la liste.") 
+								Globals.list_economie_test_position_plateau.append(Globals.alternance_pos_carre_blanc_plateau[index])
+								print("eco list = " + str(Globals.list_economie_test_position_plateau.size()))
+								
+
+							else:
+								pass
+								#print("tour_deux_pour_liste_eco > 2")
+							
+
 						else:
 							Globals.index_pioche_ia = 0
 							node2d_scene.affiche_nb_jetons_restant()
 							node.visible = false
-							print("case blanc dessous = " + str(jeton_blanc_3))
+							print("case blanc dessous = " + str(Globals.jeton_blanc_3))
 							break
 						node.visible = false
-					
+			
+				
 		if Globals.jeton_ia_place_trouver == false:
 			Globals.index_pioche_ia = 0
 			node2d_scene.affiche_nb_jetons_restant()
@@ -393,18 +439,18 @@ func supprime_jeton_porte_jeton():
 
 func check_colision_h(autour: int, jeton1: int, jeton2: int) -> bool:
 	var similaire = true
-	var info = str(liste_colision_autour[autour]) + " < " +str(autour + 1) + "* > "
+	var info = str(Globals.liste_colision_autour[autour]) + " < " +str(autour + 1) + "* > "
 	#print(Globals.list_couleur_bouge_jeton)
-	if liste_colision_autour[autour] == Globals.list_couleur_bouge_jeton[jeton1] or liste_colision_autour[autour] == str(joker):
+	if Globals.liste_colision_autour[autour] == Globals.list_couleur_bouge_jeton[jeton1] or Globals.liste_colision_autour[autour] == str(joker):
 		path_similaire += 1
 		###print(info +  str(Globals.list_couleur_bouge_jeton[jeton1]))
 			
-	elif  Globals.list_couleur_bouge_jeton[jeton1]  == str(joker) and liste_colision_autour[autour] != str(blanc):
+	elif  Globals.list_couleur_bouge_jeton[jeton1]  == str(joker) and Globals.liste_colision_autour[autour] != str(blanc):
 		path_similaire += 1
 		###print(info + str(Globals.list_couleur_bouge_jeton[jeton1]))
 
-	elif liste_colision_autour[autour] == str(blanc):
-		#print(info + str(blanc))
+	elif Globals.liste_colision_autour[autour] == str(blanc):
+		Globals.path_blanc += 1
 		pass
 	else:
 		similaire = false
@@ -412,13 +458,13 @@ func check_colision_h(autour: int, jeton1: int, jeton2: int) -> bool:
 
 func check_colision_v(autour: int, jeton_index: int) -> bool:
 	var similaire = true
-	var info = str(liste_colision_autour[autour]) + " < " +str(autour + 1) + "* > "
+	var info = str(Globals.liste_colision_autour[autour]) + " < " +str(autour + 1) + "* > "
 	
-	var is_colision_not_blanc = liste_colision_autour[autour] != str(blanc)
-	var is_colision_blanc = liste_colision_autour[autour] == str(blanc)
-	var is_colision_jeton_joker = liste_colision_autour[autour] == str(joker)
+	var is_colision_not_blanc = Globals.liste_colision_autour[autour] != str(blanc)
+	var is_colision_blanc = Globals.liste_colision_autour[autour] == str(blanc)
+	var is_colision_jeton_joker = Globals.liste_colision_autour[autour] == str(joker)
 	var is_jeton_joker = Globals.list_couleur_bouge_jeton[jeton_index] == str(joker)
-	var is_same_color_than_colision = liste_colision_autour[autour] == Globals.list_couleur_bouge_jeton[jeton_index]
+	var is_same_color_than_colision = Globals.liste_colision_autour[autour] == Globals.list_couleur_bouge_jeton[jeton_index]
 	
 	if (is_same_color_than_colision or is_colision_jeton_joker):
 		path_similaire += 1
@@ -427,8 +473,7 @@ func check_colision_v(autour: int, jeton_index: int) -> bool:
 		path_similaire += 1
 		###print(info + str(Globals.list_couleur_bouge_jeton[jeton_index]))
 	elif is_colision_blanc:
-		#print(info + str(blanc))
-		pass
+		Globals.path_blanc += 1
 	else:
 		similaire = false
 	
