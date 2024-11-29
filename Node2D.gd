@@ -183,39 +183,44 @@ func child_pioche_jetons():
 
 func _input(event):
 
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and Globals.au_joueur1_de_jouer:
 		if event.button_index == BUTTON_WHEEL_UP:
-			if Globals.taille > 0.7 :
+			if Globals.taille > 1 :
+				pass
+				#bloqué car bug pour le moment
 				# Action pour le défilement vers le haut
-				print("ZOOM -")
-				Globals.taille -= 0.1
-				souris_pos_plateau()
-				Globals.affiche_jetons_piocher()
+#				print("ZOOM -")
+#				Globals.taille -= 0.1
+#				souris_pos_plateau()
+#				Globals.affiche_jetons_piocher()
+	
 			
-		elif event.button_index == BUTTON_WHEEL_DOWN:
+		elif event.button_index == BUTTON_WHEEL_DOWN and Globals.au_joueur1_de_jouer:
 			if Globals.taille < 1.7 :
+				pass
+				#bloqué car bug pour le moment
 				# Action pour le défilement vers le bas
-				print("ZOOM +")
-				Globals.taille += 0.1
-				souris_pos_plateau()
-				Globals.affiche_jetons_piocher()
+#				print("ZOOM +")
+#				Globals.taille += 0.1
+#				souris_pos_plateau()
+#				Globals.affiche_jetons_piocher()
 				
-	if Input.is_key_pressed(KEY_LEFT):
+	if Input.is_key_pressed(KEY_LEFT) and Globals.au_joueur1_de_jouer:
 		
 		x1 -= 10
 		souris_pos_plateau()
 
-	if Input.is_key_pressed(KEY_RIGHT):
+	if Input.is_key_pressed(KEY_RIGHT) and Globals.au_joueur1_de_jouer:
 		
 		x1 += 10
 		souris_pos_plateau()
 
-	if Input.is_key_pressed(KEY_UP):
+	if Input.is_key_pressed(KEY_UP) and Globals.au_joueur1_de_jouer:
 		
 		y1 -= 10
 		souris_pos_plateau()
 
-	if Input.is_key_pressed(KEY_DOWN):
+	if Input.is_key_pressed(KEY_DOWN) and Globals.au_joueur1_de_jouer:
 		
 		y1 += 10
 		souris_pos_plateau()
