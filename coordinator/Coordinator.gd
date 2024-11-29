@@ -30,7 +30,8 @@ func nouvelle_partie(ecran_actuel:Node):
 	Globals.alternance_pos_carre_blanc_plateau
 	Globals.liste_colision_autour = []
 	Globals.path_blanc = 0
-	Globals.list_economie_test_position_plateau = []
+	Globals.list_economie_is_horizontal_test_position_plateau = []
+	Globals.list_economie_is_vertical_test_position_plateau = []
 	Globals.index_pioche_ia = 0
 	Globals.jeton_blanc_3 = false
 	ecran_actuel.get_tree().change_scene(Ecran.jeu) 

@@ -328,7 +328,8 @@ func joueur_ia_cerveau():
 	#print("joueurIa")
 	#test eco
 	
-	Globals.list_economie_test_position_plateau.clear()
+	Globals.list_economie_is_horizontal_test_position_plateau.clear()
+	Globals.list_economie_is_vertical_test_position_plateau.clear()
 	var tour_deux_pour_liste_eco:int = 0
 	
 	var node2d_scene = get_tree().get_root().get_node("Node2D")
@@ -355,14 +356,18 @@ func joueur_ia_cerveau():
 						Globals.alternance_pos_carre_blanc_plateau = Globals.position_de_chaque_carre_du_plateau
 					else:
 						
-						Globals.alternance_pos_carre_blanc_plateau = Globals.list_economie_test_position_plateau
+						var jeton:Jeton = Globals.list_affiche_position_porte_jetons_ia[0]
+						if jeton.is_vertical():
+							Globals.alternance_pos_carre_blanc_plateau = Globals.list_economie_is_vertical_test_position_plateau
+						if jeton.is_horizontal():
+							Globals.alternance_pos_carre_blanc_plateau = Globals.list_economie_is_horizontal_test_position_plateau
 				else: 
 					print("Erreur : script_node2D est null")
 					var tourne_ia = script_node2D.call("tourne_jeton") 
 					tourne_ia
 					
 				#test_eco
-				print("nb de cases = " + str(Globals.list_economie_test_position_plateau.size()))
+				print("nb de cases = " + str(Globals.alternance_pos_carre_blanc_plateau.size()))
 				
 					
 				for index in range(Globals.alternance_pos_carre_blanc_plateau.size()):
@@ -371,6 +376,7 @@ func joueur_ia_cerveau():
 						var visi_node_ia = Globals.list_affiche_position_porte_jetons_ia[0]
 						var target_id = visi_node_ia.jeton_id  # Remplace par ton ID de nœud
 						var node = Globals.find_node_by_instance_id(get_tree().root, target_id)
+						
 						if not Globals.jeton_ia_place_trouver:
 							
 							
@@ -379,17 +385,24 @@ func joueur_ia_cerveau():
 							child_scale.scale.x = Globals.taille
 							child_scale.scale.y = Globals.taille
 							node.visible = true
-							yield(get_tree().create_timer(0.05), "timeout") # Attendre 1 seconde entre chaque position
+							yield(get_tree().create_timer(0.005), "timeout") # Attendre 1 seconde entre chaque position
 								
 							
 							#test_eco
 						
-							if tour_deux_pour_liste_eco < 3 and Globals.jeton_blanc_3 and Globals.liste_colision_autour.size() == 8 and Globals.path_blanc < 8 and not Globals.list_economie_test_position_plateau.has(node.position):
+							if tour_deux_pour_liste_eco < 3 and Globals.jeton_blanc_3 and Globals.liste_colision_autour.size() == 8 and Globals.path_blanc < 8 :
+							#and not Globals.alternance_pos_carre_blanc_plateau.has(node.position):
 								print("path_blanc = " + str(Globals.path_blanc))  
 								print("La variable n'est pas dans la liste.") 
-								Globals.list_economie_test_position_plateau.append(Globals.alternance_pos_carre_blanc_plateau[index])
-								print("eco list = " + str(Globals.list_economie_test_position_plateau.size()))
-								
+								var jeton:Jeton = Globals.list_affiche_position_porte_jetons_ia[0]
+								if jeton.is_vertical():
+									Globals.list_economie_is_vertical_test_position_plateau.append(Globals.position_de_chaque_carre_du_plateau[index])
+								if jeton.is_horizontal():
+									Globals.list_economie_is_horizontal_test_position_plateau.append(Globals.position_de_chaque_carre_du_plateau[index])
+			
+
+								print("eco list = " + str(Globals.list_economie_is_horizontal_test_position_plateau.size()))
+								print("eco list = " + str(Globals.list_economie_is_vertical_test_position_plateau.size()))
 
 							else:
 								pass
