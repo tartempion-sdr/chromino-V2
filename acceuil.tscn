@@ -826,6 +826,6 @@ position = Vector2( 764, 263 )
 position = Vector2( 0.810211, -3.11145 )
 z_index = 4
 frames = SubResource( 3 )
-frame = 1
+frame = 10
 playing = true
 [connection signal="pressed" from="jouez" to="jouez" method="_on_jouez_pressed"]
