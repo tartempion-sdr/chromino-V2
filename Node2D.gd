@@ -5,13 +5,13 @@ var pioche = PiocheUseCase.new()
 var ecart = 20
 var scene = preload("res://Plateau.tscn")
 var etoile = preload("res://etoile.tscn")
-var x1 = 0
-var y1 = 0
+var x1 = 250
+var y1 = 50
 var plateau_x
 var plateau_y
 var child_2 
-var x = 0
-var y = 0
+var x = 250
+var y = 50
 var num = 2
 #var jeton_child = 363
 var sens = ["verticale-h", "horizontale-d", "verticale-b", "horizontale-g"] 
@@ -34,9 +34,9 @@ func _ready():
 #	modifie_plateau(182, premier_jeton.color1)
 #	modifie_plateau(201, premier_jeton.color2)
 #pour 29
-	modifie_plateau(420, premier_jeton.color0)
-	modifie_plateau(449, premier_jeton.color1)
-	modifie_plateau(478, premier_jeton.color2)
+	modifie_plateau(423, premier_jeton.color0)
+	modifie_plateau(452, premier_jeton.color1)
+	modifie_plateau(481, premier_jeton.color2)
 	Globals.list_affiche_position_porte_jetons.clear()
 	affiche_nb_jetons_restant()
 	
@@ -122,10 +122,10 @@ func affiche_nb_jetons_restant():
 
 	if Globals.au_joueur1_de_jouer:
 		$Area2D/TextureRect2/Button_pioche.texture_normal = pioche_icon
-		$Area2D/AnimatedSpriteaujoueur1.position =  Vector2(85,495)
+		$Area2D/AnimatedSpriteaujoueur1.position =  Vector2(85,500)
 	else:
 		$Area2D/TextureRect2/Button_pioche.texture_normal = croix
-		$Area2D/AnimatedSpriteaujoueur1.position =  Vector2(85,545)
+		$Area2D/AnimatedSpriteaujoueur1.position =  Vector2(85,550)
 	var count = pioche.nb_jetons_restant()
 	$Area2D/TextureRect2/Button_pioche/RichTextLabel.text = "PIOCHE = %d" % count
 	var countjetonsjoueur1 = int(len(Globals.list_affiche_position_porte_jetons))
@@ -133,8 +133,8 @@ func affiche_nb_jetons_restant():
 	var victoirj1 = int(Globals.nb_victoir_j1)
 	var victoirjia = int(Globals.nb_victoir_jia)
 	var index = int(Globals.index_pioche_ia)
-	$Area2D/TextureRect2/Button_pioche/textejoueur1.text = " JOUEUR 1 \n jetons = %d \n victoire = %d  " % [countjetonsjoueur1, victoirj1]
-	$Area2D/TextureRect2/Button_pioche/textejoueurIA.text = " JOUEUR IA \n jetons = %d/%d \n victoire =  %d " % [index, countjetonsjoueuria, victoirjia]
+	$Area2D/TextureRect2/Button_pioche/textejoueur1.text = " JOUEUR 1 \n     jetons = %d \n     victoire = %d  " % [countjetonsjoueur1, victoirj1]
+	$Area2D/TextureRect2/Button_pioche/textejoueurIA.text = " JOUEUR IA \n     jetons = %d/%d \n     victoire =  %d " % [index, countjetonsjoueuria, victoirjia]
 
 	
 func child_pioche_jetons():

@@ -49,7 +49,7 @@ z_index = 2
 
 [node name="TextureRect2" type="TextureRect" parent="Area2D"]
 margin_left = -1.0
-margin_top = 460.0
+margin_top = 456.0
 margin_right = 1024.0
 margin_bottom = 599.0
 mouse_filter = 2
@@ -61,9 +61,9 @@ __meta__ = {
 
 [node name="Button_pioche" type="TextureButton" parent="Area2D/TextureRect2"]
 margin_left = 158.563
-margin_top = 49.7764
+margin_top = 48.7764
 margin_right = 198.563
-margin_bottom = 89.7764
+margin_bottom = 88.7764
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 5 )
 expand = true
@@ -72,10 +72,10 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Area2D/TextureRect2/Button_pioche"]
-margin_left = -151.387
-margin_top = -37.6838
-margin_right = -5.38742
-margin_bottom = -18.6838
+margin_left = -148.387
+margin_top = -26.6838
+margin_right = -2.38742
+margin_bottom = -7.6838
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 tab_size = 24
 text = "PIOCHE  ="
@@ -83,25 +83,44 @@ fit_content_height = true
 
 [node name="textejoueur1" type="RichTextLabel" parent="Area2D/TextureRect2/Button_pioche"]
 margin_left = -150.0
-margin_top = -14.0
+margin_top = -6.0
 margin_right = -5.0
-margin_bottom = 33.0
+margin_bottom = 41.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Joueur 1 
-Jetons = 
-Victoire ="
+	Jetons = 
+	Victoire ="
 scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="textejoueurIA" type="RichTextLabel" parent="Area2D/TextureRect2/Button_pioche"]
 margin_left = -152.0
-margin_top = 32.0
-margin_right = -60.0
-margin_bottom = 78.0
+margin_top = 42.0
+margin_right = -35.0
+margin_bottom = 88.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Joueur IA 
-Jetons = 
-Victoire ="
+	Jetons = 
+	Victoire ="
 scroll_active = false
+
+[node name="texterejouez" type="RichTextLabel" parent="Area2D/TextureRect2/Button_pioche"]
+margin_left = -148.0
+margin_top = -46.0
+margin_right = -27.0
+margin_bottom = -30.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "NOUVELLE PARTIE"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Area2D/TextureRect2/Button_pioche"]
+position = Vector2( -15, -30 )
+texture = ExtResource( 6 )
 
 [node name="Button_gauche2" type="TextureButton" parent="Area2D/TextureRect2"]
 margin_left = 200.916
@@ -128,9 +147,9 @@ __meta__ = {
 
 [node name="Button_tourne" type="TextureButton" parent="Area2D/TextureRect2"]
 margin_left = 159.151
-margin_top = 94.9082
+margin_top = 101.908
 margin_right = 199.151
-margin_bottom = 134.908
+margin_bottom = 141.908
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 9 )
 __meta__ = {
@@ -151,9 +170,8 @@ __meta__ = {
 
 [node name="acceuil" type="TextureButton" parent="Area2D/TextureRect2"]
 margin_left = 160.0
-margin_top = 5.0
 margin_right = 200.0
-margin_bottom = 44.0
+margin_bottom = 39.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 11 )
 expand = true
