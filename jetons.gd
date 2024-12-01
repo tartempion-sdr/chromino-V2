@@ -355,12 +355,12 @@ func joueur_ia_cerveau():
 					if tour_deux_pour_liste_eco < 3:
 						Globals.alternance_pos_carre_blanc_plateau = Globals.position_de_chaque_carre_du_plateau
 					else:
-						
-						var jeton:Jeton = Globals.list_affiche_position_porte_jetons_ia[0]
-						if jeton.is_vertical():
-							Globals.alternance_pos_carre_blanc_plateau = Globals.list_economie_is_vertical_test_position_plateau
-						if jeton.is_horizontal():
-							Globals.alternance_pos_carre_blanc_plateau = Globals.list_economie_is_horizontal_test_position_plateau
+						if Globals.list_affiche_position_porte_jetons_ia.size() > 0:
+							var jeton:Jeton = Globals.list_affiche_position_porte_jetons_ia[0]
+							if jeton.is_vertical():
+								Globals.alternance_pos_carre_blanc_plateau = Globals.list_economie_is_vertical_test_position_plateau
+							if jeton.is_horizontal():
+								Globals.alternance_pos_carre_blanc_plateau = Globals.list_economie_is_horizontal_test_position_plateau
 				else: 
 					print("Erreur : script_node2D est null")
 					var tourne_ia = script_node2D.call("tourne_jeton") 
@@ -385,7 +385,7 @@ func joueur_ia_cerveau():
 							child_scale.scale.x = Globals.taille
 							child_scale.scale.y = Globals.taille
 							node.visible = true
-							yield(get_tree().create_timer(0.005), "timeout") # Attendre 1 seconde entre chaque position
+							yield(get_tree().create_timer(0.05), "timeout") # Attendre 1 seconde entre chaque position
 								
 							
 							#test_eco
@@ -394,15 +394,16 @@ func joueur_ia_cerveau():
 							#and not Globals.alternance_pos_carre_blanc_plateau.has(node.position):
 								print("path_blanc = " + str(Globals.path_blanc))  
 								print("La variable n'est pas dans la liste.") 
-								var jeton:Jeton = Globals.list_affiche_position_porte_jetons_ia[0]
-								if jeton.is_vertical():
-									Globals.list_economie_is_vertical_test_position_plateau.append(Globals.position_de_chaque_carre_du_plateau[index])
-								if jeton.is_horizontal():
-									Globals.list_economie_is_horizontal_test_position_plateau.append(Globals.position_de_chaque_carre_du_plateau[index])
-			
+								if Globals.list_affiche_position_porte_jetons_ia.size() > 0:
+									var jeton:Jeton = Globals.list_affiche_position_porte_jetons_ia[0]
+									if jeton.is_vertical():
+										Globals.list_economie_is_vertical_test_position_plateau.append(Globals.position_de_chaque_carre_du_plateau[index])
+									if jeton.is_horizontal():
+										Globals.list_economie_is_horizontal_test_position_plateau.append(Globals.position_de_chaque_carre_du_plateau[index])
+				
+									print("eco list = " + str(Globals.list_economie_is_vertical_test_position_plateau.size()))
+									print("eco list = " + str(Globals.list_economie_is_horizontal_test_position_plateau.size()))
 
-								print("eco list = " + str(Globals.list_economie_is_horizontal_test_position_plateau.size()))
-								print("eco list = " + str(Globals.list_economie_is_vertical_test_position_plateau.size()))
 
 							else:
 								pass
